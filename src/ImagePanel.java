@@ -1,17 +1,25 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.image.*;
+import javax.imageio.ImageIO;
+import java.io.*;
+
 public class ImagePanel extends JPanel {
-    
-    public ImagePanel(){}
+    private BufferedImage screen;
+    public ImagePanel(){
+        try {
+            screen = ImageIO.read(ImagePanel.class.getResource("/Image/AzulStartScreen.jpg"));
+        }
+        catch (Exception E){
+            System.out.println("Exception Error");
+            return;
+        }
+    }
 
     public void paint (Graphics g){
         g.setColor(Color.BLUE);
         g.drawLine(0, 0, getWidth(), getHeight());
+        g.drawImage(screen, 0, 0, 400, 400, null);
         }
-    public static void main(String[] args) {
-        System.out.println("aya this works?????");
-        System.out.println("second try");
-        System.out.println("third try");
-    }
 }
  //heheh
