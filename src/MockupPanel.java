@@ -57,6 +57,7 @@ public class MockupPanel extends JPanel implements MouseListener{
 				
 				bkg = board;
 				startbttn = null;
+				//g
 				
 				
 			}

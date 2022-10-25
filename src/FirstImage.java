@@ -11,5 +11,7 @@ public class FirstImage extends JFrame {
         setSize(WIDTH, HEIGHT);
         add(new ImagePanel());
         setVisible(true);
+        //g
+        
     }
 }

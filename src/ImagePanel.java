@@ -8,7 +8,7 @@ public class ImagePanel extends JPanel {
     private BufferedImage screen;
     public ImagePanel(){
         try {
-            screen = ImageIO.read(ImagePanel.class.getResource("/Image/AzulStartScreen.jpg"));
+            screen = ImageIO.read(new File("AzulStartScreen.jpg"));
         }
         catch (Exception E){
             System.out.println("Exception Error");
