@@ -15,7 +15,7 @@ public class MockupPanel extends JPanel implements MouseListener{
 		
 		try {
 	
-			bkg = ImageIO.read(MockupPanel.class.getResource("/Images/AzulStartScreen.jpg"));
+			bkg = ImageIO.read(MockupPanel.class.getResource("src/AzulStartScreen.jpg"));
 			startbttn = ImageIO.read(MockupPanel.class.getResource("/Images/start.png"));
 			board = ImageIO.read(MockupPanel.class.getResource("/Images/clearAzulBoard.jpg"));
 			
