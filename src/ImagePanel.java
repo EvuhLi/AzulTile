@@ -21,6 +21,5 @@ public class ImagePanel extends JPanel {
         g.setColor(Color.BLUE);
         g.drawLine(0, 0, getWidth(), getHeight());
         g.drawImage(screen, 0, 0, 400, 400, null);
-        }
-        
+    }
 }
