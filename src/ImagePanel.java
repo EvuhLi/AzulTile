@@ -20,7 +20,7 @@ public class ImagePanel extends JPanel {
     public void paint (Graphics g){
         g.setColor(Color.BLUE);
         g.drawLine(0, 0, getWidth(), getHeight());
-        g.drawImage(screen, 0, 0, 400, 400, null);
+        g.drawImage(screen, 0, 0, 1200, 400, null);
         }
         
 }
