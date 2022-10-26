@@ -8,7 +8,7 @@ public class ImagePanel extends JPanel {
     private BufferedImage screen;
     public ImagePanel(){
         try {
-            screen = ImageIO.read(new File("src/red tile.png"));
+            screen = ImageIO.read(new File("src/AzulStartScreen.jpg"));
             
         }
         catch (Exception E){
@@ -20,6 +20,7 @@ public class ImagePanel extends JPanel {
     public void paint (Graphics g){
         g.setColor(Color.BLUE);
         g.drawLine(0, 0, getWidth(), getHeight());
-        g.drawImage(screen, 0, 0, 400, 400, null);
-    }
+        g.drawImage(screen, 0, 0, 1200, 400, null);
+        }
+        
 }
