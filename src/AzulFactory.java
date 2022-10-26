@@ -25,8 +25,8 @@ public class AzulFactory extends JPanel implements MouseListener {
 	public AzulFactory() {
 
 		try {
-            azulBoard = ImageIO.read(new File("src/azul tiles background.jpg"));
-            factory = ImageIO.read(new File("src/factory.png"));
+            azulBoard = ImageIO.read(new File("src/images/azul tiles background.jpg"));
+            factory = ImageIO.read(new File("src/images/factory.png"));
 
 		} catch (Exception E) {
 			System.out.println("Exception Error");

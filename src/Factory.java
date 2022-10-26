@@ -14,8 +14,8 @@ public class Factory {
 
 	public Factory() {
 		try {
-            tile = ImageIO.read(new File("src/blue tile.png"));
-            factory = ImageIO.read(new File("src/factory.png"));
+            tile = ImageIO.read(new File("src/images/blue tile.png"));
+            factory = ImageIO.read(new File("src/images/factory.png"));
 		} catch (Exception e) {
 			return;
 		}
