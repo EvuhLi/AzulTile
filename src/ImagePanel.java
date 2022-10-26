@@ -8,7 +8,8 @@ public class ImagePanel extends JPanel {
     private BufferedImage screen;
     public ImagePanel(){
         try {
-            screen = ImageIO.read(new File("AzulStartScreen.jpg"));
+            screen = ImageIO.read(new File("/Users/siriramineni/Desktop/comp sci/AzulTile/src/red tile.png"));
+            
         }
         catch (Exception E){
             System.out.println("Exception Error");
@@ -21,5 +22,5 @@ public class ImagePanel extends JPanel {
         g.drawLine(0, 0, getWidth(), getHeight());
         g.drawImage(screen, 0, 0, 400, 400, null);
         }
+        
 }
- //heheh
