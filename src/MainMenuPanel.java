@@ -7,17 +7,17 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
-public class MockupPanel extends JPanel implements MouseListener{
+public class MainMenuPanel extends JPanel implements MouseListener{
 	
 	private BufferedImage bkg, startbttn, board;
 	
-	public MockupPanel(){
+	public MainMenuPanel(){
 		
 		try {
 	
-			bkg = ImageIO.read(MockupPanel.class.getResource("src/AzulStartScreen.jpg"));
-			startbttn = ImageIO.read(MockupPanel.class.getResource("src/start.png"));
-			board = ImageIO.read(MockupPanel.class.getResource("/Images/clearAzulBoard.jpg"));
+			bkg = ImageIO.read(MainMenuPanel.class.getResource("src/AzulStartScreen.jpg"));
+			startbttn = ImageIO.read(MainMenuPanel.class.getResource("src/start.png"));
+			board = ImageIO.read(MainMenuPanel.class.getResource("/Images/clearAzulBoard.jpg"));
 			
 		}
 		catch(Exception e){
