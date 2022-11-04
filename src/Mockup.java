@@ -13,7 +13,6 @@ public class Mockup extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		add(new MockupPanel());
 		setVisible(true);
-		//g
 	}
 	
 }
