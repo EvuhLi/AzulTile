@@ -5,7 +5,7 @@ public class AzulW extends JFrame {
 //private static final int WIDTH =1366;
 //private static final int HEIGHT = 768;
 	private static final int WIDTH = 1920;
-	private static final int HEIGHT = 1000;
+	private static final int HEIGHT = 1080;
 
 	public AzulW(String title) {
 		super(title);
