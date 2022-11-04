@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 public class MainMenu extends JFrame{
 
 	private static final int WIDTH = 1920;
-	private static final int HEIGHT = 1000;
+	private static final int HEIGHT = 1080;
 	
 	public MainMenu(String title) {
 		
@@ -13,7 +13,6 @@ public class MainMenu extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		add(new MainMenuPanel());
 		setVisible(true);
-		//g
 	}
 	
 }

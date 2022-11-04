@@ -15,9 +15,11 @@ public class MainMenuPanel extends JPanel implements MouseListener{
 		
 		try {
 	
-			bkg = ImageIO.read(MainMenuPanel.class.getResource("src/AzulStartScreen.jpg"));
-			startbttn = ImageIO.read(MainMenuPanel.class.getResource("src/start.png"));
-			board = ImageIO.read(MainMenuPanel.class.getResource("/Images/clearAzulBoard.jpg"));
+			bkg = ImageIO.read(new File("src/images/azulejos.png"));
+			//startbttn = ImageIO.read(new File("src/images/start.png"));
+			//board = ImageIO.read(new File("/Images/.jpg"));
+			//           azulBoard = ImageIO.read(new File("src/images/azul tiles background.jpg"));
+
 			
 		}
 		catch(Exception e){
@@ -32,7 +34,7 @@ public class MainMenuPanel extends JPanel implements MouseListener{
 	
 	public void paint(Graphics g) {
 		
-		g.drawImage(bkg, 0, 0, 900, 900, null);
+		g.drawImage(bkg, 0, 0, getWidth(), getHeight(), null);
 		
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Serif Bold", Font.BOLD , 35));
