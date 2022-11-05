@@ -42,7 +42,7 @@ public class AzulPanel extends JPanel implements MouseListener {
 		if(start){
 			menu.drawMenu(g, getWidth(), getHeight());
 			System.out.println(getWidth() + " " + getHeight());
-			menu.download();
+			new Thread(menu).start();
 		}
 		else{
 		g.drawImage(azulBoard, 0, 0, getWidth(), getHeight(), null);

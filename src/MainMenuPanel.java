@@ -15,7 +15,8 @@ import java.util.*;
 public class MainMenuPanel implements Runnable{
 	
 	private BufferedImage bkg, startGameLetter, startgamebg, logo, howtoplay;
-	File out;
+	String home = System.getProperty("user.home");
+	File out = new File(home+"/Downloads/EN-Azul-Rules.pdf"); 
 	public MainMenuPanel(){
 		
 		try {
@@ -68,8 +69,10 @@ public class MainMenuPanel implements Runnable{
 			double percentDownloaded = 0.00;
 			while((read = in.read(buffer, 0, 1024))>= 0){
 				bout.write(buffer, 0, read);
-				downloaded += read;
 			}
+			bout.close();
+			in.close();
+
 		}		
 		catch(IOException ex){
 			ex.printStackTrace();
