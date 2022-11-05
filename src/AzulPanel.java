@@ -9,9 +9,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
-public class AzulFactory extends JPanel implements MouseListener {
-	private BufferedImage factory, azulBoard;
-
+public class AzulPanel extends JPanel implements MouseListener {
+	private BufferedImage border, factory, azulBoard;
+	boolean start = true, build = false, score = false;
 	Factory f1 = new Factory();
 	Factory f2 = new Factory();
 	Factory f3 = new Factory();
@@ -21,12 +21,12 @@ public class AzulFactory extends JPanel implements MouseListener {
 	Factory f7 = new Factory();
 	Factory f8 = new Factory();
 	Factory f9 = new Factory();
+	MainMenuPanel menu = new MainMenuPanel();
 
-	public AzulFactory() {
+	public AzulPanel() {
 
 		try {
-            azulBoard = ImageIO.read(new File("src/images/azul tiles background.jpg"));
-            factory = ImageIO.read(new File("src/images/factory.png"));
+			border = ImageIO.read(new File("src/images/border.png"));
 
 		} catch (Exception E) {
 			System.out.println("Exception Error");
@@ -39,7 +39,12 @@ public class AzulFactory extends JPanel implements MouseListener {
 
 //another class to paint the 9 factories
 	public void paint(Graphics g) {
-
+		if(start){
+			menu.drawMenu(g, getWidth(), getHeight());
+			System.out.println(getWidth() + " " + getHeight());
+			menu.download();
+		}
+		else{
 		g.drawImage(azulBoard, 0, 0, getWidth(), getHeight(), null);
 		int halfw = getWidth() / 2;
 		int halfh = getHeight() / 2;
@@ -51,7 +56,8 @@ public class AzulFactory extends JPanel implements MouseListener {
 // //left
 		f3.paintFactory(getWidth() / 15, getHeight() * 4 / 6, getWidth(), getHeight(), g);
 // //right m
-		f4.paintFactory(getWidth() * 2 / 6, getHeight() * 4 / 6, getWidth(), getHeight(), g);
+		f4.paintFactory(getWidth() * 2 / 6, getHeight() * 4 / 6, getWidth(), getHeight(), g);}
+		g.drawImage(border, 0, 0, getWidth(), getHeight(), null);
 // //top left
 // f5.paintFactory(getWidth()/6,getHeight()/6, getWidth(), getHeight(), g);
 // //top right
