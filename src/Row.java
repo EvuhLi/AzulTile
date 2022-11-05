@@ -14,10 +14,13 @@ public class Row{
     ArrayList<Tile> discard;
     
     public Row(){
-        rows = new ArrayList<>()
+        rows = new ArrayList<>();
         rows.addAll(anotherList);
         discard = new ArrayList<>();
     }
+    
+    //public boolean rowIsFull(int row){
+
     
     
 }

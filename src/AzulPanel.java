@@ -27,6 +27,8 @@ public class AzulPanel extends JPanel implements MouseListener {
 
 		try {
 			border = ImageIO.read(new File("src/images/border.png"));
+			azulBoard = ImageIO.read(new File("src/images/bluebg.png"));
+
 
 		} catch (Exception E) {
 			System.out.println("Exception Error");
