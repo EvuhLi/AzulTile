@@ -19,8 +19,12 @@ public class Row{
         discard = new ArrayList<>();
     }
     
-    //public boolean rowIsFull(int row){
-
-    
+    public boolean rowIsFull(int row){
+        Tile[] temp = rows.get(row);
+        for(Tile tile : temp){
+            if(tile == null) return false;
+        }
+        return true;
+    }
     
 }
