@@ -14,7 +14,7 @@ import java.util.*;
 
 public class MainMenuPanel implements Runnable{
 	
-	private BufferedImage bkg, startGameLetter, startgamebg, logo, howtoplay;
+	BufferedImage bkg, startGameLetter, startgamebg, logo, howtoplay;
 	boolean download = false;
 	String home = System.getProperty("user.home");
 	File out = new File(home+"/Downloads/AzulTilesInstructions.pdf"); 

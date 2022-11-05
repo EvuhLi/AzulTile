@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
 public class AzulPanel extends JPanel implements MouseListener {
-	private BufferedImage border, factory, azulBoard;
+	private BufferedImage border, factory, screenbg;
 	boolean start = true, build = false, score = false;
 	MainMenuPanel menu = new MainMenuPanel();
 	AzulFactory factoryP = new AzulFactory();
@@ -19,7 +19,7 @@ public class AzulPanel extends JPanel implements MouseListener {
 
 		try {
 			border = ImageIO.read(new File("src/images/border.png"));
-			azulBoard = ImageIO.read(new File("src/images/bluebg.png"));
+			screenbg = ImageIO.read(new File("src/images/bluebg.png"));
 
 
 		} catch (Exception E) {
@@ -36,11 +36,11 @@ public class AzulPanel extends JPanel implements MouseListener {
 		super.paintComponent(g);
 		if(start){
 			menu.drawMenu(g, getWidth(), getHeight());
-			System.out.println(getWidth() + " " + getHeight());
 		}
 		else{
-
+			g.drawImage(screenbg, 0, 0, getWidth(), getHeight(), null);
 			factoryP.paint(g, getWidth(), getHeight());
+			g.drawImage(border, 0, 0, getWidth(), getHeight(), null);
 		}
 	
 	}
@@ -52,6 +52,7 @@ public class AzulPanel extends JPanel implements MouseListener {
 	}
 
 	public void mouseEntered(MouseEvent e) {
+		
 	}
 
 	public void mouseExited(MouseEvent e) {

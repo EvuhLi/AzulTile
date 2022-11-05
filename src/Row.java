@@ -10,8 +10,8 @@ public class Row{
     Tile[] four = new Tile[4];
     Tile[] five = new Tile[5];
     List<Tile[]> anotherList = Arrays.asList(none, one, two, three, four, five);
-    ArrayList<Tile[]> rows;
-    ArrayList<Tile> discard;
+    private ArrayList<Tile[]> rows;
+    private ArrayList<Tile> discard;
     
     public Row(){
         rows = new ArrayList<>();
@@ -26,5 +26,20 @@ public class Row{
         }
         return true;
     }
-    
+
+    public void addToRow(int row, ArrayList<Tile> add){
+        if(rowIsFull(row)) discard.addAll(add);
+
+    }
+
+    public ArrayList<Tile[]> getRows(){
+        return rows;
+    }
+    public void clearRow(int row){
+        rows.set(row, new Tile[row]);
+    }
+    public Tile[] getRow(int row){
+        return rows.get(row);
+    }
+        
 }
