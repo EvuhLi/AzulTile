@@ -39,10 +39,10 @@ public class AzulPanel extends JPanel implements MouseListener {
 
 //another class to paint the 9 factories
 	public void paint(Graphics g) {
+		super.paintComponent(g);
 		if(start){
 			menu.drawMenu(g, getWidth(), getHeight());
 			System.out.println(getWidth() + " " + getHeight());
-			new Thread(menu).start();
 		}
 		else{
 		g.drawImage(azulBoard, 0, 0, getWidth(), getHeight(), null);
@@ -87,8 +87,16 @@ public class AzulPanel extends JPanel implements MouseListener {
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
-		if (e.getButton() == e.BUTTON1) {
+		if(start){
+			if(x >= 90 && x <= 470 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 168){
+				start = false;
+			}
 
+			if(x >= 100 && x <= 450 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
+				menu.download = true;
+				new Thread(menu).start();
+
+			}
 		}
 		repaint();
 	}
