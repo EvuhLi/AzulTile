@@ -9,7 +9,7 @@ public class Player {
 
     public Player(){
 
-        turnNum = null;
+        turnNum = -1;
         tilePicked = new ArrayList<Tile>();
         score = 0;
         b = new Board();
