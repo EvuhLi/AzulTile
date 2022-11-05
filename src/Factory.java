@@ -10,11 +10,14 @@ import java.awt.event.MouseEvent;
 
 public class Factory {
 
-	private BufferedImage factory, tile;
+	private BufferedImage factory, tile, red, yellow;
 
 	public Factory() {
 		try {
             tile = ImageIO.read(new File("src/images/blue tile.png"));
+			red = ImageIO.read(new File("src/images/red tile.png"));
+			yellow = ImageIO.read(new File("src/images/yellow tile.png"));
+          
             factory = ImageIO.read(new File("src/images/factory.png"));
 		} catch (Exception e) {
 			return;
@@ -31,8 +34,8 @@ public class Factory {
 		g.drawImage(factory, w, h, size, size, null);
 		g.drawImage(tile, w + ww/30, h + 100, tSize, tSize, null);
 		g.drawImage(tile, w + ww/30, h + 60, tSize, tSize, null);
-		g.drawImage(tile, w + ww/20, h + 60, tSize, tSize, null);
-		g.drawImage(tile, w + ww/20, h + 100, tSize, tSize, null);
+		g.drawImage(red, w + ww/20, h + 60, tSize, tSize, null);
+		g.drawImage(yellow, w + ww/20, h + 100, tSize, tSize, null);
 
 	}
 
