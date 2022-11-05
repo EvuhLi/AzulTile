@@ -37,30 +37,31 @@ public class AzulFactory{
 //put the 4 tiles there
 
 //another class to paint the 9 factories
-	public void paint(Graphics g, int width, int height) {
-
-		g.drawImage(azulBoard, 0, 0, width, height, null);
-		int halfw = width / 2;
-		int halfh = height/ 2;
+	public void paint(Graphics g, int Width, int Height) {
+//private static final int WIDTH =1920;
+//private static final int HEIGHT = 1000;
+	//	g.drawImage(azulBoard, 0, 0, getWidth(), getHeight(), null);
+	int halfw = Width / 2;
+	int halfh = Height / 2;
 //top left
-		f1.paintFactory(halfw / 4, halfh * 3 / 4, width, height, g);
-// //lower middle left
-		f2.paintFactory(halfw * 3 / 9, height * 14 / 17, width, height, g);
+	f1.paintFactory(halfw / 5, halfh * 4 / 6, Width, Height, g);
+// //bottom left
+	f2.paintFactory(halfw * 3 / 10, Height * 14 / 17, Width, Height, g);
 
-// //left
-		f3.paintFactory(width / 15, height* 4 / 6, width, height, g);
-// //right m
-		f4.paintFactory(width * 2 / 6, height * 4 / 6, width, height, g);
-// //top left
-// f5.paintFactory(getWidth()/6,getHeight()/6, getWidth(), getHeight(), g);
-// //top right
-// f6.paintFactory(getWidth()/2+(getWidth()/6),getHeight()/6, getWidth(), getHeight(), g);
-// //lower left
-// f7.paintFactory(getWidth()*1/9,getHeight()*5/8, getWidth(), getHeight(), g);
-// //right low mid
-// f8.paintFactory(getWidth()*4/7,getHeight()*14/18, getWidth(), getHeight(), g);
-//
-// f9.paintFactory(getWidth()*3/4,getHeight()*5/8, getWidth(), getHeight(), g);
+// //lower middle left
+	f3.paintFactory(Width / 15, Height * 4 / 6, Width, Height, g);
+// //lower right 
+	f4.paintFactory(Width * 2 / 6, Height * 4 / 6, Width, Height, g);
+// //top top
+	f5.paintFactory(Width/ 5, halfh * 3 / 6, Width, Height, g);
+	// //top right
+f6.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
+// middle right
+f7.paintFactory(Width * 2 / 6,Height/2, Width, Height, g);
+// middle left
+f8.paintFactory(Width / 15,Height/2, Width, Height, g);
+//bottom right
+f9.paintFactory(Width*2 / 8,Height * 14 / 17, Width, Height, g);
 
 	}
 
