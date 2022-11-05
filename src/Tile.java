@@ -1,8 +1,8 @@
-public class TileClass {
+public class Tile {
 
     private String color;
 
-    public TileClass(String c){
+    public Tile(String c){
 
         color = c;
 
