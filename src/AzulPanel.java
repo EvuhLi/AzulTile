@@ -11,38 +11,27 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
-	private BufferedImage border, factory, screenbg;
 	boolean start = true, build = false, score = false;
-	MainMenuPanel menu = new MainMenuPanel();
-	AzulFactory factoryP = new AzulFactory();
+	MainMenuPanel menu;
+	AllFactoryPanel factoryP;
+	Game game;
+	BoardPanel board;
 
 	public AzulPanel() {
-
-		try {
-			border = ImageIO.read(new File("src/images/border.png"));
-			screenbg = ImageIO.read(new File("src/images/bluebg.png"));
-
-
-		} catch (Exception E) {
-			System.out.println("Exception Error");
-			return;
-		}
+		menu = new MainMenuPanel();
+		factoryP = new AllFactoryPanel();
 		addMouseListener(this);
 		addMouseMotionListener(this);
 	}
-// method to paint the factory
-//put the 4 tiles there
 
-//another class to paint the 9 factories
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		if(start){
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			g.drawImage(screenbg, 0, 0, getWidth(), getHeight(), null);
+			board.drawAll(g, getWidth(), getHeight());
 			factoryP.paint(g, getWidth(), getHeight());
-			g.drawImage(border, 0, 0, getWidth(), getHeight(), null);
 		}
 	
 	}
@@ -67,6 +56,8 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(start){
 			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 				start = false;
+				game = new Game();
+				board = new BoardPanel(game);
 			}
 			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 				menu.download = true;
@@ -84,7 +75,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent e) {
+	public void mouseMoved(MouseEvent e) { //used for hover
 		int x = e.getX();
 		int y = e.getY();
 		menu.hover = -1;

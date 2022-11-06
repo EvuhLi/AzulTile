@@ -5,11 +5,11 @@ import javax.swing.*;
 import java.io.*;
 
 
-public class Factory {
+public class OneFactoryPanel {
 
 	private BufferedImage factory, tile, red, yellow;
 
-	public Factory() {
+	public OneFactoryPanel() {
 		try {
             tile = ImageIO.read(new File("src/images/blue tile.png"));
 			red = ImageIO.read(new File("src/images/red tile.png"));

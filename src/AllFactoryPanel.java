@@ -9,20 +9,20 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
-public class AzulFactory{
+public class AllFactoryPanel{
 	private BufferedImage factory, azulBoard;
 
-	Factory f1 = new Factory();
-	Factory f2 = new Factory();
-	Factory f3 = new Factory();
-	Factory f4 = new Factory();
-	Factory f5 = new Factory();
-	Factory f6 = new Factory();
-	Factory f7 = new Factory();
-	Factory f8 = new Factory();
-	Factory f9 = new Factory();
+	OneFactoryPanel f1 = new OneFactoryPanel();
+	OneFactoryPanel f2 = new OneFactoryPanel();
+	OneFactoryPanel f3 = new OneFactoryPanel();
+	OneFactoryPanel f4 = new OneFactoryPanel();
+	OneFactoryPanel f5 = new OneFactoryPanel();
+	OneFactoryPanel f6 = new OneFactoryPanel();
+	OneFactoryPanel f7 = new OneFactoryPanel();
+	OneFactoryPanel f8 = new OneFactoryPanel();
+	OneFactoryPanel f9 = new OneFactoryPanel();
 
-	public AzulFactory() {
+	public AllFactoryPanel() {
 
 		try {
             factory = ImageIO.read(new File("src/images/factory.png"));

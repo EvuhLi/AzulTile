@@ -1,16 +1,10 @@
 import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseEvent;
-import java.util.*;
+
 
 public class MainMenuPanel implements Runnable{
 	
