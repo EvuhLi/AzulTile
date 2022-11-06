@@ -17,6 +17,7 @@ public class MainMenuPanel implements Runnable{
 	BufferedImage bkg, startGameLetter, startgamebg, logo, howtoplay;
 	boolean download = false;
 	String home = System.getProperty("user.home");
+	int hover = -1;
 	File out = new File(home+"/Downloads/AzulTilesInstructions.pdf"); 
 	public MainMenuPanel(){
 		
@@ -41,8 +42,10 @@ public class MainMenuPanel implements Runnable{
 		
 		g.drawImage(bkg, 0, 0, width, height, null);
 		
-		
 		g.drawImage(startgamebg, 70, 0, 500, height, null);
+		g.setColor(Color.white);
+		if(hover == 1)g.drawLine(90, height/2 + 160, 560, height/2 + 160);
+		if(hover == 2) g.drawLine(100, height/2 + 280, 550, height/2 + 280);
 		g.drawImage(startGameLetter, 90, height/2 + 100, 470, 60, null);
 		g.drawImage(logo, 90, 80, 460, 280, null);
 		g.drawImage(howtoplay, 100, height/2 + 200, 450, 75, null);

@@ -8,8 +8,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
-public class AzulPanel extends JPanel implements MouseListener {
+public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
 	private BufferedImage border, factory, screenbg;
 	boolean start = true, build = false, score = false;
 	MainMenuPanel menu = new MainMenuPanel();
@@ -27,6 +28,7 @@ public class AzulPanel extends JPanel implements MouseListener {
 			return;
 		}
 		addMouseListener(this);
+		addMouseMotionListener(this);
 	}
 // method to paint the factory
 //put the 4 tiles there
@@ -63,15 +65,34 @@ public class AzulPanel extends JPanel implements MouseListener {
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
 		if(start){
-			if(x >= 90 && x <= 470 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 168){
+			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 				start = false;
 			}
-
-			if(x >= 100 && x <= 450 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
+			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 				menu.download = true;
 				new Thread(menu).start();
 
 			}
+		}
+		repaint();
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		int x = e.getX();
+		int y = e.getY();
+		menu.hover = -1;
+		if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
+			menu.hover = 1;
+		}
+		if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
+			menu.hover = 2;
 		}
 		repaint();
 	}
