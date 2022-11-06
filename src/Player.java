@@ -25,8 +25,8 @@ public class Player {
         return turnNum;
     }
 
-    public void setScore(int x){
-        score = x;
+    public void addScore(int x){
+        score+=x;
     }
 
     public ArrayList<Tile> getPicked(){

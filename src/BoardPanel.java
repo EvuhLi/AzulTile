@@ -8,7 +8,7 @@ public class BoardPanel {
     private Game game;
     private Player red, green, yellow, blue;
     BufferedImage board, redtile, yellowtile, bluetile, tealtile, blacktile;
-    BufferedImage border, screenbg;
+    BufferedImage border, screenbg, logo;
 
 
     public BoardPanel(Game g){
@@ -22,6 +22,8 @@ public class BoardPanel {
             blacktile = ImageIO.read(new File("src/images/black tile.png"));
             border = ImageIO.read(new File("src/images/border.png"));
 			screenbg = ImageIO.read(new File("src/images/bluebg.png"));
+            logo = ImageIO.read(new File("src/images/logo.png"));
+
 
 		} catch (Exception E) {
 			System.out.println(E.getMessage());
@@ -35,16 +37,17 @@ public class BoardPanel {
         drawRight(g);
         drawTurn(g, width, height);
         g.drawImage(border, 0, 0, width, height, null);
+        g.drawImage(logo, width/2+150, 30, 300, 210, null);
 
     }
     public void drawLeft(Graphics g){ //Player player){
-        g.drawImage(board, 50, 50, 180, 120, null);
+        g.drawImage(board, 50, 40, 180, 120, null);
     }
     public void drawMiddle(Graphics g){// Player player){
-        g.drawImage(board, 250, 50, 180, 120, null);
+        g.drawImage(board, 250, 40, 180, 120, null);
     }
     public void drawRight(Graphics g){
-        g.drawImage(board, 450, 50, 180, 120, null);
+        g.drawImage(board, 450, 40, 180, 120, null);
     }
     public void drawTurn(Graphics g, int width, int height){
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
