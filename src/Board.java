@@ -4,5 +4,10 @@ public class Board{
 
     public Board(){}
 
-    
+    public boolean colorInBoard(String color, int row){
+        for(int c = 0; c < 5; c++){
+            if (b[row][c].getColor().equals(color)) return true;
+        }
+        return false;
+    }
 }
