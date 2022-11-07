@@ -14,6 +14,7 @@ public class Player {
         tilePicked = new ArrayList<Tile>();
         score = 0;
         b = new Board();
+        //te
 
     }
 
