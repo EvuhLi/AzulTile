@@ -48,6 +48,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 
 	public void mouseExited(MouseEvent e) {
 	}
+	
 
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
