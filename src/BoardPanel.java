@@ -41,7 +41,7 @@ public class BoardPanel {
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
 
-        g.drawImage(score, width/2 + 50, height/2 - 200, 300, 100, null);
+        g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);
 
     }
     public void drawLeft(Graphics g){ //Player player){
