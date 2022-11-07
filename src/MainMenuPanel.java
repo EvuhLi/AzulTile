@@ -55,7 +55,7 @@ public class MainMenuPanel implements Runnable{
 	@Override
 	public void run() {
 		try{
-			URL url = new URL("https://tesera.ru/images/items/1108676/EN-Azul-Rules.pdf");
+			URL url = new URL("https://www.cadl.org/application/files/6515/8257/3893/EN-Azul-Rules-Next-Move-web.pdf");
 			HttpURLConnection http =(HttpURLConnection)url.openConnection();
 			double fileSize = (double)http.getContentLengthLong();
 			BufferedInputStream in = new BufferedInputStream(http.getInputStream());
