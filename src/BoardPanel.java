@@ -41,20 +41,24 @@ public class BoardPanel {
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
 
-        g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);
+        
 
     }
     public void drawLeft(Graphics g){ //Player player){
         g.drawImage(board, 50, 40, 180, 120, null);
+        //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
     }
     public void drawMiddle(Graphics g){// Player player){
         g.drawImage(board, 250, 40, 180, 120, null);
+        //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
     }
     public void drawRight(Graphics g){
         g.drawImage(board, 450, 40, 180, 120, null);
+        g.drawImage(score, 450, 20 - 300, 30, 10, null);//needs change
     }
     public void drawTurn(Graphics g, int width, int height){
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
+        g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);
     }
 
 }
