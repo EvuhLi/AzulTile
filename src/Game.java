@@ -65,9 +65,22 @@ public class Game {
     }
 
     public void resetBag(){
-        bag.addAll(discard);
-        discard = new ArrayList<>();
+
+        if(bag.size() + discard.size() < 100){
+
+            bag.addAll(discard);
+
+        }else{
+            int i = 0;
+            while(bag.size() < 100){
+                bag.add(discard.get(i));
+            }
+        }
+
+        Collections.shuffle(bag);
+        //discard = new ArrayList<>();
     }
+
     public ArrayList<Factory> getFactories(){
         return factories;
     }
@@ -77,5 +90,16 @@ public class Game {
 
     public void resetFactories(){
 
+    }
+
+    public ArrayList<Tile> getFour(){
+        ArrayList<Tile> four = new ArrayList<>();
+        for(int i = 0; i < 4; i++) {
+
+            four.add(bag.remove(i));
+
+        }
+
+        return four;
     }
 }
