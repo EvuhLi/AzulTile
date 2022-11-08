@@ -1,16 +1,15 @@
 import java.util.ArrayList;
 
 public class Player {
-    private int turnNum;
     private ArrayList<Tile> tilePicked;
     private int score;
     private Board b;
     private Row row;
+    private String color;
 
 
-    public Player(){
-
-        turnNum = -1;
+    public Player(String color){
+        this.color = color;
         tilePicked = new ArrayList<Tile>();
         score = 0;
         b = new Board();
@@ -18,13 +17,6 @@ public class Player {
 
     }
 
-    public void setTurn(int t){
-        turnNum = t;
-    }
-
-    public int getTurn(){
-        return turnNum;
-    }
 
     public void addScore(int x){
         score+=x;
