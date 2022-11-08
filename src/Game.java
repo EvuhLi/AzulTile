@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Game {
-    private ArrayList<Player> players;
-    private ArrayList<Tile> bag;
-    private ArrayList<Tile> discard;
-    private ArrayList<Factory> factories;
-    Factory middle;
-    int turn;
-    int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
+    private static ArrayList<Player> players;
+    private static ArrayList<Tile> bag;
+    private static ArrayList<Tile> discard;
+    private static ArrayList<Factory> factories;
+    static Factory middle;
+    static int turn;
+    static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
     public Game(){
         players = new ArrayList<>();
         bag = new ArrayList<>();
@@ -51,7 +51,20 @@ public class Game {
         discard.addAll(arr);
     }
 
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }
+    
+    public Player getPlayer(String color){
+        for(Player player: players){
+            if(player.getColor().equals(color)){
+                return player;
+            }
+        }
+        return players.get(0);
+    }
     public void resetFactories(){
-
+        
     }
 }
+

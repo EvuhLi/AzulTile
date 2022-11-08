@@ -17,7 +17,9 @@ public class Player {
 
     }
 
-
+    public String getColor(){
+        return color;
+    }
     public void addScore(int x){
         score+=x;
     }
