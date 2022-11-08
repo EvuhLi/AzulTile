@@ -64,15 +64,16 @@ public class BoardPanel {
 
         //for(int c = width/2 + 70; c < 4*width/2 + 70;)50
         //g.drawImage(border, width/2 + 70, height/2 - 87, 220, 220, null); //dimensions of row
-        
+        int row = 0;
         for(int c = height/2 - 87; c < height/2-87 + 40 * 5; c+= 45){
             int x = width/2+70 + 220 - 40;
             for(int d = 0; d < 1+ (c-(height/2-87))/45; d++){
-                g.drawImage(blacktile, x, c, 40, 40, null);
+                Tile tile = player.getRow().getRow(row)[d];
+                //g.drawImage(blacktile, x, c, 40, 40, null);
                 x-= 45;
 
             }
-
+            row++;
         }
         //g.drawImage(blacktile,width/2+70 + 220 - 40, height/2 -87, 40, 40, null);
     }

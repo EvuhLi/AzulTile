@@ -2,23 +2,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Game {
-<<<<<<< HEAD
     private static ArrayList<Player> players;
-    private static ArrayList<Tile> bag;
+    private static ArrayList<Tile> bag, colors;
     private static ArrayList<Tile> discard;
     private static ArrayList<Factory> factories;
     static Factory middle;
     static int turn;
     static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
-=======
-    private ArrayList<Player> players;
-    private ArrayList<Tile> bag, colors;
-    private ArrayList<Tile> discard;
-    private ArrayList<Factory> factories;
-    Factory middle;
-    int turn;
-    int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
->>>>>>> dd924aa4a45ee38ff747d45b1f79b23b06883229
     public Game(){
         players = new ArrayList<>();
         bag = new ArrayList<>();
