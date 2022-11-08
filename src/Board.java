@@ -38,7 +38,8 @@ public class Board{
         return false;
     }
 
-    public void addTiles(){
+    public void addTiles(){ // need to implement
+
         // iterate through each row / all the arraylists
 // if left row is full
 // iterate through columns
@@ -50,11 +51,35 @@ public class Board{
     }
 
     public int countScore (int r, int c){
-        int dec = 1;
-        while (b[r-1][c]!= null ){
-            
+        for ( int i = 1; r-i>-1 && b[r-i][c]!= null && b[r-i][c].onBoard; i++){
+            score++;
         }
-        // while loops to check if there is a spot next to it and if its onboard for each side of the tile 
+        for ( int i = 1; c-i>-1 && b[r][c-i]!= null && b[r][c-i].onBoard; i++){
+            score++;
+        }
+        for ( int i = 1; r+i<5 && b[r+i][c]!= null && b[r+i][c].onBoard; i++){
+            score++;
+        }
+        for ( int i = 1; c+i<5 && b[r][c+i]!= null && b[r][c+i].onBoard; i++){
+            score++;
+        }
         return score;
+    }
+
+    public int countEndScore(){ // need to implement
+        int bonus = 0;
+        
+        return score + bonus;
+    }
+    
+    public boolean checkEnd(){ // need to implement
+        for (Tile[] arr: b){
+            for (Tile i: arr){
+                if (!i.onBoard){
+                    break;
+                }
+            }
+        }
+        return true;
     }
 }
