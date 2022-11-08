@@ -36,6 +36,8 @@ public class Game {
         colors.add(new Tile("yellow"));
         colors.add(new Tile("teal"));
 
+        createBag();
+
     }
 
     public void createBag(){
