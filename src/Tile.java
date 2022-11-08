@@ -5,7 +5,6 @@ import javax.swing.*;
 public class Tile {
 
     private String color;
-    private BufferedImage pic;
 
     public Tile(String c){
 
