@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Game {
     private ArrayList<Player> players;
-    private ArrayList<Tile> bag;
+    private ArrayList<Tile> bag, colors;
     private ArrayList<Tile> discard;
     private ArrayList<Factory> factories;
     Factory middle;
@@ -13,7 +14,9 @@ public class Game {
         bag = new ArrayList<>();
         discard = new ArrayList<>();
         factories = new ArrayList<>();
-        players.add(new Player(""));
+        
+
+        //players.add(new Player(""));
         players.add(new Player("red"));
         players.add(new Player("yellow"));
         players.add(new Player("green"));
@@ -25,6 +28,25 @@ public class Game {
         middle = new Factory(true);
         turn = (int)(Math.random()*4) + 1;
         phase = 1;
+
+        colors = new ArrayList<>();
+        colors.add(new Tile("black"));
+        colors.add(new Tile("blue"));
+        colors.add(new Tile("red"));
+        colors.add(new Tile("yellow"));
+        colors.add(new Tile("teal"));
+
+    }
+
+    public void createBag(){
+
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 20; j++){
+                bag.add(colors.get(i));
+            }
+        }
+
+        Collections.shuffle(bag);
     }
 
     public void turn(){
