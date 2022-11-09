@@ -38,10 +38,12 @@ public class Board{
         return false;
     }
 
-    public void addTiles(){ // need to implement
+    public void addTiles(){ 
+      //  for (int i = 0; i < one.length; i++){
 
+     // }
         // iterate through each row / all the arraylists
-// if left row is full
+// if left row is fulls
 // iterate through columns
 // if [r][c] in this class is same color as [r][c] in rows class
 			// change the boolean onBoard of the board class to true
@@ -51,36 +53,36 @@ public class Board{
     }
 
     public int countScore (int r, int c){
-       // for ( int i = 1; r-i>-1 && b[r-i][c]!= null && b[r-i][c].onBoard; i++){
+       for ( int i = 1; r-i>-1 && b[r-i][c]!= null && b[r-i][c].onBoard; i++){
             score++;
-     //   }
-     //   for ( int i = 1; c-i>-1 && b[r][c-i]!= null && b[r][c-i].onBoard; i++){
+        }
+     for ( int i = 1; c-i>-1 && b[r][c-i]!= null && b[r][c-i].onBoard; i++){
             score++;
-   //    }
-   //     for ( int i = 1; r+i<5 && b[r+i][c]!= null && b[r+i][c].onBoard; i++){
+        }
+        for ( int i = 1; r+i<5 && b[r+i][c]!= null && b[r+i][c].onBoard; i++){
             score++;
-    //    }
-    //    for ( int i = 1; c+i<5 && b[r][c+i]!= null && b[r][c+i].onBoard; i++){
+        }
+        for ( int i = 1; c+i<5 && b[r][c+i]!= null && b[r][c+i].onBoard; i++){
             score++;
-    //    }
+        }
         return score;
- //   }
-
-   // public int countEndScore(){ // need to implement
- //      int bonus = 0;
-        
-   //     return score + bonus;
+    }
+}
+    
+   //  public int countEndScore(){ // need to implement
+    //    int bonus = 0;
+    //    return score + bonus;
   //  }
     
- //   public boolean checkEnd(){ // need to implement
-   //     for (Tile[] arr: b){
-     //       for (Tile i: arr){
+    // public boolean checkEnd(){ // need to implement
+    //    for (Tile[] arr: b){
+    //        for (Tile i: arr){
     //          //  if (!i.onBoard){
      //               break;
      //           }
-            }
+          //  }
     //    }
     //    return true;
-    }
+  //  }
 // }
 

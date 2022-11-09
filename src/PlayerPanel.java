@@ -34,9 +34,9 @@ public class PlayerPanel {
     }
     public void drawAll(Graphics g, int width, int height){
         g.drawImage(screenbg, 0, 0, width, height, null);
-        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1), width, height);
-        drawMiddle(g);
-        drawRight(g);
+        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1));
+        drawMiddle(g, game.getPlayers().get(game.turn)); // logic needs change
+        drawRight(g, game.getPlayers().get(game.turn)); // logic needs change
         drawTurn(g, width, height, game.getPlayers().get(game.turn));
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
@@ -60,15 +60,22 @@ public class PlayerPanel {
         }
         g.drawImage(blacktile, 136 - 15, 44, 15, 15, null);
 
-        //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
+        g.setFont(new Font("Times New Roman", Font.BOLD, 30));;
+        g.setColor(Color.black);
+        g.drawString("SCORE: " + player.getScore(), 70, 185);
     }
-    public void drawMiddle(Graphics g){// Player player){
+    public void drawMiddle(Graphics g, Player player){// Player player){
         g.drawImage(board, 250, 40, 180, 120, null);
-        //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
+        g.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        g.setColor(Color.black);
+        g.drawString("SCORE: " + player.getScore(), 275, 185);
+        
     }
-    public void drawRight(Graphics g){
+    public void drawRight(Graphics g, Player player){
         g.drawImage(board, 450, 40, 180, 120, null);
-        g.drawImage(score, 450, 20 - 300, 30, 10, null);//needs change
+        g.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        g.setColor(Color.black);
+        g.drawString("SCORE: " + player.getScore(), 480, 185);
     }
     public void drawTurn(Graphics g, int width, int height, Player player){
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
