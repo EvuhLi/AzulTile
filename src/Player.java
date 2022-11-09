@@ -18,7 +18,15 @@ public class Player {
 
     }
 
-
+    public Board getBoard(){
+        return b;
+    }
+    public Row getRow(){
+        return row;
+    }
+    public String getColor(){
+        return color;
+    }
     public void addScore(int x){
         score+=x;
     }
