@@ -72,7 +72,7 @@ public class PlayerPanel {
     }
     public void drawTurn(Graphics g, int width, int height, Player player){
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
-        g.setFont(new Font("Algerian", Font.PLAIN, 75));
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 75));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), width/2 + 100, height/2 + 300);
         //DIMENSIONS: tiles are 40 by 40 and increment by 45 each time
