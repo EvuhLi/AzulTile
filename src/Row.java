@@ -17,6 +17,10 @@ public class Row{
         rows = new ArrayList<>();
         rows.addAll(anotherList);
         discard = new ArrayList<>();
+        //temp:
+
+        one[0] = new Tile("red");
+        two[0] = new Tile("red");
     }
     
     public boolean rowIsFull(int row){

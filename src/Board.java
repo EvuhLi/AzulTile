@@ -50,7 +50,7 @@ public class Board{
 
     }
 
-    public int countScore (int r, int c){
+    /*public int countScore (int r, int c){
         for ( int i = 1; r-i>-1 && b[r-i][c]!= null && b[r-i][c].onBoard; i++){
             score++;
         }
@@ -82,4 +82,6 @@ public class Board{
         }
         return true;
     }
+}*/
+
 }

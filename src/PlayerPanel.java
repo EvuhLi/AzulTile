@@ -4,14 +4,13 @@ import javax.imageio.ImageIO;
 import java.io.*;
 
 
-public class BoardPanel {
-    private Game game;
-    private Player red, green, yellow, blue;
+public class PlayerPanel {
+    Game game;
     BufferedImage board, redtile, yellowtile, bluetile, tealtile, blacktile;
     BufferedImage border, screenbg, logo, score;
 
 
-    public BoardPanel(Game g){
+    public PlayerPanel(Game g){
         game = g;
         
         try {
@@ -35,10 +34,10 @@ public class BoardPanel {
     }
     public void drawAll(Graphics g, int width, int height){
         g.drawImage(screenbg, 0, 0, width, height, null);
-        drawLeft(g, game.getPlayers().get(Game.turn - 1 == 0? 4 : Game.turn - 1));
+        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1));
         drawMiddle(g);
         drawRight(g);
-        drawTurn(g, width, height, game.getPlayers().get(Game.turn));
+        drawTurn(g, width, height, game.getPlayers().get(game.turn));
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
 
@@ -47,6 +46,19 @@ public class BoardPanel {
     }
     public void drawLeft(Graphics g, Player player){
         g.drawImage(board, 50, 40, 180, 120, null);
+        //DIMENSTIONS: 
+        g.drawImage(border, 56, 44, 80, 80, null);
+        /*int row = 0;
+        for(int c = height/2 - 87; c < height/2-87 + 40 * 5; c+= 45){
+            int x = width/2+70 + 220 - 40;
+            for(int d = 0; d < 1+ (c-(height/2-87))/45; d++){
+                //Tile tile = game.getPlayers().get(game.turn).getRow().getRow(row)[d];
+
+                g.drawImage(blacktile, x, c, 40, 40, null);
+                x-= 45;
+            }
+            row++;
+        }*/
 
         //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
     }
@@ -60,22 +72,24 @@ public class BoardPanel {
     }
     public void drawTurn(Graphics g, int width, int height, Player player){
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
-        g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);
+        g.setFont(new Font("Algerian", Font.PLAIN, 75));
+        g.setColor(Color.black);
+        g.drawString("SCORE: " + player.getScore(), width/2 + 100, height/2 + 300);
+        //DIMENSIONS: tiles are 40 by 40 and increment by 45 each time
 
-        //for(int c = width/2 + 70; c < 4*width/2 + 70;)50
+        //row dimensions: 220 by 200
         //g.drawImage(border, width/2 + 70, height/2 - 87, 220, 220, null); //dimensions of row
         int row = 0;
         for(int c = height/2 - 87; c < height/2-87 + 40 * 5; c+= 45){
             int x = width/2+70 + 220 - 40;
             for(int d = 0; d < 1+ (c-(height/2-87))/45; d++){
-                Tile tile = player.getRow().getRow(row)[d];
-                //g.drawImage(blacktile, x, c, 40, 40, null);
-                x-= 45;
+                //Tile tile = game.getPlayers().get(game.turn).getRow().getRow(row)[d];
 
+                g.drawImage(blacktile, x, c, 40, 40, null);
+                x-= 45;
             }
             row++;
         }
-        //g.drawImage(blacktile,width/2+70 + 220 - 40, height/2 -87, 40, 40, null);
     }
 
 }

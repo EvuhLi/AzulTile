@@ -9,12 +9,12 @@ public class Tile {
     public Tile(String c){
 
         color = c;
-        setPic(color);
+        //setPic(color);
         
 
     }
 
-    private void setPic(String color){
+    /*private void setPic(String color){
 
         if(color == "black"){
             pic = ImageIO.read(new File("src/images/black tile.png"));
@@ -36,7 +36,7 @@ public class Tile {
 
     public BufferedImage getImage(){
         return pic;
-    }
+    }*/
 
     public String getColor(){
         return color;

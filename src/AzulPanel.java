@@ -15,7 +15,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	MainMenuPanel menu;
 	AllFactoryPanel factoryP;
 	Game game;
-	BoardPanel board;
+	PlayerPanel board;
 
 	public AzulPanel() {
 		menu = new MainMenuPanel();
@@ -58,7 +58,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 				start = false;
 				game = new Game();
-				board = new BoardPanel(game);
+				board = new PlayerPanel(game);
 			}
 			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 				menu.download = true;

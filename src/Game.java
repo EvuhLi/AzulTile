@@ -2,21 +2,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Game {
-    private static ArrayList<Player> players;
-    private static ArrayList<Tile> bag, colors;
-    private static ArrayList<Tile> discard;
-    private static ArrayList<Factory> factories;
-    static Factory middle;
-    static int turn;
-    static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
-    public Game(){
+     static ArrayList<Player> players;
+     static ArrayList<Tile> bag, colors;
+     static ArrayList<Tile> discard;
+     static ArrayList<Factory> factories;
+     static Factory middle;
+     static int turn;
+     static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
+     public Game(){
         players = new ArrayList<>();
         bag = new ArrayList<>();
         discard = new ArrayList<>();
         factories = new ArrayList<>();
         
 
-        //players.add(new Player(""));
+        players.add(new Player(""));
         players.add(new Player("red"));
         players.add(new Player("yellow"));
         players.add(new Player("green"));
@@ -78,7 +78,7 @@ public class Game {
         }
 
         Collections.shuffle(bag);
-        //discard = new ArrayList<>();
+        discard = new ArrayList<>();
     }
 
     public ArrayList<Factory> getFactories(){
