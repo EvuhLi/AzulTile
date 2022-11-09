@@ -34,10 +34,10 @@ public class PlayerPanel {
     }
     public void drawAll(Graphics g, int width, int height){
         g.drawImage(screenbg, 0, 0, width, height, null);
-        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1), width, height);
-        drawMiddle(g, game.getPlayers().get(game.turn)); // logic needs change
-        drawRight(g, game.getPlayers().get(game.turn)); // logic needs change
-        drawTurn(g, width, height, game.getPlayers().get(game.turn));
+        drawLeft(g, game.getPlayers().get(4), width, height);
+        drawMiddle(g, game.getPlayers().get(3), width, height); // logic needs change
+        drawRight(g, game.getPlayers().get(2)); // logic needs change
+        drawTurn(g, width, height, game.getPlayers().get(1));
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
 
@@ -48,34 +48,58 @@ public class PlayerPanel {
         g.drawImage(board, 50, 40, 180, 120, null);
         //DIMENSTIONS: 80 by 80
         //g.drawImage(border, 56, 44, 80, 80, null);
+        int start = 56 + 80 - 15;
         int row = 0;
         for(int c = 44; c < 44 + 16 *5; c+=16){
-            int x = 56 + 80 - 15;
+            int x = start;
             g.drawImage(blacktile, 136 - 15, c, 15, 15, null);
             for(int d = 0; d < 1 + (c - (44))/16; d++){
                 g.drawImage(blacktile, x, c, 15, 15, null);
-                x-=16;
+                x+=16;
             }
             row++;
+            start-=16;
         }
-        g.drawImage(blacktile, 136 - 15, 44, 15, 15, null);
-
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));;
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), 70, 185);
     }
-    public void drawMiddle(Graphics g, Player player){// Player player){
+    public void drawMiddle(Graphics g, Player player, int width, int height){// Player player){
         g.drawImage(board, 250, 40, 180, 120, null);
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), 275, 185);
-        
+        int start = 255 + 80 - 15;
+        int row = 0;
+        for(int c = 44; c < 44 + 16 *5; c+=16){
+            int x = start;
+            for(int d = 0; d < 1 + (c - (44))/16; d++){
+                if(player.getRow().getRow(row)[d] != null){
+                    g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
+                }
+                x+=16;
+            }
+            row++;
+            start-=16;
+        }        
     }
     public void drawRight(Graphics g, Player player){
         g.drawImage(board, 450, 40, 180, 120, null);
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), 480, 185);
+         int row = 0;
+         int start = 455 + 80 - 15;
+        for(int c = 44; c < 44 + 16 *5; c+=16){
+            int x = start;
+            g.drawImage(blacktile, 136 - 15, c, 15, 15, null);
+            for(int d = 0; d < 1 + (c - (44))/16; d++){
+                g.drawImage(blacktile, x, c, 15, 15, null);
+                x+=16;
+            }
+            row++;
+            start-= 16;
+        }        
     }
     public void drawTurn(Graphics g, int width, int height, Player player){
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
