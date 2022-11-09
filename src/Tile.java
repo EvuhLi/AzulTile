@@ -6,6 +6,7 @@ public class Tile {
 
     private String color;
     private BufferedImage pic;
+    public boolean onBoard;
 
     public Tile(String c){
 
