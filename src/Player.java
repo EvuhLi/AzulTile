@@ -9,6 +9,7 @@ public class Player {
 
 
     public Player(String color){
+
         this.color = color;
         tilePicked = new ArrayList<Tile>();
         score = 0;
@@ -41,9 +42,17 @@ public class Player {
         tilePicked.add(x);
     }
     public boolean validRow(int rowNum){
-        if(row.rowIsFull(rowNum)) return false; //checks if row is full (cant place more tiles)
-        if(!row.getRows().get(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())) return false; //checks if row has same color as picked tiles
-        if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)) return false; //checks if board already contains that color (cant place same tile color)
+
+        if(row.rowIsFull(rowNum)){  //checks if row is full (cant place more tiles)
+            return false;
+        }  
+        if(!row.getRows().get(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())){  //checks if row has same color as picked tile
+            return false;
+        }
+        if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){  //checks if board already contains that color (cant place same tile color)
+            return false;
+        }
+
         return true;
     }
 }
