@@ -38,10 +38,12 @@ public class Board{
         return false;
     }
 
-    public void addTiles(){ // need to implement
+    public void addTiles(){ 
+      //  for (int i = 0; i < one.length; i++){
 
+     // }
         // iterate through each row / all the arraylists
-// if left row is full
+// if left row is fulls
 // iterate through columns
 // if [r][c] in this class is same color as [r][c] in rows class
 			// change the boolean onBoard of the board class to true
