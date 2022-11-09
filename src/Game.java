@@ -15,8 +15,6 @@ public class Game {
         discard = new ArrayList<>();
         factories = new ArrayList<>();
         
-
-        players.add(new Player(""));
         players.add(new Player("red"));
         players.add(new Player("yellow"));
         players.add(new Player("green"));
@@ -37,7 +35,6 @@ public class Game {
         colors.add(new Tile("teal"));
 
         createBag();
-
     }
 
     public void createBag(){
