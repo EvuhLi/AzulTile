@@ -9,6 +9,7 @@ public class Game {
     Factory middle;
     int turn;
     int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
+    
     public Game(){
         players = new ArrayList<>();
         bag = new ArrayList<>();
