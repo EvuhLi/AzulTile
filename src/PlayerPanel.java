@@ -60,21 +60,26 @@ public class PlayerPanel {
             row++;
         }*/
 
-        //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
+        g.setFont(new Font("Times New Roman", Font.BOLD, 30));;
+        g.setColor(Color.black);
+        g.drawString("SCORE: " + player.getScore(), 70, 185);
     }
     public void drawMiddle(Graphics g, Player player){// Player player){
         g.drawImage(board, 250, 40, 180, 120, null);
-        //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
+        g.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        g.setColor(Color.black);
+        g.drawString("SCORE: " + player.getScore(), 275, 185);
+        
     }
     public void drawRight(Graphics g, Player player){
         g.drawImage(board, 450, 40, 180, 120, null);
-        g.setFont(new Font("Algerian", Font.PLAIN, 30));
+        g.setFont(new Font("Times New Roman", Font.BOLD, 30));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), 480, 185);
     }
     public void drawTurn(Graphics g, int width, int height, Player player){
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
-        g.setFont(new Font("Algerian", Font.PLAIN, 75));
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 75));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), width/2 + 100, height/2 + 300);
         //DIMENSIONS: tiles are 40 by 40 and increment by 45 each time
