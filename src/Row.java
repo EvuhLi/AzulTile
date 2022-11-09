@@ -3,13 +3,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Row{
-    Tile[] none = new Tile[1];
     Tile[] one = new Tile[1];
     Tile[] two = new Tile[2];
     Tile[] three = new Tile[3];
     Tile[] four = new Tile[4];
     Tile[] five = new Tile[5];
-    List<Tile[]> anotherList = Arrays.asList(none, one, two, three, four, five);
+    List<Tile[]> anotherList = Arrays.asList(one, two, three, four, five);
     private ArrayList<Tile[]> rows;
     private ArrayList<Tile> discard;
     
@@ -19,8 +18,12 @@ public class Row{
         discard = new ArrayList<>();
         //temp:
 
-        one[0] = new Tile("red");
-        two[0] = new Tile("red");
+        for(int c = 0; c < 5; c++){
+            for(int d = 0; d <= c; d++){
+                rows.get(c)[d] =new Tile("red");
+            }
+        }
+        rows.get(4)[4] = new Tile("teal");
     }
     
     public boolean rowIsFull(int row){
