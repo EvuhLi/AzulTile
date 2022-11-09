@@ -27,12 +27,14 @@ public class OneFactoryPanel {
 		int tSize = ww / 50;
 		//private static final int WIDTH = 1920;
 		//private static final int HEIGHT = 1080;
+		g.drawImage(factory, w, h, size, size, null);
 
 		g.drawImage(factory, w, h, size, size, null);
 		g.drawImage(tile, w + ww/30, h + hh/11, tSize, tSize, null);
 		g.drawImage(red, w + ww/30, h + hh/18, tSize, tSize, null);
 		g.drawImage(tile, w + ww/20, h + hh/18, tSize, tSize, null);
 		g.drawImage(yellow, w + ww/20, h + hh/11, tSize, tSize, null);
+//awidjaoiwdjawoid
 
 	}
 
