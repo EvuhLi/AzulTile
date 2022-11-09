@@ -56,10 +56,10 @@ public class Board{
      //   }
      //   for ( int i = 1; c-i>-1 && b[r][c-i]!= null && b[r][c-i].onBoard; i++){
             score++;
-       }
-        for ( int i = 1; r+i<5 && b[r+i][c]!= null && b[r+i][c].onBoard; i++){
+   //    }
+   //     for ( int i = 1; r+i<5 && b[r+i][c]!= null && b[r+i][c].onBoard; i++){
             score++;
-        }
+    //    }
     //    for ( int i = 1; c+i<5 && b[r][c+i]!= null && b[r][c+i].onBoard; i++){
             score++;
     //    }
@@ -69,17 +69,17 @@ public class Board{
    // public int countEndScore(){ // need to implement
  //      int bonus = 0;
         
-        return score + bonus;
+   //     return score + bonus;
   //  }
     
  //   public boolean checkEnd(){ // need to implement
-        for (Tile[] arr: b){
-            for (Tile i: arr){
-              //  if (!i.onBoard){
-                    break;
-                }
+   //     for (Tile[] arr: b){
+     //       for (Tile i: arr){
+    //          //  if (!i.onBoard){
+     //               break;
+     //           }
             }
     //    }
-        return true;
+    //    return true;
     }
-}
+// }
