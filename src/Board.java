@@ -65,20 +65,20 @@ public class Board{
         }
         return score;
     }
-
-   // public int countEndScore(){ // need to implement
- //      int bonus = 0;
-        
-   //     return score + bonus;
+}
+    
+   //  public int countEndScore(){ // need to implement
+    //    int bonus = 0;
+    //    return score + bonus;
   //  }
     
- //   public boolean checkEnd(){ // need to implement
-   //     for (Tile[] arr: b){
-     //       for (Tile i: arr){
+    // public boolean checkEnd(){ // need to implement
+    //    for (Tile[] arr: b){
+    //        for (Tile i: arr){
     //          //  if (!i.onBoard){
      //               break;
      //           }
-            }
+          //  }
     //    }
     //    return true;
   //  }
