@@ -34,7 +34,7 @@ public class PlayerPanel {
     }
     public void drawAll(Graphics g, int width, int height){
         g.drawImage(screenbg, 0, 0, width, height, null);
-        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1));
+        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1), width, height);
         drawMiddle(g);
         drawRight(g);
         drawTurn(g, width, height, game.getPlayers().get(game.turn));
@@ -44,21 +44,21 @@ public class PlayerPanel {
         
 
     }
-    public void drawLeft(Graphics g, Player player){
+    public void drawLeft(Graphics g, Player player, int width, int height){
         g.drawImage(board, 50, 40, 180, 120, null);
-        //DIMENSTIONS: 
-        g.drawImage(border, 56, 44, 80, 80, null);
-        /*int row = 0;
-        for(int c = height/2 - 87; c < height/2-87 + 40 * 5; c+= 45){
-            int x = width/2+70 + 220 - 40;
-            for(int d = 0; d < 1+ (c-(height/2-87))/45; d++){
-                //Tile tile = game.getPlayers().get(game.turn).getRow().getRow(row)[d];
-
-                g.drawImage(blacktile, x, c, 40, 40, null);
-                x-= 45;
+        //DIMENSTIONS: 80 by 80
+        //g.drawImage(border, 56, 44, 80, 80, null);
+        int row = 0;
+        for(int c = 44; c < 44 + 16 *5; c+=16){
+            int x = 56 + 80 - 15;
+            g.drawImage(blacktile, 136 - 15, c, 15, 15, null);
+            for(int d = 0; d < 1 + (c - (44))/16; d++){
+                g.drawImage(blacktile, x, c, 15, 15, null);
+                x-=16;
             }
             row++;
-        }*/
+        }
+        g.drawImage(blacktile, 136 - 15, 44, 15, 15, null);
 
         //g.drawImage(score, width/2 + 50, height/2 + 235, 300, 100, null);//needs change
     }
