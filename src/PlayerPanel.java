@@ -34,7 +34,7 @@ public class PlayerPanel {
     }
     public void drawAll(Graphics g, int width, int height){
         g.drawImage(screenbg, 0, 0, width, height, null);
-        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1));
+        drawLeft(g, game.getPlayers().get(game.turn - 1 == 0? 4 : game.turn - 1), width, height);
         drawMiddle(g, game.getPlayers().get(game.turn)); // logic needs change
         drawRight(g, game.getPlayers().get(game.turn)); // logic needs change
         drawTurn(g, width, height, game.getPlayers().get(game.turn));
