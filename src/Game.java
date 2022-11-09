@@ -15,6 +15,8 @@ public class Game {
         discard = new ArrayList<>();
         factories = new ArrayList<>();
         
+
+        players.add(new Player(""));
         players.add(new Player("red"));
         players.add(new Player("yellow"));
         players.add(new Player("green"));
@@ -35,6 +37,7 @@ public class Game {
         colors.add(new Tile("teal"));
 
         createBag();
+
     }
 
     public void createBag(){
@@ -89,7 +92,7 @@ public class Game {
         return players;
     }
     
-    public Player getPlayer(String color){
+    public Player getPlayer(String color){ //delete this after your create the player arryalist
         for(Player player: players){
             if(player.getColor().equals(color)){
                 return player;
@@ -97,6 +100,7 @@ public class Game {
         }
         return players.get(0);
     }
+
     public void resetFactories(){
         
     }
