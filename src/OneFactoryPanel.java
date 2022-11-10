@@ -30,7 +30,7 @@ public class OneFactoryPanel {
 		//private static final int HEIGHT = 1080;
 		g.drawImage(factory, w, h, size, size, null);
 
-		g.drawImage(TChoose, 700, -50, 600, 400, null);
+		g.drawImage(TChoose, 600, -50, 700, 400, null);
 		g.drawImage(tile, w + ww/30, h + hh/11, tSize, tSize, null);
 		g.drawImage(red, w + ww/30, h + hh/18, tSize, tSize, null);
 		g.drawImage(tile, w + ww/20, h + hh/18, tSize, tSize, null);
