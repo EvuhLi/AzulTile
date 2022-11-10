@@ -23,7 +23,7 @@ public class Factory {
     public ArrayList<Tile> pickTiles(String color){
         ArrayList<Tile> picked = new ArrayList<>();
         for(int c = tiles.size()-1; c > -1; c--){
-            if(!tiles.get(c).equals(color)){
+            if(!tiles.get(c).getColor().equals(color)){
                 //middle.add(tiles.remove(c));
             }
             else picked.add(tiles.remove(c));

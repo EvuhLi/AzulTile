@@ -27,7 +27,6 @@ public class MainMenuPanel implements Runnable{
 		
 			System.out.println(e.getMessage());
 			return;
-		
 		}
 		
 	}
@@ -74,4 +73,6 @@ public class MainMenuPanel implements Runnable{
 			ex.printStackTrace();
 		}
 	}
+
+	
 }

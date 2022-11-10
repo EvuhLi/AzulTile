@@ -9,7 +9,6 @@ public class Player {
 
 
     public Player(String color){
-
         this.color = color;
         tilePicked = new ArrayList<Tile>();
         score = 0;

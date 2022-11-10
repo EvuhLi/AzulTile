@@ -24,6 +24,7 @@ public class Row{
             }
         }
         rows.get(4)[4] = new Tile("teal");
+        rows.get(3)[2] = new Tile("blue");
     }
     
     public boolean rowIsFull(int row){
