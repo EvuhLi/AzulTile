@@ -40,9 +40,6 @@ public class PlayerPanel {
         drawTurn(g, width, height, game.getPlayers().get(1));
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
-
-        
-
     }
     public void drawLeft(Graphics g, Player player, int width, int height){
         g.drawImage(board, 50, 40, 180, 120, null);

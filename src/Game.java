@@ -92,7 +92,7 @@ public class Game {
         return players;
     }
     
-    public Player getPlayer(String color){
+    public Player getPlayer(String color){ //delete this after your create the player arryalist
         for(Player player: players){
             if(player.getColor().equals(color)){
                 return player;
@@ -100,6 +100,7 @@ public class Game {
         }
         return players.get(0);
     }
+
     public void resetFactories(){
         
     }
