@@ -36,6 +36,7 @@ public class Game {
         colors.add(new Tile("teal"));
 
         createBag();
+        players.get(1).getRow().clearRow(2);
 
     }
 

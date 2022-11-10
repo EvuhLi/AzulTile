@@ -58,9 +58,8 @@ public class PlayerPanel {
         int row = 0;
         for(int c = 44; c < 44 + 16 *5; c+=16){
             int x = start;
-            g.drawImage(blacktile, 136 - 15, c, 15, 15, null);
             for(int d = 0; d < 1 + (c - (44))/16; d++){
-                g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
+                if(player.getRow().getRow(row)[d]!= null) g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
                 x+=16;
             }
             row++;
@@ -101,7 +100,7 @@ public class PlayerPanel {
         for(int c = 44; c < 44 + 16 *5; c+=16){
             int x = start;
             for(int d = 0; d < 1 + (c - (44))/16; d++){
-                g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
+                if(player.getRow().getRow(row)[d]!= null) g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
                 x+=16;
             }
             row++;
@@ -124,7 +123,7 @@ public class PlayerPanel {
             int x = start;
             for(int d = 0; d < 1+ (c-(height/2-87))/45; d++){
                 //Tile tile = game.getPlayers().get(game.turn).getRow().getRow(row)[d];
-                g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 40, 40, null);
+                if(player.getRow().getRow(row)[d]!= null) g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 40, 40, null);
                 x+=45;
             }
             row++;

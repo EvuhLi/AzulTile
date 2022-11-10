@@ -23,7 +23,7 @@ public class Row{
                 rows.get(c)[d] =new Tile("red");
             }
         }
-        rows.get(4)[4] = new Tile("teal");
+        rows.get(4)[4] = null;
         rows.get(3)[2] = new Tile("blue");
     }
     
@@ -44,7 +44,7 @@ public class Row{
         return rows;
     }
     public void clearRow(int row){
-        rows.set(row, new Tile[row]);
+        rows.set(row, new Tile[row+1]);
     }
     public Tile[] getRow(int row){
         return rows.get(row);
