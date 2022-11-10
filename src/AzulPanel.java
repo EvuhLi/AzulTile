@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.SwingPropertyChangeSupport;
+
 import java.io.*;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
@@ -11,7 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
-	boolean start = true, build = false, score = false;
+	boolean start = true, build = false, score = false, factory = false, pickedF = false;
 	MainMenuPanel menu;
 	AllFactoryPanel factoryP;
 	Game game;
@@ -32,6 +34,10 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		else{
 			board.drawAll(g, getWidth(), getHeight());
 			factoryP.paint(g, getWidth(), getHeight());
+		}
+		//if they have chosen a factory, paint the options
+		if(factory && pickedF){
+			factoryP.choosing(g);
 		}
 	
 	}
@@ -54,11 +60,27 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
+
+		//after the start screen
+		if(factory){
+			pickedF = true;
+			//if its within factory range at all
+			if(x>=94 && x<=531 && y>=199 && y<=649){
+				factoryP.setCood(x, y);
+			}
+			//if its within the choosing image, then move on to next stage
+			if(x>=600 && x<=1300 && y>=-50 && y<=350){
+				pickedF = false;
+				factory = false;
+				factoryP.setCood(x, y);
+			}
+		}
 		if(start){
 			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 				start = false;
 				game = new Game();
 				board = new PlayerPanel(game);
+				factory = true;
 			}
 			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 				menu.download = true;
@@ -66,6 +88,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 
 			}
 		}
+
 		repaint();
 	}
 

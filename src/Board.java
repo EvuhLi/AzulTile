@@ -39,6 +39,9 @@ public class Board{
     }
 
     public void addTiles(){ 
+        //for (int i = 0; i < one.size(); i++){
+
+      //  }
       //  for (int i = 0; i < one.length; i++){
 
      // }
@@ -68,8 +71,7 @@ public class Board{
         return score;
     }
 }
-    
-   //  public int countEndScore(){ // need to implement
+    //public int countEndScore(){ // need to implement
     //    int bonus = 0;
     //    return score + bonus;
   //  }

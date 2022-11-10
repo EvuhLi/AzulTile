@@ -21,6 +21,7 @@ public class AllFactoryPanel{
 	OneFactoryPanel f7 = new OneFactoryPanel();
 	OneFactoryPanel f8 = new OneFactoryPanel();
 	OneFactoryPanel f9 = new OneFactoryPanel();
+	private int x, y;
 
 	public AllFactoryPanel() {
 
@@ -36,6 +37,15 @@ public class AllFactoryPanel{
 //put the 4 tiles there
 
 //another class to paint the 9 factories
+public void choosing(Graphics g){
+		f1.paintChoosing(g);
+	//do f1.drawstuff
+}
+public void setCood(int x, int y){
+	x = x;
+	y = y;
+
+}
 	public void paint(Graphics g, int Width, int Height) {
 //private static final int WIDTH =1920;
 //private static final int HEIGHT = 1000;
