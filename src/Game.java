@@ -107,6 +107,7 @@ public class Game {
 
     public ArrayList<Tile> getFour(){
         ArrayList<Tile> four = new ArrayList<>();
+
         for(int i = 0; i < 4; i++) {
 
             four.add(bag.remove(i));
