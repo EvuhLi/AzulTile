@@ -33,7 +33,7 @@ public class Board{
 
     public boolean colorInBoard(String color, int row){
         for(int c = 0; c < 5; c++){
-            if (colors[row][c].equals(color)) return true;
+            if (b[row][c] != null && b[row][c].getColor().equals(color)) return true;
         }
         return false;
     }

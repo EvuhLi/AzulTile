@@ -17,8 +17,6 @@ public class Row{
         rows.addAll(anotherList);
         discard = new ArrayList<>();
         //temp:
-
-        
     }
     
     public boolean rowIsFull(int row){
@@ -31,6 +29,7 @@ public class Row{
 
     public void addToRow(int row, ArrayList<Tile> add){
         if(rowIsFull(row)) discard.addAll(add);
+        
 
     }
 

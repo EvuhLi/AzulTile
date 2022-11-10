@@ -49,7 +49,6 @@ public class PlayerPanel {
         drawTurn(g, width, height, game.getPlayers().get(0));
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
-        validRows(g, game.getPlayers().get(0), width, height);
     }
     public void drawLeft(Graphics g, Player player, int width, int height){
         g.drawImage(color(player.getColor()), 45, 35, 190, 130, null);
@@ -112,12 +111,12 @@ public class PlayerPanel {
             start-= 16;
         }        
     }
-    public void validRows(Graphics g, Player p, int width, int height){
+    public void drawValidRows(Graphics g, Player p, int width, int height){
         if(game.phase == 1 && p.getPicked().size() > 0){
             for(int c = 0; c < 5; c++){
-               // if(p.validRow(c)){
+                if(p.validRow(c)){
                     g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
-                //}
+                }
             }
         }
     }
@@ -127,6 +126,7 @@ public class PlayerPanel {
         g.setFont(new Font("Times New Roman", Font.BOLD, 75));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), width/2 + 100, height/2 + 305);
+        drawValidRows(g, player, width, height);
         //DIMENSIONS: tiles are 40 by 40 and increment by 45 each time
 
         //row dimensions: 220 by 200

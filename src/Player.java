@@ -14,9 +14,8 @@ public class Player {
         score = 0;
         b = new Board();
         row = new Row();
-        tilePicked.add(new Tile("red"));
         tilePicked.add(new Tile("blue"));
-
+        tilePicked.add(new Tile("blue"));
     }
 
     public Board getBoard(){
@@ -43,18 +42,20 @@ public class Player {
 
         tilePicked.add(x);
     }
+
     public boolean validRow(int rowNum){
         if(row.rowIsFull(rowNum)){  //checks if row is full (cant place more tiles)
             return false;
         }  
         if(row.getRow(rowNum).length == 0) return true;
-        if(row.getRow(rowNum).length > 0 && !row.getRow(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())){  //checks if row has same color as picked tile
+        //System.out.println(row.getRow(rowNum));//[0].getColor());
+        if(row.getRow(rowNum)[0] == null) return true;
+        if(!row.getRow(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())){  //checks if row has same color as picked tile
             return false;
         }
         if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){  //checks if board already contains that color (cant place same tile color)
             return false;
         }
-
         return true;
     }
 }
