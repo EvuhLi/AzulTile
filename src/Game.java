@@ -37,6 +37,7 @@ public class Game {
 
         createBag();
         players.get(1).getRow().clearRow(2);
+        players.get(0).addTile(new Tile("red"));
 
     }
 
@@ -107,6 +108,7 @@ public class Game {
 
     public ArrayList<Tile> getFour(){
         ArrayList<Tile> four = new ArrayList<>();
+
         for(int i = 0; i < 4; i++) {
 
             four.add(bag.remove(i));
