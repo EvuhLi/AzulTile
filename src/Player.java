@@ -45,14 +45,6 @@ public class Player{
         tilePicked.add(x);
     }
     
-    public boolean hasFirst(){
-        
-        if(tilePicked.contains(bag.get("one")){
-            return true;
-        }
-        return false;
-    }
-
     
     public void setFirst(Boolean b){
         hasFirst = b;

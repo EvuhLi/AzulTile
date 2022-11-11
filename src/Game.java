@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.lang.Math;
 
 public class Game {
      static ArrayList<Player> players;
@@ -38,6 +39,11 @@ public class Game {
         createBag();
         players.get(1).getRow().clearRow(2);
 
+    }
+
+    public void playerOrder(){
+        int x = (int)(Math.random()*4) + 1;
+        players.get(x).setFirst(true);
     }
 
     public void createBag(){
@@ -93,14 +99,14 @@ public class Game {
         return players;
     }
     
-    public Player getPlayer(String color){ //delete this after your create the player arryalist
+    /*public Player getPlayer(String color){ //delete this after your create the player arryalist
         for(Player player: players){
             if(player.getColor().equals(color)){
                 return player;
             }
         }
         return players.get(0);
-    }
+    }*/
 
     public void resetFactories(){
         
