@@ -6,6 +6,7 @@ public class Player {
     private Board b;
     private Row row;
     private String color;
+    private Boolean hasFirst;
 
 
     public Player(String color){
@@ -41,6 +42,13 @@ public class Player {
     public void addTile(Tile x){
 
         tilePicked.add(x);
+    }
+    
+    public boolean hasFirst(){
+        if(tilePicked.contains(tile one)){
+            return true;
+        }
+        return false;
     }
 
     public boolean validRow(int rowNum){
