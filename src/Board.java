@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Board{
     Tile[][] b = new Tile[5][5];
     String[][] colors = new String[5][5];
@@ -38,28 +40,40 @@ public class Board{
         return false;
     }
 
-    public void addTiles(){ 
-        //for (int i = 0; i < one.size(); i++){
 
-      //  }
-      //  for (int i = 0; i < one.length; i++){
-
-     // }
-        // iterate through each row / all the arraylists
-// if left row is fulls
-// iterate through columns
-// if [r][c] in this class is same color as [r][c] in rows class
-			// change the boolean onBoard of the board class to true
-			// call Arrays.fill(rows, null) to empty the row if it’s full
-			// countScore(r, c)
+    public void addTiles(Row r){ 
+        int w = 0;
+        for (Tile[] row: r.getRows()){
+            if (r.rowIsFull(w)){
+                row[row.length-1].onBoard = true;
+                int c = 0;
+                for (int i = 0; i<colors[w].length; i++){
+                    if (row[0].getColor().equals(colors[w][i])){
+                        c = i;
+                    }
+                }
+                b[w][c] = row[row.length - 1];
+                Arrays.fill(row, null);
+                countScore(w, c);
+            }
+            w++;
+        }
+        // gah
+            // if full 
+                // change last tile in arrayList to onboard true
+                // iterate through that row on the colors matrix to see which spot that color is in
+                // set that spot to the last tile in the arrayList
+                // empty the rest of the row
+                // count score(r and c that we found by iterating through the colors matrix)
 
     }
 
     public int countScore (int r, int c){
-       for ( int i = 1; r-i>-1 && b[r-i][c]!= null && b[r-i][c].onBoard; i++){
+        score++;
+        for ( int i = 1; r-i>-1 && b[r-i][c]!= null && b[r-i][c].onBoard; i++){
             score++;
         }
-     for ( int i = 1; c-i>-1 && b[r][c-i]!= null && b[r][c-i].onBoard; i++){
+        for ( int i = 1; c-i>-1 && b[r][c-i]!= null && b[r][c-i].onBoard; i++){
             score++;
         }
         for ( int i = 1; r+i<5 && b[r+i][c]!= null && b[r+i][c].onBoard; i++){
@@ -70,8 +84,7 @@ public class Board{
         }
         return score;
     }
-}
-    //public int countEndScore(){ // need to implement
+    public boolean countEndScore(){ // need to implement
     //    int bonus = 0;
     //    return score + bonus;
   //  }
@@ -84,7 +97,7 @@ public class Board{
      //           }
           //  }
     //    }
-    //    return true;
-  //  }
-// }
+    return true;
+  }
+}
 

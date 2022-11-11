@@ -9,7 +9,7 @@ public class Row{
     Tile[] four = new Tile[4];
     Tile[] five = new Tile[5];
     List<Tile[]> anotherList = Arrays.asList(one, two, three, four, five);
-    private ArrayList<Tile[]> rows;
+    public ArrayList<Tile[]> rows;
     private ArrayList<Tile> discard;
     
     public Row(){
@@ -29,8 +29,6 @@ public class Row{
 
     public void addToRow(int row, ArrayList<Tile> add){
         if(rowIsFull(row)) discard.addAll(add);
-        
-
     }
 
     public ArrayList<Tile[]> getRows(){
