@@ -6,6 +6,7 @@ public class Player {
     private Board b;
     private Row row;
     private String color;
+    private Boolean hasFirst;
 
 
     public Player(String color){
@@ -14,6 +15,7 @@ public class Player {
         score = 0;
         b = new Board();
         row = new Row();
+        hasFirst = false;
 
     }
 
@@ -35,6 +37,13 @@ public class Player {
     }
     public int getScore(){
         return score;
+    }
+
+    public Boolean hasFirst(){
+        if(tilePicked.contains(tile)){ //need to define tile one
+            return true;
+        }
+        return false;
     }
 
     public void addTile(Tile x){
