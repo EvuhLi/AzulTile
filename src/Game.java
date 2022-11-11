@@ -25,7 +25,6 @@ public class Game {
             factories.add(new Factory(false));
         }
         middle = new Factory(true);
-        turn = (int)(Math.random()*4) + 1;
         phase = 1;
 
         colors = new ArrayList<>();
@@ -36,7 +35,7 @@ public class Game {
         colors.add(new Tile("teal"));
 
         createBag();
-        players.get(1).getRow().clearRow(2);
+
 
     }
 
@@ -52,9 +51,6 @@ public class Game {
         bag.add(new Tile("one"));
     }
 
-    public void turn(){
-        turn = (turn+1)%4;
-    }
 
     public boolean checkEmpty(){
         for(Factory factory: factories){

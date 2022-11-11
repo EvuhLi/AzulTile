@@ -78,4 +78,13 @@ public class Player{
         }
         return true;
     }
+
+    public void rowToBoard(){
+        for(int c = 0; c < 5; c++){
+            if(row.rowIsFull(c)){
+                row.getRow(c)[0].onBoard = true;
+                
+            }
+        }
+    }
 }
