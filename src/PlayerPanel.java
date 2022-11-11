@@ -113,6 +113,7 @@ public class PlayerPanel {
     }
     public void drawValidRows(Graphics g, Player p, int width, int height){
         if(game.phase == 1 && p.getPicked().size() > 0){
+            System.out.println(p.getPicked().size());
             for(int c = 0; c < 5; c++){
                 if(p.validRow(c)){
                     g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);

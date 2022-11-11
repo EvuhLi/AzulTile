@@ -14,8 +14,7 @@ public class Player {
         score = 0;
         b = new Board();
         row = new Row();
-        tilePicked.add(new Tile("blue"));
-        tilePicked.add(new Tile("blue"));
+       
     }
 
     public Board getBoard(){
