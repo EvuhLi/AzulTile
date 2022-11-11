@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board{
@@ -42,8 +43,16 @@ public class Board{
 
 
     public void addTiles(Row r){ 
-        int w = 0;
-        for (Tile[] row: r.getRows()){
+       /*  ArrayList<Tile[]> rows = r.getRows();
+        for ( int i = 0; i<rows.size(); i++){
+            if (r.rowIsFull(i)){
+                Tile[] atm = rows.get(i);
+                atm[atm.length - 1].onBoard = true; 
+
+            */  }
+      //  }
+     /*    int w = 0;
+        for (Tile[] row: r.getRows()){ // for each cant edit? 
             if (r.rowIsFull(w)){
                 row[row.length-1].onBoard = true;
                 int c = 0;
@@ -53,11 +62,11 @@ public class Board{
                     }
                 }
                 b[w][c] = row[row.length - 1];
-                Arrays.fill(row, null);
+                Arrays.fill(row, null); // move to discard (except 1st) + fill w/ null 
                 countScore(w, c);
             }
             w++;
-        }
+         } */
         // gah
             // if full 
                 // change last tile in arrayList to onboard true
@@ -66,7 +75,7 @@ public class Board{
                 // empty the rest of the row
                 // count score(r and c that we found by iterating through the colors matrix)
 
-    }
+ //  }
 
     public int countScore (int r, int c){
         score++;
