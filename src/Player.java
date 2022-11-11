@@ -15,8 +15,13 @@ public class Player {
         score = 0;
         b = new Board();
         row = new Row();
+<<<<<<< HEAD
         hasFirst = false;
 
+=======
+        tilePicked.add(new Tile("blue"));
+        tilePicked.add(new Tile("blue"));
+>>>>>>> 87cea8c311479f4ed823cff88a78cc192fca0d5e
     }
 
     public Board getBoard(){
@@ -38,30 +43,32 @@ public class Player {
     public int getScore(){
         return score;
     }
+    
+    public void addTile(Tile x){
 
-    public Boolean hasFirst(){
-        if(tilePicked.contains(tile)){ //need to define tile one
+        tilePicked.add(x);
+    }
+    
+    public boolean hasFirst(){
+        if(tilePicked.contains(tile one)){
             return true;
         }
         return false;
     }
 
-    public void addTile(Tile x){
-
-        tilePicked.add(x);
-    }
     public boolean validRow(int rowNum){
-
         if(row.rowIsFull(rowNum)){  //checks if row is full (cant place more tiles)
             return false;
         }  
-        if(!row.getRows().get(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())){  //checks if row has same color as picked tile
+        if(row.getRow(rowNum).length == 0) return true;
+        //System.out.println(row.getRow(rowNum));//[0].getColor());
+        if(row.getRow(rowNum)[0] == null) return true;
+        if(!row.getRow(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())){  //checks if row has same color as picked tile
             return false;
         }
         if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){  //checks if board already contains that color (cant place same tile color)
             return false;
         }
-
         return true;
     }
 }

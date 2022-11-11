@@ -37,6 +37,7 @@ public class Game {
 
         createBag();
         players.get(1).getRow().clearRow(2);
+        players.get(0).addTile(new Tile("red"));
 
     }
 
