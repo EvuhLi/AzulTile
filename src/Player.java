@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 
-public class Player {
+public class Player{
     private ArrayList<Tile> tilePicked;
     private int score;
     private Board b;
     private Row row;
     private String color;
+    private Tile first;
     private Boolean hasFirst;
 
 
@@ -15,13 +16,9 @@ public class Player {
         score = 0;
         b = new Board();
         row = new Row();
-<<<<<<< HEAD
         hasFirst = false;
-
-=======
         tilePicked.add(new Tile("blue"));
         tilePicked.add(new Tile("blue"));
->>>>>>> 87cea8c311479f4ed823cff88a78cc192fca0d5e
     }
 
     public Board getBoard(){
@@ -50,10 +47,21 @@ public class Player {
     }
     
     public boolean hasFirst(){
-        if(tilePicked.contains(tile one)){
+        
+        if(tilePicked.contains(bag.get("one")){
             return true;
         }
         return false;
+    }
+
+    
+    public void setFirst(Boolean b){
+        hasFirst = b;
+        if(b == true){
+            first = new Tile("one");
+        }else{
+            first = null;
+        }
     }
 
     public boolean validRow(int rowNum){

@@ -50,6 +50,7 @@ public class Game {
         }
 
         Collections.shuffle(bag);
+        bag.add(new Tile("one"));
     }
 
     public void turn(){
