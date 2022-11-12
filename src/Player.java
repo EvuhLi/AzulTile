@@ -46,9 +46,20 @@ public class Player {
     public void addToRow(int r){
         if(validRow(r)){
         row.addToRow(r, tilePicked);
-        tilePicked = new ArrayList<>();
+        addRandom();
+        }    
+    }
+    public void addRandom(){
+        String color = "";
+        int rand = (int)(Math.random()*5) + 1;
+        if(rand == 1) color = "red";
+        if(rand == 2) color = "black";
+        if(rand == 3) color = "teal";
+        if(rand == 4) color = "yellow";
+        if(rand == 5) color = "blue";
+        for(int c = 0; c < 2; c++){
+            tilePicked.add(new Tile(color));
         }
-
     }
     /*public boolean hasFirst(){
         //if(tilePicked.contains(tile one)){

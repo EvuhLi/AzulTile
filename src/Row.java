@@ -39,7 +39,9 @@ public class Row{
                 getRow(row)[indx] = add.remove(c);
                 indx++;
             }
-            discard.addAll(add);
+            while(add.size() > 0){
+                discard.add(add.remove(0));
+            }
         }
     }
 
