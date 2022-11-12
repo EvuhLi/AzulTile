@@ -7,14 +7,14 @@ public class Game {
      static ArrayList<Tile> discard;
      static ArrayList<Factory> factories;
      static Factory middle;
-     static int turn;
+     static int pickedRow;
      static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
      public Game(){
         players = new ArrayList<>();
         bag = new ArrayList<>();
         discard = new ArrayList<>();
         factories = new ArrayList<>();
-        
+        pickedRow = -1;
 
         players.add(new Player("red"));
         players.add(new Player("yellow"));
@@ -25,7 +25,6 @@ public class Game {
             factories.add(new Factory(false));
         }
         middle = new Factory(true);
-        turn = (int)(Math.random()*4) + 1;
         phase = 1;
 
         colors = new ArrayList<>();
@@ -51,9 +50,7 @@ public class Game {
         Collections.shuffle(bag);
     }
 
-    public void turn(){
-        turn = (turn+1)%4;
-    }
+   
 
     public boolean checkEmpty(){
         for(Factory factory: factories){

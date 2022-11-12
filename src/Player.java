@@ -43,13 +43,19 @@ public class Player {
 
         tilePicked.add(x);
     }
-    
-    public boolean hasFirst(){
-        if(tilePicked.contains(tile one)){
+    public void addToRow(int r){
+        if(validRow(r)){
+        row.addToRow(r, tilePicked);
+        tilePicked = new ArrayList<>();
+        }
+
+    }
+    /*public boolean hasFirst(){
+        //if(tilePicked.contains(tile one)){
             return true;
         }
         return false;
-    }
+    }*/
 
     public boolean validRow(int rowNum){
         if(row.rowIsFull(rowNum)){  //checks if row is full (cant place more tiles)

@@ -18,12 +18,17 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	AllFactoryPanel factoryP;
 	Game game;
 	PlayerPanel board;
+	int width, height;
+	int row;
 
-	public AzulPanel() {
+	public AzulPanel(int w, int h) {
 		menu = new MainMenuPanel();
 		factoryP = new AllFactoryPanel();
 		addMouseListener(this);
 		addMouseMotionListener(this);
+		width = w;
+		height = h;
+		row = 0;
 	}
 
 	public void paint(Graphics g) {
@@ -39,6 +44,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(factory && pickedF){
 			factoryP.choosing(g);
 		}
+		drawRowNum(g);
 	
 	}
 
@@ -55,12 +61,34 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	public void mouseExited(MouseEvent e) {
 	}
 	
-
+	public void drawRowNum(Graphics g){
+		g.setFont(new Font("Arial", Font.PLAIN, 30));
+		g.drawString(row + "", getWidth()/2, getHeight()/2);
+	}
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
+		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
 
+			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
+				game.getPlayers().get(0).addToRow(0);
+			}
+			if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
+				game.getPlayers().get(0).addToRow(1);
+			}
+			if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
+				game.getPlayers().get(0).addToRow(2);
+			}
+			if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
+				game.getPlayers().get(0).addToRow(3);
+			}
+			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
+				game.getPlayers().get(0).addToRow(4);
+			}
+				
+		 
+		
 		//after the start screen
 		if(factory){
 			pickedF = true;
@@ -102,12 +130,14 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	public void mouseMoved(MouseEvent e) { //used for hover
 		int x = e.getX();
 		int y = e.getY();
+		if(start){
 		menu.hover = -1;
 		if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 			menu.hover = 1;
 		}
 		if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 			menu.hover = 2;
+		}
 		}
 		repaint();
 	}
