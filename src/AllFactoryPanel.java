@@ -43,22 +43,22 @@ public void choosing(Graphics g){
 		System.out.println("f1!");
 		f1.paintChoosing(g);
 	}
-		else if(x>=128 && x<=233 && y>=243 && y<=336){
-			System.out.println("f2!");
-			f2.paintChoosing(g);
-		}
-		else if(x>=94 && x<=194 && y>=357 && y<=453){
-			System.out.println("f3!");
-			f3.paintChoosing(g);
-		}
-		else if(x>=95 && x<=196 && y>=468 && y<=567){
-			System.out.println("f4!");
-			f4.paintChoosing(g);
-		}
-		else if(x>=201 && x<=299 && y>=545 && y<=637){
-			System.out.println("f5!");
-			f5.paintChoosing(g);
-		}
+	else if(x>=128 && x<=233 && y>=243 && y<=336){
+		System.out.println("f2!");
+		f2.paintChoosing(g);
+	}
+	else if(x>=94 && x<=194 && y>=357 && y<=453){
+		System.out.println("f3!");
+		f3.paintChoosing(g);
+	}
+	else if(x>=95 && x<=196 && y>=468 && y<=567){
+		System.out.println("f4!");
+		f4.paintChoosing(g);
+	}
+	else if(x>=201 && x<=299 && y>=545 && y<=637){
+		System.out.println("f5!");
+		f5.paintChoosing(g);
+	}
 }
 public void setCood(int x1, int y1){
 	System.out.println("here");
