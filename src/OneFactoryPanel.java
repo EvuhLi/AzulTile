@@ -35,7 +35,7 @@ public class OneFactoryPanel {
     }
 
 	private void setisMiddle(boolean M){
-	M=M;
+	    M=M;
 	}
     public void setArray(ArrayList<BufferedImage>arr){
         TArr = arr;

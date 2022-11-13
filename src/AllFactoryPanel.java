@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
 public class AllFactoryPanel{
-	private BufferedImage factory, azulBoard;
+	private BufferedImage factory, azulBoard, factorymiddle;
 
 	OneFactoryPanel f1 = new OneFactoryPanel();
 	OneFactoryPanel f2 = new OneFactoryPanel();
@@ -27,6 +27,7 @@ public class AllFactoryPanel{
 
 		try {
             factory = ImageIO.read(new File("src/images/factory.png"));
+			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
 
 		} catch (Exception E) {
 			System.out.println("Exception Error");
@@ -52,31 +53,31 @@ public void setCood(int x, int y){
 
 }
 	public void paint(Graphics g, int Width, int Height) {
-//private static final int WIDTH =1920;
-//private static final int HEIGHT = 1000;
-	//	g.drawImage(azulBoard, 0, 0, getWidth(), getHeight(), null);
-	int halfw = Width / 2;
-	int halfh = Height / 2;
-//top left
-	f1.paintFactory(halfw / 5, halfh * 4 / 6, Width, Height, g);
-// //bottom left
-	f2.paintFactory(halfw * 3 / 10, Height * 14 / 18, Width, Height, g);
+		//private static final int WIDTH =1920;
+		//private static final int HEIGHT = 1000;
+		//	g.drawImage(azulBoard, 0, 0, getWidth(), getHeight(), null);
+		int halfw = Width / 2;
+		int halfh = Height / 2;
+		//top left
+		f1.paintFactory(halfw / 5, halfh * 4 / 6, Width, Height, g);
+		// //bottom left
+		f2.paintFactory(halfw * 3 / 10, Height * 14 / 18, Width, Height, g);
 
-// //lower middle left
-	f3.paintFactory(Width / 15, Height * 4 / 6, Width, Height, g);
-// //lower right 
-	f4.paintFactory(Width * 2 / 6, Height * 4 / 6, Width, Height, g);
-// //top top
-	f5.paintFactory(Width/ 5, halfh * 6 / 11, Width, Height, g);
-	// //top right
-f6.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
-// middle right
-f7.paintFactory(Width * 2 / 6,Height/2, Width, Height, g);
-// middle left
-f8.paintFactory(Width / 15,Height/2, Width, Height, g);
-//bottom right
-f9.paintFactory(Width*2 / 8,Height * 14 / 18, Width, Height, g);
-
+		// //lower middle left
+		f3.paintFactory(Width / 15, Height * 4 / 6, Width, Height, g);
+		// //lower right 
+		f4.paintFactory(Width * 2 / 6, Height * 4 / 6, Width, Height, g);
+		// //top top
+		f5.paintFactory(Width/ 5, halfh * 6 / 11, Width, Height, g);
+		// //top right
+		f6.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
+		// middle right
+		f7.paintFactory(Width * 2 / 6,Height/2, Width, Height, g);
+		// middle left
+		f8.paintFactory(Width / 15,Height/2, Width, Height, g);
+		//bottom right
+		f9.paintFactory(Width*2 / 8,Height * 14 / 18, Width, Height, g);
+		g.drawImage(factorymiddle, 205, Height/2 - 20, 220, 220, null);
 	}
 
 }

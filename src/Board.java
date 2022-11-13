@@ -93,6 +93,7 @@ public class Board{
         }
         return score;
     }
+    
     public boolean countEndScore(){ // need to implement
     //    int bonus = 0;
     //    return score + bonus;
