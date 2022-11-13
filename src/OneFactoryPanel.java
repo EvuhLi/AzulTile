@@ -12,6 +12,7 @@ public class OneFactoryPanel {
     private ArrayList<BufferedImage>TArr;
     private TreeMap<String, Integer>possibleT;
 
+	private boolean isMiddle = false;
 	private boolean M;
 	private Factory ffs;
     public OneFactoryPanel() {
@@ -27,13 +28,17 @@ public class OneFactoryPanel {
             black = ImageIO.read(new File("src/images/black tile.png"));
             TChoose = ImageIO.read(new File("src/images/TileChoosing.png"));
             factory = ImageIO.read(new File("src/images/factory.png"));
-            addTiles();
+            if(!isMiddle)
+			addTiles();
            
         } catch (Exception e) {
             return;
         }
     }
 
+	public void isMiddle(){
+		isMiddle = true;
+	}
 	private void setisMiddle(boolean M){
 	M=M;
 	}
@@ -46,6 +51,8 @@ public class OneFactoryPanel {
         g.drawImage(factory, w, h, size, size, null);
         int fW = w + ww/30;
         int fH = h+hh/11;
+
+		if(!isMiddle){
         for(int i = 0; i<TArr.size(); i++){
             if(i==0)
                 g.drawImage(TArr.get(i), fW, fH, tSize, tSize, null);
@@ -57,6 +64,10 @@ public class OneFactoryPanel {
                 g.drawImage(TArr.get(i), w + ww/20, h + hh/11, tSize, tSize, null);
         }
     }
+	else{
+		//draw middle
+	}
+}
 public void addTiles(){
     if(TArr.size()<=4){
         TArr.add(red);
@@ -80,10 +91,8 @@ public int getSize(){
                 ava.put(temp, ava.get(temp)+1);
             } 
         }
-	
         Set<BufferedImage> s = ava.keySet();
         Iterator<BufferedImage> iter = s.iterator();
-		
         while(iter.hasNext()){
             BufferedImage b = iter.next();
 			int x = ava.get(b);
@@ -95,8 +104,6 @@ public int getSize(){
 			else if(b.equals(red)){
 				g.drawString(x+"", 1029, 142);
 			}
-
         }
     }
-
 }

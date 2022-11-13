@@ -21,6 +21,8 @@ public class AllFactoryPanel{
 	OneFactoryPanel f7 = new OneFactoryPanel();
 	OneFactoryPanel f8 = new OneFactoryPanel();
 	OneFactoryPanel f9 = new OneFactoryPanel();
+	OneFactoryPanel middle = new OneFactoryPanel();
+
 	private int x, y;
 
 	public AllFactoryPanel() {
@@ -33,10 +35,7 @@ public class AllFactoryPanel{
 			return;
 		}
 	}
-// method to paint the factory
-//put the 4 tiles there
 
-//another class to paint the 9 factories
 public void choosing(Graphics g){
 
 	if(x>=265 && x<=362 && y>=200 && y<=297){
@@ -45,7 +44,6 @@ public void choosing(Graphics g){
 	}
 		else if(x>=128 && x<=233 && y>=243 && y<=336){
 			System.out.println("f2!");
-
 			f2.paintChoosing(g);
 		}
 		else if(x>=94 && x<=194 && y>=357 && y<=453){
@@ -69,10 +67,8 @@ public void setCood(int x1, int y1){
 	if(x>=205 && x<=423 && y>=312 && y<=536 ){
 	//its in the middle
 	}
-
-
 }
-	public void paint(Graphics g, int Width, int Height) {
+public void paint(Graphics g, int Width, int Height) {
 
 	int halfw = Width / 2;
 	int halfh = Height / 2;
@@ -95,6 +91,8 @@ public void setCood(int x1, int y1){
 	// //top right
 	f9.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
 
+	middle.isMiddle();
+	middle.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
 	}
 
 }
