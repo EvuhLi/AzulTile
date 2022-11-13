@@ -94,6 +94,7 @@ public void paint(Graphics g, int Width, int Height) {
 
 	middle.isMiddle();
 	middle.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
+	g.drawImage(factorymiddle, 205, Height/2 - 20, 220, 220, null);
 	}
 
 }
