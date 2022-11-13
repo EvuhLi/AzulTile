@@ -44,7 +44,6 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(factory && pickedF){
 			factoryP.choosing(g);
 		}
-		drawRowNum(g);
 	
 	}
 
@@ -61,16 +60,13 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	public void mouseExited(MouseEvent e) {
 	}
 	
-	public void drawRowNum(Graphics g){
-		g.setFont(new Font("Arial", Font.PLAIN, 30));
-		g.drawString(row + "", getWidth()/2, getHeight()/2);
-	}
+	
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
 		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
-
+		//need boolean for when player has picked tiles
 			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
 				game.getPlayers().get(0).addToRow(0);
 			}
