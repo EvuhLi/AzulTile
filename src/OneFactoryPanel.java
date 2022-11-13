@@ -17,7 +17,7 @@ public class OneFactoryPanel {
     public OneFactoryPanel() {
         try {
 
-			ffs = new Factory(M);
+			//ffs = new Factory(M);
             TArr = new ArrayList<>();
             possibleT = new TreeMap<>();
             blue = ImageIO.read(new File("src/images/blue tile.png"));
