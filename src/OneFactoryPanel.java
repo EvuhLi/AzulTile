@@ -93,26 +93,27 @@ public int getSize(){
 }
     public void paintChoosing(Graphics g){
         g.drawImage(TChoose, 600, -55, 700, 400, null);
-        HashMap<BufferedImage, Integer>ava = new HashMap<>();
+        HashMap<String, Integer>ava = new HashMap<>();
         for(int i = 0; i<TArr.size(); i++){
-            BufferedImage temp = TArr.get(i).getImage();
-            if(!ava.containsKey(temp)){
-                ava.put(temp, 1);
+            Tile temp = TArr.get(i);
+			String c = temp.getColor();
+            if(!ava.containsKey(c)){
+                ava.put(c, 1);
             }
             else{
-                ava.put(temp, ava.get(temp)+1);
+                ava.put(c, ava.get(c)+1);
             } 
         }
-        Set<BufferedImage> s = ava.keySet();
-        Iterator<BufferedImage> iter = s.iterator();
+        Set<String> s = ava.keySet();
+        Iterator<String> iter = s.iterator();
         while(iter.hasNext()){
-            BufferedImage b = iter.next();
+            String b = iter.next();
 			int x = ava.get(b);
 			g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-			if(b.equals(yellow)){
+			if(b.equals("yellow")){
 				g.drawString(x+"", 1029, 68);
 			}
-			else if(b.equals(red)){
+			else if(b.equals("red")){
 				g.drawString(x+"", 1029, 142);
 			}
         }
