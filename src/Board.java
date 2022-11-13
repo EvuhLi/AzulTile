@@ -5,8 +5,10 @@ public class Board{
     Tile[][] b = new Tile[5][5];
     String[][] colors = new String[5][5];
     int score = 0;
+    ArrayList<Tile> discard;
 
     public Board(){
+        discard = new ArrayList<>();
         colors[0][0] = "blue";
         colors[0][1] = "yellow";
         colors[0][2] = "red";
@@ -41,7 +43,12 @@ public class Board{
         return false;
     }
 
-
+    public ArrayList<Tile> getDiscard(){
+        return discard;
+    }
+    public void addToDiscard(ArrayList<Tile> arr){
+        discard.addAll(arr);
+    }
     public void addTiles(Row r){ 
        /*  ArrayList<Tile[]> rows = r.getRows();
         for ( int i = 0; i<rows.size(); i++){

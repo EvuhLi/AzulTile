@@ -11,13 +11,13 @@ public class PlayerPanel {
     static BufferedImage yellowborder;
     static BufferedImage greenborder;
     static BufferedImage blueborder;
-    BufferedImage border, screenbg, logo, score, glowingrow;
-
+    BufferedImage border, screenbg, logo, score, glowingrow, blackborder;
+    int hover;
 
 
     public PlayerPanel(Game g){
         game = g;
-        
+        hover = -1;
         try {
             board = ImageIO.read(new File("src/images/Azul Board.jpg"));
             redtile = ImageIO.read(new File("src/images/red tile.png"));
@@ -34,7 +34,7 @@ public class PlayerPanel {
             blueborder = ImageIO.read(new File("src/images/blueborder.png"));
             greenborder = ImageIO.read(new File("src/images/greenborder.png"));
             glowingrow = ImageIO.read(new File("src/images/glowing row.png"));
-
+            blackborder = ImageIO.read(new File("src/images/blackborder.png"));
 
 		} catch (Exception E) {
 			System.out.println(E.getMessage());
@@ -49,7 +49,10 @@ public class PlayerPanel {
         drawTurn(g, width, height, game.getPlayers().get(0));
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
+        if(hover > -1) drawHover(g, width, height);
+        hover = -1;
     }
+
     public void drawLeft(Graphics g, Player player, int width, int height){
         g.drawImage(color(player.getColor()), 45, 35, 190, 130, null);
         g.drawImage(board, 50, 40, 180, 120, null);
@@ -146,10 +149,15 @@ public class PlayerPanel {
     }
     public static BufferedImage color (String color){
 		if(color.equals("red")) return redborder;
-        if(color.equals("blue")) return blueborder;
+        if(color.equals("blue"))  return blueborder;
         if(color.equals("green")) return greenborder;
         if(color.equals("yellow")) return yellowborder;
         return redborder;
 	}
+    public void drawHover(Graphics g, int width, int height){
+        if(game.getPlayers().get(0).validRow(hover)) g.drawImage(blackborder, width/2 + 250 - hover*45, height/2 - 87 + 45*hover, (hover+1)*44, 40, null);
+
+
+    }
 
 }

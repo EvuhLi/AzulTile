@@ -7,16 +7,18 @@ public class Player {
     private Row row;
     private String color;
     private Boolean hasFirst;
-
+    private ArrayList<Tile> tempDiscard;
 
     public Player(String color){
+        tempDiscard = new ArrayList<>();
         this.color = color;
         tilePicked = new ArrayList<Tile>();
         score = 0;
         b = new Board();
         row = new Row();
+        tilePicked.add(new Tile("red"));
     }
-
+    //public void transferDiscard
     public Board getBoard(){
         return b;
     }
@@ -43,10 +45,10 @@ public class Player {
     public void addToRow(int r){
         if(validRow(r)){
             row.addToRow(r, tilePicked);
-           // addRandom();
+           addRandom();
         }    
     }
-    /*public void addRandom(){
+    public void addRandom(){
         String color = "";
         int rand = (int)(Math.random()*5) + 1;
         if(rand == 1) color = "red";
@@ -57,7 +59,7 @@ public class Player {
         for(int c = 0; c < 2; c++){
             tilePicked.add(new Tile(color));
         }
-    }*/
+    }
     /*public boolean hasFirst(){
         //if(tilePicked.contains(tile one)){
             return true;
