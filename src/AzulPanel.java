@@ -4,7 +4,7 @@ import java.awt.image.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.SwingPropertyChangeSupport;
-
+import java.util.*;
 import java.io.*;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
@@ -98,7 +98,10 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				pickedF = false;
 				factory = false;
 				factoryP.setCood(x, y);
-			}
+				//game.getPlayers().get(0).addTiles(factoryP.getChosen());
+				//rows boolean = true or smth
+			}				
+
 		}
 		if(start){
 			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){

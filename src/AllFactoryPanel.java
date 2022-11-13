@@ -38,43 +38,48 @@ public class AllFactoryPanel{
 	}
 
 public void choosing(Graphics g){
-
+	OneFactoryPanel temp = whichPanel();
+	temp.paintChoosing(g);
+}
+public OneFactoryPanel whichPanel(){
 	if(x>=265 && x<=362 && y>=200 && y<=297){
 		System.out.println("f1!");
-		f1.paintChoosing(g);
+
+		return f1;
 	}
 	else if(x>=128 && x<=233 && y>=243 && y<=336){
 		System.out.println("f2!");
-		f2.paintChoosing(g);
+		return f2;
 	}
 	else if(x>=94 && x<=194 && y>=357 && y<=453){
 		System.out.println("f3!");
-		f3.paintChoosing(g);
+		return f3;
 	}
 	else if(x>=95 && x<=196 && y>=468 && y<=567){
 		System.out.println("f4!");
-		f4.paintChoosing(g);
+		return f4;
 	}
 	else if(x>=201 && x<=299 && y>=545 && y<=637){
 		System.out.println("f5!");
-		f5.paintChoosing(g);
+		return f5;
 	}
 	else if(x>=328 && x<=427 && y>=544 && y<=644){
 		System.out.println("f6!");
-		f6.paintChoosing(g);
+		return f6;
 	}
 	else if(x>=432 && x<=530 && y>=469 && y<=565){
 		System.out.println("f7!");
-		f7.paintChoosing(g);
+		return f7;
 	}
 	else if(x>=435 && x<=533 && y>=355 && y<=450){
 		System.out.println("f8!");
-		f8.paintChoosing(g);
+		return f8;
 	}
-	else if(x>=373 && x<=471 && y>=240 && y<=338){
+	else {
 		System.out.println("f9!");
-		f9.paintChoosing(g);
+		return f9;
 	}
+	
 }
 public void setCood(int x1, int y1){
 	System.out.println("here");
@@ -85,6 +90,13 @@ public void setCood(int x1, int y1){
 	//its in the middle
 	}
 }
+//public ArrayList<Tile> getChosen(){
+
+	//bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player 
+			//ArrayList<Tile> arr = new ArrayList<>();
+
+
+//}
 public void paint(Graphics g, int Width, int Height) {
 
 	int halfw = Width / 2;
