@@ -20,6 +20,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	PlayerPanel board;
 	int width, height;
 	int row;
+	//please still stay
 
 	public AzulPanel(int w, int h) {
 		menu = new MainMenuPanel();
