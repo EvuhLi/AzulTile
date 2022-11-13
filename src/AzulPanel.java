@@ -127,14 +127,31 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		if(start){
-		menu.hover = -1;
-		if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
-			menu.hover = 1;
+			menu.hover = -1;
+			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
+				menu.hover = 1;
+			}
+			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
+				menu.hover = 2;
+			}
+			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
+				game.getPlayers().get(0).addToRow(0);
+			}
+			if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
+				game.getPlayers().get(0).addToRow(1);
+			}
+			if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
+				game.getPlayers().get(0).addToRow(2);
+			}
+			if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
+				game.getPlayers().get(0).addToRow(3);
+			}
+			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
+				game.getPlayers().get(0).addToRow(4);
+			} 
+
 		}
-		if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
-			menu.hover = 2;
-		}
-		}
+
 		repaint();
 	}
 }
