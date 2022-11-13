@@ -93,8 +93,8 @@ public void paint(Graphics g, int Width, int Height) {
 	f9.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
 
 	middle.isMiddle();
-	middle.paintFactory(Width * 2 / 7,halfh * 4 / 6, Width, Height, g);
-	g.drawImage(factorymiddle, 205, Height/2 - 20, 220, 220, null);
+	middle.paintFactory(205, Height/2 - 20, 220, 220, g);
+	//g.drawImage(factorymiddle, 205, Height/2 - 20, 220, 220, null);
 	}
 
 }

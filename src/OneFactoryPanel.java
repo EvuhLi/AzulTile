@@ -8,7 +8,7 @@ import java.util.*;
 
 public class OneFactoryPanel {
 
-    private BufferedImage factory, blue, red, yellow, TChoose, teal, black;
+    private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle;
     private ArrayList<BufferedImage>TArr;
     private TreeMap<String, Integer>possibleT;
 
@@ -21,6 +21,8 @@ public class OneFactoryPanel {
 			//ffs = new Factory(M);
             TArr = new ArrayList<>();
             possibleT = new TreeMap<>();
+			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
+
             blue = ImageIO.read(new File("src/images/blue tile.png"));
             red = ImageIO.read(new File("src/images/red tile.png"));
             yellow = ImageIO.read(new File("src/images/yellow tile.png"));
@@ -48,8 +50,13 @@ public class OneFactoryPanel {
     public void paintFactory(int w, int h, int ww, int hh, Graphics g) {
         int size = ww / 10;
         int tSize = ww / 50;
-        g.drawImage(factory, w, h, size, size, null);
-        int fW = w + ww/30;
+      
+		if(!isMiddle)
+		g.drawImage(factory, w, h, size, size, null);
+        else{
+			g.drawImage(factorymiddle, w, h, ww, hh, null);
+		}
+		int fW = w + ww/30;
         int fH = h+hh/11;
 
 		if(!isMiddle){
@@ -65,7 +72,7 @@ public class OneFactoryPanel {
         }
     }
 	else{
-		//draw middle
+		//draw middle tiles
 	}
 }
 public void addTiles(){
