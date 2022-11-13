@@ -45,6 +45,11 @@ public void setCood(int x, int y){
 	x = x;
 	y = y;
 
+	if(x>=205 && x<=423 && y>=312 && y<=536 ){
+//its in the middle
+	}
+
+
 }
 	public void paint(Graphics g, int Width, int Height) {
 //private static final int WIDTH =1920;
