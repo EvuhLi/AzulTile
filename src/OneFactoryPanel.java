@@ -72,7 +72,7 @@ public class OneFactoryPanel {
         }
     }
 	else{
-		//draw middle tiles
+		//draw middle
 	}
 }
 public void addTiles(){
