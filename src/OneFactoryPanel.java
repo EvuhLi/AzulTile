@@ -54,7 +54,7 @@ public class OneFactoryPanel {
 
 		if(!isMiddle){
         for(int i = 0; i<TArr.size(); i++){
-            if(i==0)
+            if(i==0){
                 g.drawImage(TArr.get(i), fW, fH, tSize, tSize, null);
                 else if(i==1)
                 g.drawImage(TArr.get(i), w + ww/20, h + hh/18, tSize, tSize, null);
@@ -62,6 +62,7 @@ public class OneFactoryPanel {
                 g.drawImage(TArr.get(i), w + ww/30, h + hh/18, tSize, tSize, null);
                 else
                 g.drawImage(TArr.get(i), w + ww/20, h + hh/11, tSize, tSize, null);
+            }
         }
     }
 	else{
