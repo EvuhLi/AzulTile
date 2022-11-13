@@ -44,7 +44,9 @@ public class Row{
             }
         }
     }
-
+    public ArrayList<Tile> getDiscard(){
+        return discard;
+    }
     public ArrayList<Tile[]> getRows(){
         return rows;
     }

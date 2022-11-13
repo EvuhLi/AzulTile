@@ -18,7 +18,10 @@ public class Player {
         row = new Row();
         tilePicked.add(new Tile("red"));
     }
-    //public void transferDiscard
+    public void transferDiscard(){
+        b.addToDiscard(row.getDiscard());
+        row.getDiscard().clear();
+    }
     public Board getBoard(){
         return b;
     }
@@ -56,7 +59,7 @@ public class Player {
         if(rand == 3) color = "teal";
         if(rand == 4) color = "yellow";
         if(rand == 5) color = "blue";
-        for(int c = 0; c < 2; c++){
+        for(int c = 0; c < 5; c++){
             tilePicked.add(new Tile(color));
         }
     }
