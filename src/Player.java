@@ -45,8 +45,8 @@ public class Player {
     }
     public void addToRow(int r){
         if(validRow(r)){
-        row.addToRow(r, tilePicked);
-        addRandom();
+            row.addToRow(r, tilePicked);
+            addRandom();
         }    
     }
     public void addRandom(){
