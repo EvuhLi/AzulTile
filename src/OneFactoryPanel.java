@@ -9,14 +9,16 @@ import java.util.*;
 public class OneFactoryPanel {
 
     private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle;
-    private ArrayList<BufferedImage>TArr;
+    private ArrayList<Tile>TArr;
     private TreeMap<String, Integer>possibleT;
 
+	private Tile t1, t2, t3, t4;
 	private boolean isMiddle = false;
 	private boolean M;
 	private Factory ffs;
     public OneFactoryPanel() {
         try {
+
 
 			//ffs = new Factory(M);
             TArr = new ArrayList<>();
@@ -44,7 +46,7 @@ public class OneFactoryPanel {
 	private void setisMiddle(boolean M){
 	    M=M;
 	}
-    public void setArray(ArrayList<BufferedImage>arr){
+    public void setArray(ArrayList<Tile>arr){
         TArr = arr;
     }
     public void paintFactory(int w, int h, int ww, int hh, Graphics g) {
@@ -62,13 +64,13 @@ public class OneFactoryPanel {
 		if(!isMiddle){
         for(int i = 0; i<TArr.size(); i++){
             if(i==0)
-                g.drawImage(TArr.get(i), fW, fH, tSize, tSize, null);
+                g.drawImage(TArr.get(i).getImage(), fW, fH, tSize, tSize, null);
                 else if(i==1)
-                g.drawImage(TArr.get(i), w + ww/20, h + hh/18, tSize, tSize, null);
+                g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/18, tSize, tSize, null);
                 else if(i==2)
-                g.drawImage(TArr.get(i), w + ww/30, h + hh/18, tSize, tSize, null);
+                g.drawImage(TArr.get(i).getImage(), w + ww/30, h + hh/18, tSize, tSize, null);
                 else
-                g.drawImage(TArr.get(i), w + ww/20, h + hh/11, tSize, tSize, null);
+                g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/11, tSize, tSize, null);
         }
     }
 	else{
@@ -76,12 +78,15 @@ public class OneFactoryPanel {
 	}
 }
 public void addTiles(){
-    if(TArr.size()<=4){
-        TArr.add(red);
-        TArr.add(yellow);
-        TArr.add(red);
-        TArr.add(yellow);
-    }
+    t1 = new Tile("red");
+	t2 = new Tile("red");
+    t3 = new Tile("yellow");
+    t4 = new Tile("yellow");
+	TArr.add(t1);
+	TArr.add(t2);
+	TArr.add(t3);
+	TArr.add(t4);
+
 }
 public int getSize(){
     return TArr.size();
@@ -90,7 +95,7 @@ public int getSize(){
         g.drawImage(TChoose, 600, -55, 700, 400, null);
         HashMap<BufferedImage, Integer>ava = new HashMap<>();
         for(int i = 0; i<TArr.size(); i++){
-            BufferedImage temp = TArr.get(i);
+            BufferedImage temp = TArr.get(i).getImage();
             if(!ava.containsKey(temp)){
                 ava.put(temp, 1);
             }
@@ -104,7 +109,6 @@ public int getSize(){
             BufferedImage b = iter.next();
 			int x = ava.get(b);
 			g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-
 			if(b.equals(yellow)){
 				g.drawString(x+"", 1029, 68);
 			}
