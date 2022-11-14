@@ -4,8 +4,8 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-
+import java.awt.*;
+			
 public class MainMenuPanel implements Runnable{
 	
 	BufferedImage bkg, startGameLetter, startgamebg, logo, howtoplay;
