@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.lang.Math;
 
 public class Game {
      static ArrayList<Player> players;
@@ -7,14 +8,14 @@ public class Game {
      static ArrayList<Tile> discard;
      static ArrayList<Factory> factories;
      static Factory middle;
-     static int pickedRow;
+     static int turn;
      static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
      public Game(){
         players = new ArrayList<>();
         bag = new ArrayList<>();
         discard = new ArrayList<>();
         factories = new ArrayList<>();
-        pickedRow = -1;
+        
 
         players.add(new Player("red"));
         players.add(new Player("yellow"));
@@ -25,6 +26,7 @@ public class Game {
             factories.add(new Factory(false));
         }
         middle = new Factory(true);
+        turn = (int)(Math.random()*4) + 1;
         phase = 1;
 
         colors = new ArrayList<>();
@@ -35,7 +37,13 @@ public class Game {
         colors.add(new Tile("teal"));
 
         createBag();
+        players.get(1).getRow().clearRow(2);
 
+    }
+
+    public void playerOrder(){
+        int x = (int)(Math.random()*4) + 1;
+        players.get(x).setFirst(true);
     }
 
     public void createBag(){
@@ -47,9 +55,12 @@ public class Game {
         }
 
         Collections.shuffle(bag);
+        bag.add(new Tile("one"));
     }
 
-   
+    public void turn(){
+        turn = (turn+1)%4;
+    }
 
     public boolean checkEmpty(){
         for(Factory factory: factories){
@@ -88,14 +99,14 @@ public class Game {
         return players;
     }
     
-    public Player getPlayer(String color){ //delete this after your create the player arryalist
+    /*public Player getPlayer(String color){ //delete this after your create the player arryalist
         for(Player player: players){
             if(player.getColor().equals(color)){
                 return player;
             }
         }
         return players.get(0);
-    }
+    }*/
 
     public void resetFactories(){
         
