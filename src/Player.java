@@ -61,7 +61,7 @@ public class Player {
         if(rand == 3) color = "teal";
         if(rand == 4) color = "yellow";
         if(rand == 5) color = "blue";
-        for(int c = 0; c < 5; c++){
+        for(int c = 0; c < 2; c++){
             tilePicked.add(new Tile(color));
         }
     }
