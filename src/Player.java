@@ -6,6 +6,7 @@ public class Player {
     private Board b;
     private Row row;
     private String color;
+    private Tile first;
     private Boolean hasFirst;
     private ArrayList<Tile> tempDiscard;
 
@@ -22,6 +23,7 @@ public class Player {
         b.addToDiscard(row.getDiscard());
         row.getDiscard().clear();
     }
+
     public Board getBoard(){
         return b;
     }
