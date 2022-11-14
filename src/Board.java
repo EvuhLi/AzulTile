@@ -1,11 +1,14 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board{
     Tile[][] b = new Tile[5][5];
     String[][] colors = new String[5][5];
     int score = 0;
+    ArrayList<Tile> discard;
 
     public Board(){
+        discard = new ArrayList<>();
         colors[0][0] = "blue";
         colors[0][1] = "yellow";
         colors[0][2] = "red";
@@ -40,10 +43,23 @@ public class Board{
         return false;
     }
 
-
+    public ArrayList<Tile> getDiscard(){
+        return discard;
+    }
+    public void addToDiscard(ArrayList<Tile> arr){
+        discard.addAll(arr);
+    }
     public void addTiles(Row r){ 
-        int w = 0;
-        for (Tile[] row: r.getRows()){
+       /*  ArrayList<Tile[]> rows = r.getRows();
+        for ( int i = 0; i<rows.size(); i++){
+            if (r.rowIsFull(i)){
+                Tile[] atm = rows.get(i);
+                atm[atm.length - 1].onBoard = true; 
+
+            */  }
+      //  }
+     /*    int w = 0;
+        for (Tile[] row: r.getRows()){ // for each cant edit? 
             if (r.rowIsFull(w)){
                 row[row.length-1].onBoard = true;
                 int c = 0;
@@ -53,11 +69,11 @@ public class Board{
                     }
                 }
                 b[w][c] = row[row.length - 1];
-                Arrays.fill(row, null);
+                Arrays.fill(row, null); // move to discard (except 1st) + fill w/ null 
                 countScore(w, c);
             }
             w++;
-        }
+         } */
         // gah
             // if full 
                 // change last tile in arrayList to onboard true
@@ -66,7 +82,7 @@ public class Board{
                 // empty the rest of the row
                 // count score(r and c that we found by iterating through the colors matrix)
 
-    }
+ //  }
 
     public int countScore (int r, int c){
         score++;
@@ -84,6 +100,7 @@ public class Board{
         }
         return score;
     }
+    
     public boolean countEndScore(){ // need to implement
     //    int bonus = 0;
     //    return score + bonus;
