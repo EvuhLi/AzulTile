@@ -26,6 +26,9 @@ public class Row{
         }
         return true;
     }
+    public ArrayList<Tile> getDiscard(){
+        return discard;
+    }
 
     public void addToRow(int row, ArrayList<Tile> add){
         if(rowIsFull(row)) discard.addAll(add);
