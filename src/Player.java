@@ -83,6 +83,6 @@ public class Player {
         if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){  //checks if board already contains that color (cant place same tile color)
             return false;
         }
-        return true;
+        return true;//hihhgj
     }
 }
