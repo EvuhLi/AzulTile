@@ -124,6 +124,7 @@ public class PlayerPanel {
         }
     }
     public void drawTurn(Graphics g, int width, int height, Player player){
+        player.transferDiscard();
         g.drawImage(color(player.getColor()), width/2+40, height/2-110, 530, 360, null);
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
         g.setFont(new Font("Times New Roman", Font.BOLD, 75));
@@ -146,6 +147,13 @@ public class PlayerPanel {
             row++;
             start-=45;
         }
+        int x = 0;
+        for(int c = 0; c < player.getBoard().getDiscard().size() && c < 7; c++){
+            g.drawImage(player.getBoard().getDiscard().get(c).getImage(), width/2 + 70 + c * 98/2, height/2 + 170, 40, 40, null);
+        }
+        /*for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
+            g.drawImage(player.getBoard().getDiscard().get(c), x, height, x, row, x, start, x, c, null, null)
+        }*/
     }
     public static BufferedImage color (String color){
 		if(color.equals("red")) return redborder;
