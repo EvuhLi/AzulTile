@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import java.io.*;
@@ -6,7 +7,7 @@ import java.net.URL;
 import java.awt.*;
 			
 public class MainMenuPanel implements Runnable{
-			
+	
 	BufferedImage bkg, startGameLetter, startgamebg, logo, howtoplay;
 	boolean download = false;
 	String home = System.getProperty("user.home");
@@ -46,10 +47,10 @@ public class MainMenuPanel implements Runnable{
 			g.setFont(new Font("Algerian", Font.PLAIN, 25));
 			g.drawString("Instructions downloaded", 135, height/2+ 315);
 		}
-			
+		
 	}	
-				
-			
+	
+
 	@Override
 	public void run() {
 		try{
@@ -66,10 +67,12 @@ public class MainMenuPanel implements Runnable{
 			}
 			bout.close();
 			in.close();
-			}		
+
+		}		
 		catch(IOException ex){
 			ex.printStackTrace();
 		}
 	}
+
+	
 }
-			

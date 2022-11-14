@@ -29,8 +29,24 @@ public class Row{
 
     public void addToRow(int row, ArrayList<Tile> add){
         if(rowIsFull(row)) discard.addAll(add);
+        else{
+            int indx = 0;
+            int c = 0;
+            while(getRow(row)[indx] != null){
+                indx++;
+            }
+            while(!rowIsFull(row) && indx < getRow(row).length && add.size() > 0){
+                getRow(row)[indx] = add.remove(c);
+                indx++;
+            }
+            while(add.size() > 0){
+                discard.add(add.remove(0));
+            }
+        }
     }
-
+    public ArrayList<Tile> getDiscard(){
+        return discard;
+    }
     public ArrayList<Tile[]> getRows(){
         return rows;
     }
