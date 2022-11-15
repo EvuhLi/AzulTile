@@ -1,5 +1,4 @@
 import java.awt.*;
-
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,7 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
-	boolean start = true, build = false, score = false, factory = false, pickedF = false;
+	boolean start = true, build = false, score = false, factory = false, pickedF = false, pickRow = false;
 	MainMenuPanel menu;
 	AllFactoryPanel factoryP;
 	Game game;
@@ -97,6 +96,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			if(x>=600 && x<=1300 && y>=-50 && y<=350){
 				pickedF = false;
 				factory = false;
+				pickRow = true;
 				factoryP.setCood(x, y);
 				//game.getPlayers().get(0).addTiles(factoryP.getChosen());
 				//rows boolean = true or smth
@@ -139,7 +139,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				menu.hover = 2;
 			}
 		}
-		else{
+		else if(pickRow){
 		if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
 			board.hover = 0;
 		}

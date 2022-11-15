@@ -6,6 +6,7 @@ public class Player {
     private Board b;
     private Row row;
     private String color;
+    private Tile first;
     private Boolean hasFirst;
     private ArrayList<Tile> tempDiscard;
 
@@ -18,10 +19,7 @@ public class Player {
         row = new Row();
         tilePicked.add(new Tile("red"));
     }
-    public void transferDiscard(){
-        b.addToDiscard(row.getDiscard());
-        row.getDiscard().clear();
-    }
+    
     public Board getBoard(){
         return b;
     }
@@ -83,25 +81,6 @@ public class Player {
         if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){  //checks if board already contains that color (cant place same tile color)
             return false;
         }
-        return true;
-    }
-
-    public void rowToBoard (){
-        for ( int c = 0; c < 5; c++){
-            if (row.rowIsFull(c)){
-                row.getRow(c)[0].onBoard = true;
-                int temp = 0;
-                for ( int i = 0; i < 5; i ++){
-                    if (b.colors[c][i].equals(row.getRow(c)[0].getColor())){
-                        temp = i;
-                    }
-                }
-                b.b[c][temp] = row.getRow(c)[0];
-                for (int i = 5; i >= 1; i--){
-                    Game.discard.add(row.getRow(c)[i]);
-                    row.clearRow(c);
-                }
-            }
-        }
+        return true;//hihhgj
     }
 }

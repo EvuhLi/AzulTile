@@ -74,14 +74,24 @@ public class Game {
         }
 
         Collections.shuffle(bag);
-        discard = new ArrayList<>();
+        discard.clear();
+    }
+    public void transferDiscard(){
+        players.get(0).getBoard().addToDiscard(players.get(0).getRow().getDiscard());
+        players.get(0). getRow().getDiscard().clear();
+        if(players.get(0).getBoard().getDiscard().size() > 7){
+            for(int c = players.get(0).getBoard().getDiscard().size() -1; c > 6; c--){
+                discard.add(players.get(0).getBoard().getDiscard().remove(c));
+            }
+            System.out.println(discard.size());
+        }
     }
 
     public ArrayList<Factory> getFactories(){
         return factories;
     }
-    public void addToDiscard(ArrayList<Tile> arr){
-        discard.addAll(arr);
+    public void addToDiscard(Tile tile){
+        discard.add(tile);
     }
 
     public ArrayList<Player> getPlayers(){
