@@ -94,7 +94,7 @@ public class PlayerPanel {
             }
             row++;
             start-=16;
-        }        
+        }  
     }
     public void drawRight(Graphics g, Player player){
         g.drawImage(color(player.getColor()), 445, 35, 190, 130, null);
