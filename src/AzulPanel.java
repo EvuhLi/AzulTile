@@ -67,6 +67,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		System.out.println("loc is (" + x + "," + y + ")");
 		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
 		//need boolean for when player has picked tiles
+		if(pickRow){
 			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
 				game.getPlayers().get(0).addToRow(0);
 			}
@@ -82,8 +83,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
 				game.getPlayers().get(0).addToRow(4);
 			}
-				
-		 
+		}
 		
 		//after the start screen
 		if(factory){
