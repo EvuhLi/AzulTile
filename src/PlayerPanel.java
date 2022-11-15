@@ -41,12 +41,12 @@ public class PlayerPanel {
 			return;
 		}
     }
-    public void drawAll(Graphics g, int width, int height){
+    public void drawAll(Graphics g, int width, int height, boolean pickedF){
         g.drawImage(screenbg, 0, 0, width, height, null);
         drawLeft(g, game.getPlayers().get(3), width, height);
         drawMiddle(g, game.getPlayers().get(2), width, height); // logic needs change
         drawRight(g, game.getPlayers().get(1)); // logic needs change
-        drawTurn(g, width, height, game.getPlayers().get(0));
+        drawTurn(g, width, height, game.getPlayers().get(0), pickedF);
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
         if(hover > -1) drawHover(g, width, height);
@@ -123,14 +123,14 @@ public class PlayerPanel {
             }
         }
     }
-    public void drawTurn(Graphics g, int width, int height, Player player){
+    public void drawTurn(Graphics g, int width, int height, Player player, boolean pickedF){
         game.transferDiscard();
         g.drawImage(color(player.getColor()), width/2+40, height/2-110, 530, 360, null);
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
         g.setFont(new Font("Times New Roman", Font.BOLD, 75));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), width/2 + 100, height/2 + 305);
-        drawValidRows(g, player, width, height);
+        if(pickedF) drawValidRows(g, player, width, height);
         //DIMENSIONS: tiles are 40 by 40 and increment by 45 each time
 
         //row dimensions: 220 by 200

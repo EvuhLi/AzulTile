@@ -37,7 +37,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			board.drawAll(g, getWidth(), getHeight());
+			board.drawAll(g, getWidth(), getHeight(), pickRow);
 			factoryP.paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options

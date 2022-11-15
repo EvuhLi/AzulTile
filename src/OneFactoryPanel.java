@@ -118,4 +118,14 @@ public int getSize(){
 			}
         }
     }
+
+    public int getAmount(String color){ //jeanna can u use this to count tiles
+        int count = 0;
+        for(Tile tile: TArr){
+            if(tile.getColor().equals(color)){
+                count++;
+            }
+        }
+        return count;
+    }
 }
