@@ -19,6 +19,9 @@ public class Factory {
         }
         return count;
     }
+    public void setTiles(ArrayList<Tile>t){
+        tiles = t;
+    }
 
     public ArrayList<Tile> pickTiles(String color){
         ArrayList<Tile> picked = new ArrayList<>();

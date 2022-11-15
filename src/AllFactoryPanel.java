@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-
+import java.util.*;
 public class AllFactoryPanel{
 	private BufferedImage factory, azulBoard, factorymiddle;
 
@@ -90,13 +90,55 @@ public void setCood(int x1, int y1){
 	//its in the middle
 	}
 }
-//public ArrayList<Tile> getChosen(){
+public ArrayList<Tile> getChosen(){
+	
+ OneFactoryPanel temp = whichPanel();
+ ArrayList<Tile> arr = new ArrayList<>();
+ 
+ //add something later for it to only work if there is an occoruence of it
+ if(x>=829 && y>=40 && x<=1063 && y<=61){
+     //yellow
+     Tile x = new Tile("yellow");
+      int occ = temp.getAmount("yellow");
+      while(occ-->0)
+      arr.add(x);
+ }
+ if(x>=829 && x<=1063 && y>=72 && y<=96){
+     //blue
+     Tile x = new Tile("blue");
+	 int occ = temp.getAmount("blue");
+      while(occ-->0)
+      arr.add(x);
+ }
+ 
+ if(x>=829 && x<=1063 && y>=111 && y<=138){
+     //red
+     Tile x = new Tile("red");
+	 int occ = temp.getAmount("red");
+	 while(occ-->0)
+	 arr.add(x);
+ }
+ if(x>=829 && x<=1063 && y>=150 && y<=174){
+     //black
+     Tile x = new Tile("black");
+     int occ = temp.getAmount("black");
+	 while(occ-->0)
+	 arr.add(x);
+ }
+ if(x>=829 && x<=1063 && y>=183 && y<=209){
+     //teal
+     Tile x = new Tile("teal");
+     int occ = temp.getAmount("teal");
+     while(occ-->0)
+     arr.add(x); }
+ //bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player
 
-	//bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player 
-			//ArrayList<Tile> arr = new ArrayList<>();
+ 	for(int i = 0; i<arr.size(); i++){
+		System.out.print(arr.get(i).getColor()+" ");
+ 	}
+ 	return arr;
+}
 
-
-//}
 public void paint(Graphics g, int Width, int Height) {
 
 	int halfw = Width / 2;
