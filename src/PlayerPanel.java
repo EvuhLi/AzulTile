@@ -94,7 +94,7 @@ public class PlayerPanel {
             }
             row++;
             start-=16;
-        }        
+        }  
     }
     public void drawRight(Graphics g, Player player){
         g.drawImage(color(player.getColor()), 445, 35, 190, 130, null);
@@ -149,7 +149,6 @@ public class PlayerPanel {
         for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
             g.drawImage(player.getBoard().getDiscard().get(c).getImage(), width/2 + 69 + c*99/2, height/2 + 170, 40, 40, null);
         }
-
         
     }
     public static BufferedImage color (String color){

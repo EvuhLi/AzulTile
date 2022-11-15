@@ -97,8 +97,10 @@ public class Player {
                     }
                 }
                 b.b[c][temp] = row.getRow(c)[0];
-                
-                // move tiles from the row to the discard except 0
+                for (int i = 5; i >= 1; i--){
+                    Game.discard.add(row.getRow(c)[i]);
+                    row.clearRow(c);
+                }
             }
         }
     }
