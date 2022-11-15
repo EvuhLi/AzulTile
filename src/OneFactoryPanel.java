@@ -12,6 +12,7 @@ public class OneFactoryPanel {
     private ArrayList<Tile>TArr;
     private TreeMap<String, Integer>possibleT;
 
+    private Game g = new Game();
 	private Tile t1, t2, t3, t4;
 	private boolean isMiddle = false;
 	private boolean M;
@@ -20,7 +21,8 @@ public class OneFactoryPanel {
         try {
 
 
-			//ffs = new Factory(M);
+            
+			ffs = new Factory(isMiddle);
             TArr = new ArrayList<>();
             possibleT = new TreeMap<>();
 			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
@@ -32,20 +34,21 @@ public class OneFactoryPanel {
             black = ImageIO.read(new File("src/images/black tile.png"));
             TChoose = ImageIO.read(new File("src/images/TileChoosing.png"));
             factory = ImageIO.read(new File("src/images/factory.png"));
-            if(!isMiddle)
+            if(!isMiddle){
 			addTiles();
+            ffs.setTiles(TArr);
+            }
            
         } catch (Exception e) {
             return;
         }
     }
 
+    
 	public void isMiddle(){
 		isMiddle = true;
 	}
-	private void setisMiddle(boolean M){
-	    M=M;
-	}
+	
     public void setArray(ArrayList<Tile>arr){
         TArr = arr;
     }
@@ -78,6 +81,7 @@ public class OneFactoryPanel {
 	}
 }
 public void addTiles(){
+
     t1 = new Tile("red");
 	t2 = new Tile("red");
     t3 = new Tile("yellow");
@@ -87,39 +91,32 @@ public void addTiles(){
 	TArr.add(t3);
 	TArr.add(t4);
 
+    //figure out how to get random tiles now
 }
 public int getSize(){
     return TArr.size();
 }
     public void paintChoosing(Graphics g){
         g.drawImage(TChoose, 600, -55, 700, 400, null);
-        HashMap<String, Integer>ava = new HashMap<>();
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
+
         for(int i = 0; i<TArr.size(); i++){
             Tile temp = TArr.get(i);
 			String c = temp.getColor();
-            if(!ava.containsKey(c)){
-                ava.put(c, 1);
+
+            if(c.equals("yellow")){
+                int x = getAmount("yellow");
+                g.drawString(x+"", 1029, 68);
             }
-            else{
-                ava.put(c, ava.get(c)+1);
-            } 
-        }
-        Set<String> s = ava.keySet();
-        Iterator<String> iter = s.iterator();
-        while(iter.hasNext()){
-            String b = iter.next();
-			int x = ava.get(b);
-			g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-			if(b.equals("yellow")){
-				g.drawString(x+"", 1029, 68);
-			}
-			else if(b.equals("red")){
-				g.drawString(x+"", 1029, 142);
-			}
+            else if(c.equals("red")){
+                int x = getAmount("red");
+                g.drawString(x+"", 1029, 142);
+            }
+            //finish this out 
         }
     }
 
-    public int getAmount(String color){ //jeanna can u use this to count tiles
+    public int getAmount(String color){ //jeanna can u use this to count tiles yes bbbg 
         int count = 0;
         for(Tile tile: TArr){
             if(tile.getColor().equals(color)){

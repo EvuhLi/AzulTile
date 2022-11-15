@@ -98,7 +98,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				factory = false;
 				pickRow = true;
 				factoryP.setCood(x, y);
-				//game.getPlayers().get(0).addTiles(factoryP.getChosen());
+				game.getPlayers().get(0).addTiles(factoryP.getChosen());
 				//rows boolean = true or smth
 			}				
 
