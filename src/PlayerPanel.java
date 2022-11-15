@@ -124,7 +124,7 @@ public class PlayerPanel {
         }
     }
     public void drawTurn(Graphics g, int width, int height, Player player){
-        player.transferDiscard();
+        game.transferDiscard();
         g.drawImage(color(player.getColor()), width/2+40, height/2-110, 530, 360, null);
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
         g.setFont(new Font("Times New Roman", Font.BOLD, 75));

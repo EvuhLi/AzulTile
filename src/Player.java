@@ -19,11 +19,7 @@ public class Player {
         row = new Row();
         tilePicked.add(new Tile("red"));
     }
-    public void transferDiscard(){
-        b.addToDiscard(row.getDiscard());
-        row.getDiscard().clear();
-    }
-
+    
     public Board getBoard(){
         return b;
     }
