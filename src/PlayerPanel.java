@@ -112,7 +112,18 @@ public class PlayerPanel {
             }
             row++;
             start-= 16;
-        }        
+        } // board 
+        int xpos= 545;
+        int ypos= 44;
+        for ( int r = 0; r < 5; r++){
+            for ( int c = 0; c < 5; c++){
+                if (player.getBoard().b[r][c] != null) {
+                g.drawImage(player.getBoard().b[r][c].getImage(),xpos, ypos, 15, 15, null);
+                }
+                ypos +=16; 
+            }
+            xpos+= 16;
+        }
     }
     public void drawValidRows(Graphics g, Player p, int width, int height){
         if(game.phase == 1 && p.getPicked().size() > 0){
@@ -150,7 +161,19 @@ public class PlayerPanel {
         for(int c = 0; c < player.getBoard().getDiscard().size() && c < 7; c++){
             g.drawImage(player.getBoard().getDiscard().get(c).getImage(), width/2 + 70 + c * 98/2, height/2 + 170, 40, 40, null);
         }
-        
+        // board coding
+        int xpos= width/3 * 2 + 105;
+        int ypos= height/2 - 87;
+        for ( int r = 0; r < 5; r++){
+            for ( int c = 0; c < 5; c++){
+                if (player.getBoard().b[r][c] != null) {
+                g.drawImage(player.getBoard().b[r][c].getImage(),xpos, ypos, 40, 40, null);
+                }
+                ypos +=45; 
+            }
+            xpos+= 45;
+        }
+
     }
     public static BufferedImage color (String color){
 		if(color.equals("red")) return redborder;
