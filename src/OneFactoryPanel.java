@@ -82,8 +82,8 @@ public class OneFactoryPanel {
 }
 public void addTiles(){
 
-    t1 = new Tile("red");
-	t2 = new Tile("red");
+    t1 = new Tile("teal");
+	t2 = new Tile("black");
     t3 = new Tile("yellow");
     t4 = new Tile("yellow");
 	TArr.add(t1);
@@ -112,7 +112,18 @@ public int getSize(){
                 int x = getAmount("red");
                 g.drawString(x+"", 1029, 142);
             }
-            //finish this out 
+            else if(c.equals("blue")){
+                int x = getAmount("blue");
+                g.drawString(x+"", 1029, 105);
+            }
+            else if(c.equals("black")){
+                int x = getAmount("black");
+                g.drawString(x+"", 1029, 173);
+            }
+            else{
+                int x = getAmount("teal");
+                g.drawString(x+"", 1029, 208);
+            }
         }
     }
 
