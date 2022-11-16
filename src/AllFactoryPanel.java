@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 public class AllFactoryPanel{
 	private BufferedImage factory, azulBoard, factorymiddle;
-
+	public boolean chosenTile = false;
 	OneFactoryPanel f1 = new OneFactoryPanel();
 	OneFactoryPanel f2 = new OneFactoryPanel();
 	OneFactoryPanel f3 = new OneFactoryPanel();
@@ -22,10 +22,20 @@ public class AllFactoryPanel{
 	OneFactoryPanel f8 = new OneFactoryPanel();
 	OneFactoryPanel f9 = new OneFactoryPanel();
 	OneFactoryPanel middle = new OneFactoryPanel();
+	OneFactoryPanel temp;
 
 	private int x, y;
 
 	public AllFactoryPanel() {
+		/*f1.setArray(random()); //i just wanted to test each factory with different tiles
+		f2.setArray(random()); //IT WORKS :D
+		f3.setArray(random());
+		f4.setArray(random());
+		f5.setArray(random());
+		f6.setArray(random());
+		f7.setArray(random());
+		f8.setArray(random());
+		f9.setArray(random());*/
 
 		try {
             factory = ImageIO.read(new File("src/images/factory.png"));
@@ -37,49 +47,62 @@ public class AllFactoryPanel{
 		}
 	}
 
+public ArrayList<Tile> random(){
+	ArrayList<Tile> arr = new ArrayList<>();
+	for(int c = 0; c < 4; c++){
+		arr.add(color((int)(Math.random()*5) + 1));
+	}
+	return arr;
+}
+public Tile color (int num){
+	if(num == 1) return new Tile("red");
+	if(num == 2) return new Tile("black");
+	if(num == 3) return new Tile("teal");
+	if(num == 4) return new Tile("yellow");
+	else return new Tile("blue");
+}
 public void choosing(Graphics g){
-	OneFactoryPanel temp = whichPanel();
+	whichPanel();
 	temp.paintChoosing(g);
 }
-public OneFactoryPanel whichPanel(){
+public void whichPanel(){
 	if(x>=265 && x<=362 && y>=200 && y<=297){
 		System.out.println("f1!");
 
-		return f1;
+		temp = f1;
 	}
 	else if(x>=128 && x<=233 && y>=243 && y<=336){
 		System.out.println("f2!");
-		return f2;
+		temp = f2;
 	}
 	else if(x>=94 && x<=194 && y>=357 && y<=453){
 		System.out.println("f3!");
-		return f3;
+		temp = f3;
 	}
 	else if(x>=95 && x<=196 && y>=468 && y<=567){
 		System.out.println("f4!");
-		return f4;
+		temp = f4;
 	}
 	else if(x>=201 && x<=299 && y>=545 && y<=637){
 		System.out.println("f5!");
-		return f5;
+		temp = f5;
 	}
 	else if(x>=328 && x<=427 && y>=544 && y<=644){
 		System.out.println("f6!");
-		return f6;
+		temp = f6;
 	}
 	else if(x>=432 && x<=530 && y>=469 && y<=565){
 		System.out.println("f7!");
-		return f7;
+		temp = f7;
 	}
 	else if(x>=435 && x<=533 && y>=355 && y<=450){
 		System.out.println("f8!");
-		return f8;
+		temp = f8;
 	}
-	else {
+	else if(x >= 374 && y >= 244 && x <= 470 && y <= 338){
 		System.out.println("f9!");
-		return f9;
+		temp = f9;
 	}
-	
 }
 public void setCood(int x1, int y1){
 	System.out.println("here");
@@ -92,7 +115,6 @@ public void setCood(int x1, int y1){
 }
 public ArrayList<Tile> getChosen(){
 	
- OneFactoryPanel temp = whichPanel();
  ArrayList<Tile> arr = new ArrayList<>();
  
  //add something later for it to only work if there is an occoruence of it
@@ -100,37 +122,48 @@ public ArrayList<Tile> getChosen(){
      //yellow
      Tile x = new Tile("yellow");
       int occ = temp.getAmount("yellow");
-      while(occ-->0)
-      arr.add(x);
+      if(occ > 0) while(occ-->0){
+		arr.add(x);
+		chosenTile = true;
+	  } 
  }
  if(x>=829 && x<=1063 && y>=72 && y<=96){
      //blue
      Tile x = new Tile("blue");
 	 int occ = temp.getAmount("blue");
-      while(occ-->0)
-      arr.add(x);
+	 if(occ > 0) while(occ-->0){
+		arr.add(x);
+		chosenTile = true;
+	  } 
  }
  
  if(x>=829 && x<=1063 && y>=111 && y<=138){
      //red
      Tile x = new Tile("red");
 	 int occ = temp.getAmount("red");
-	 while(occ-->0)
-	 arr.add(x);
+	 if(occ > 0) while(occ-->0){
+		arr.add(x);
+		chosenTile = true;
+	  } 
  }
  if(x>=829 && x<=1063 && y>=150 && y<=174){
      //black
      Tile x = new Tile("black");
      int occ = temp.getAmount("black");
-	 while(occ-->0)
-	 arr.add(x);
+	 if(occ > 0) while(occ-->0){
+		arr.add(x);
+		chosenTile = true;
+	} 
  }
  if(x>=829 && x<=1063 && y>=183 && y<=209){
      //teal
      Tile x = new Tile("teal");
      int occ = temp.getAmount("teal");
-     while(occ-->0)
-     arr.add(x); }
+     if(occ > 0) while(occ-->0){
+		arr.add(x);
+		chosenTile = true;
+	 	} 
+ 	}
  //bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player
 
  	for(int i = 0; i<arr.size(); i++){

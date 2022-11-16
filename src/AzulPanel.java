@@ -94,12 +94,14 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			}
 			//if its within the choosing image, then move on to next stage
 			if(x>=600 && x<=1300 && y>=-50 && y<=350){
-				pickedF = false;
-				factory = false;
-				pickRow = true;
+				
 				factoryP.setCood(x, y);
 				game.getPlayers().get(0).addTiles(factoryP.getChosen());
-				//rows boolean = true or smth
+				if(factoryP.chosenTile){
+					pickedF = false;
+					factory = false;
+					pickRow = true;
+				}
 			}				
 
 		}

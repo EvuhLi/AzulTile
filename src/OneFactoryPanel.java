@@ -99,35 +99,37 @@ public int getSize(){
     public void paintChoosing(Graphics g){
         g.drawImage(TChoose, 600, -55, 700, 400, null);
         g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
+        g.drawString(""+getAmount("yellow"), 1029, 68);
+        g.drawString("" + getAmount("red"), 1029, 141);
+        g.drawString("" + getAmount("blue"), 1029, 104);
+        g.drawString("" + getAmount("black"), 1029, 173);
+        g.drawString("" + getAmount("teal"), 1029, 208);
 
-        for(int i = 0; i<TArr.size(); i++){
+
+        /*or(int i = 0; i<TArr.size(); i++){
             Tile temp = TArr.get(i);
 			String c = temp.getColor();
 
             if(c.equals("yellow")){
                 int x = getAmount("yellow");
-                g.drawString(x+"", 1029, 68);
             }
             else if(c.equals("red")){
                 int x = getAmount("red");
-                g.drawString(x+"", 1029, 142);
             }
             else if(c.equals("blue")){
                 int x = getAmount("blue");
-                g.drawString(x+"", 1029, 105);
             }
             else if(c.equals("black")){
                 int x = getAmount("black");
-                g.drawString(x+"", 1029, 173);
             }
             else{
                 int x = getAmount("teal");
                 g.drawString(x+"", 1029, 208);
             }
-        }
+        }*/
     }
 
-    public int getAmount(String color){ //jeanna can u use this to count tiles yes bbbg 
+    public int getAmount(String color){ //jeanna can u use this to count tiles yes bbbg baeeee !!😊😊😊😊😊😊😊
         int count = 0;
         for(Tile tile: TArr){
             if(tile.getColor().equals(color)){
