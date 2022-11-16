@@ -83,4 +83,23 @@ public class Player {
         }
         return true;//hihhgj
     }
+   public void rowToBoard (){
+    for ( int c = 0; c < 5; c++){
+        if (row.rowIsFull(c)){
+            row.getRow(c)[0].onBoard = true;
+            int temp = 0;
+            for ( int i = 0; i < 5; i ++){
+                if (b.colors[c][i].equals(row.getRow(c)[0].getColor())){
+                    temp = i;
+                }
+            }
+            b.b[c][temp] = row.getRow(c)[0];
+            for (int i = 5; i >= 1; i--){
+                Game.discard.add(row.getRow(c)[i]);
+                row.clearRow(c);
+            }
+        }
+    }
+}
+
 }
