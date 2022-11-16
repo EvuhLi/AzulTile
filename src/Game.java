@@ -9,6 +9,7 @@ public class Game {
      static int pickedRow;
      static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
      public Game(){
+       
         players = new ArrayList<>();
         bag = new ArrayList<>();
         discard = new ArrayList<>();
@@ -31,6 +32,11 @@ public class Game {
 
         createBag();
         resetFactories();
+        int randFirstPlayer = (int)(Math.random()*5);
+        for(int c = 0; c < randFirstPlayer; c++){
+            nextPlayer();
+            
+        }
 
     }
     public AllFactoryPanel getfactoryP(){

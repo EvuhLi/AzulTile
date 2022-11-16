@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
-	boolean start = true, build = false, score = false, factory = false, pickedF = false;
+	boolean start = true, factory = false, pickedF = false;
 	int phase = 0;
 	MainMenuPanel menu;
 	Game game;
@@ -42,11 +42,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(factory && pickedF){
 			game.getfactoryP().choosing(g);
 		}
-		if(phase == 2){
-			game.nextPlayer();
-			phase = 0;
-			factory = true;
-		}
+		
 	
 	}
 
@@ -68,6 +64,29 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
+		if(factory){
+			pickedF = true;
+			//if its within factory range at all
+			if(x>=94 && x<=531 && y>=199 && y<=649){
+				game.getfactoryP().setCood(x, y);
+			}
+			//if its within the choosing image, then move on to next stage
+			if(x>=600 && x<=1300 && y>=-50 && y<=350){
+				
+				game.getfactoryP().setCood(x, y);
+				game.getPlayers().get(0).addTiles(game.getfactoryP().getChosen());
+				if(game.getfactoryP().chosenTile){
+					pickedF = false;
+					factory = false;
+					phase = 1;
+				}
+			}			
+		}
+		if(phase == 2){
+			phase = 0;
+			factory = true;
+			game.nextPlayer();
+		}
 		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
 		//need boolean for when player has picked tiles
 		if(phase == 1){
@@ -94,25 +113,9 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		
 		//after the start screen
-		if(factory){
-			pickedF = true;
-			//if its within factory range at all
-			if(x>=94 && x<=531 && y>=199 && y<=649){
-				game.getfactoryP().setCood(x, y);
-			}
-			//if its within the choosing image, then move on to next stage
-			if(x>=600 && x<=1300 && y>=-50 && y<=350){
-				
-				game.getfactoryP().setCood(x, y);
-				game.getPlayers().get(0).addTiles(game.getfactoryP().getChosen());
-				if(game.getfactoryP().chosenTile){
-					pickedF = false;
-					factory = false;
-					phase = 1;
-				}
-			}				
+			
 
-		}
+		
 		if(start){
 			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 				start = false;

@@ -30,16 +30,7 @@ public class AllFactoryPanel{
 	public AllFactoryPanel() {
 		OneFactoryPanel arr [] = new OneFactoryPanel[]{f1, f2, f3, f4, f5, f6, f7, f8, f9};//only used to add factories to the arraylist
 		factories = new ArrayList<>(Arrays.asList(arr));
-		/*f1.setArray(random()); //i just wanted to test each factory with different tiles
-		f2.setArray(random()); //IT WORKS :D
-		f3.setArray(random());
-		f4.setArray(random());
-		f5.setArray(random());
-		f6.setArray(random());
-		f7.setArray(random());
-		f8.setArray(random());
-		f9.setArray(random());*/
-
+		
 		try {
             factory = ImageIO.read(new File("src/images/factory.png"));
 			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
@@ -50,20 +41,6 @@ public class AllFactoryPanel{
 		}
 	}
 
-/*public ArrayList<Tile> random(){
-	ArrayList<Tile> arr = new ArrayList<>();
-	for(int c = 0; c < 4; c++){
-		arr.add(color((int)(Math.random()*5) + 1));
-	}
-	return arr;
-}
-public Tile color (int num){
-	if(num == 1) return new Tile("red");
-	if(num == 2) return new Tile("black");
-	if(num == 3) return new Tile("teal");
-	if(num == 4) return new Tile("yellow");
-	else return new Tile("blue");
-}*/
 public ArrayList<OneFactoryPanel> getArray(){
 	return factories;
 }
