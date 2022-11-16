@@ -6,12 +6,13 @@ import java.awt.*;
 
 public class EndScreenPanel{
 
-    private BufferedImage bkg;
+    private BufferedImage bkg, gray;
 
     public EndScreenPanel(){
         try{
 
             bkg = ImageIO.read(new File("src/images/azulejos.png"));
+            gray = ImageIO.read(new File("src/images/startgamebg.png"));
             
 
 
