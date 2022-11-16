@@ -15,7 +15,7 @@ public class Tile {
         
 
     }
-
+gi
     private void setPic(String color){
 
         try{
