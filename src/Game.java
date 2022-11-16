@@ -46,7 +46,9 @@ public class Game {
 
         Collections.shuffle(bag);
     }
-
+    public void nextPlayer(){
+        players.add(players.remove(0));
+    }
    
 
     

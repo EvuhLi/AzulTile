@@ -147,13 +147,10 @@ public class PlayerPanel {
             row++;
             start-=45;
         }
-        int x = 0;
         for(int c = 0; c < player.getBoard().getDiscard().size() && c < 7; c++){
             g.drawImage(player.getBoard().getDiscard().get(c).getImage(), width/2 + 70 + c * 98/2, height/2 + 170, 40, 40, null);
         }
-        /*for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
-            g.drawImage(player.getBoard().getDiscard().get(c), x, height, x, row, x, start, x, c, null, null)
-        }*/
+        
     }
     public static BufferedImage color (String color){
 		if(color.equals("red")) return redborder;
