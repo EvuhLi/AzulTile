@@ -5,26 +5,21 @@ public class Game {
      static ArrayList<Player> players;
      static ArrayList<Tile> bag, colors;
      static ArrayList<Tile> discard;
-     static ArrayList<Factory> factories;
-     static Factory middle;
+     static AllFactoryPanel factoryP;
      static int pickedRow;
      static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
      public Game(){
         players = new ArrayList<>();
         bag = new ArrayList<>();
         discard = new ArrayList<>();
-        factories = new ArrayList<>();
         pickedRow = -1;
-
+        factoryP = new AllFactoryPanel();
         players.add(new Player("red"));
         players.add(new Player("yellow"));
         players.add(new Player("green"));
         players.add(new Player("blue"));
 
-        for(int c = 0; c < 10; c++){
-            factories.add(new Factory(false));
-        }
-        middle = new Factory(true);
+       
         phase = 1;
 
         colors = new ArrayList<>();
@@ -35,9 +30,12 @@ public class Game {
         colors.add(new Tile("teal"));
 
         createBag();
+        resetFactories();
 
     }
-
+    public AllFactoryPanel getfactoryP(){
+        return factoryP;
+    }
     public void createBag(){
 
         for(int i = 0; i < 5; i++){
@@ -51,15 +49,7 @@ public class Game {
 
    
 
-    public boolean checkEmpty(){
-        for(Factory factory: factories){
-            if(!factory.isEmpty()) return false;
-        }
-        if(!middle.isEmpty())return false;
-        phase = 2;
-        return true;
-    }
-
+    
     public void resetBag(){
 
         if(bag.size() + discard.size() < 100){
@@ -87,9 +77,7 @@ public class Game {
         }
     }
 
-    public ArrayList<Factory> getFactories(){
-        return factories;
-    }
+    
     public void addToDiscard(Tile tile){
         discard.add(tile);
     }
@@ -97,18 +85,16 @@ public class Game {
     public ArrayList<Player> getPlayers(){
         return players;
     }
-    
-    public Player getPlayer(String color){ //delete this after your create the player arryalist
-        for(Player player: players){
-            if(player.getColor().equals(color)){
-                return player;
-            }
-        }
-        return players.get(0);
-    }
 
     public void resetFactories(){
-        
+        for(int c = 0; c < 9; c++){//iterates through each ractory
+            ArrayList<Tile> tempTile = new ArrayList<>();
+            for(int d = 0; d < 4; d++){//adds four tiles from bag
+                if(bag.size() < 1) resetBag();
+                tempTile.add(bag.remove(0));
+            }
+            factoryP.getArray().get(c).setArray(tempTile);
+        }
     }
 
     public ArrayList<Tile> getFour(){

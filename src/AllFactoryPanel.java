@@ -22,11 +22,14 @@ public class AllFactoryPanel{
 	OneFactoryPanel f8 = new OneFactoryPanel();
 	OneFactoryPanel f9 = new OneFactoryPanel();
 	OneFactoryPanel middle = new OneFactoryPanel();
+	ArrayList<OneFactoryPanel> factories;
 	OneFactoryPanel temp;
 
 	private int x, y;
 
 	public AllFactoryPanel() {
+		OneFactoryPanel arr [] = new OneFactoryPanel[]{f1, f2, f3, f4, f5, f6, f7, f8, f9};//only used to add factories to the arraylist
+		factories = new ArrayList<>(Arrays.asList(arr));
 		/*f1.setArray(random()); //i just wanted to test each factory with different tiles
 		f2.setArray(random()); //IT WORKS :D
 		f3.setArray(random());
@@ -47,7 +50,7 @@ public class AllFactoryPanel{
 		}
 	}
 
-public ArrayList<Tile> random(){
+/*public ArrayList<Tile> random(){
 	ArrayList<Tile> arr = new ArrayList<>();
 	for(int c = 0; c < 4; c++){
 		arr.add(color((int)(Math.random()*5) + 1));
@@ -60,12 +63,15 @@ public Tile color (int num){
 	if(num == 3) return new Tile("teal");
 	if(num == 4) return new Tile("yellow");
 	else return new Tile("blue");
+}*/
+public ArrayList<OneFactoryPanel> getArray(){
+	return factories;
 }
 public void choosing(Graphics g){
 	whichPanel();
 	temp.paintChoosing(g);
 }
-public void whichPanel(){
+public void whichPanel(){ //i cahnged this because otherwise whenever u clicked anywhere if would return f9 and that would change the chosing screen
 	if(x>=265 && x<=362 && y>=200 && y<=297){
 		System.out.println("f1!");
 
@@ -103,6 +109,7 @@ public void whichPanel(){
 		System.out.println("f9!");
 		temp = f9;
 	}
+	//else return f9; (it always returned this when u clicked near the choosing screen)
 }
 public void setCood(int x1, int y1){
 	System.out.println("here");

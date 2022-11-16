@@ -14,7 +14,6 @@ import java.awt.event.MouseMotionListener;
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
 	boolean start = true, build = false, score = false, factory = false, pickedF = false, pickRow = false;
 	MainMenuPanel menu;
-	AllFactoryPanel factoryP;
 	Game game;
 	PlayerPanel board;
 	int width, height;
@@ -23,7 +22,6 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 
 	public AzulPanel(int w, int h) {
 		menu = new MainMenuPanel();
-		factoryP = new AllFactoryPanel();
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		width = w;
@@ -38,11 +36,11 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		else{
 			board.drawAll(g, getWidth(), getHeight(), pickRow);
-			factoryP.paint(g, getWidth(), getHeight());
+			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
 		if(factory && pickedF){
-			factoryP.choosing(g);
+			game.getfactoryP().choosing(g);
 		}
 	
 	}
@@ -90,14 +88,14 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			pickedF = true;
 			//if its within factory range at all
 			if(x>=94 && x<=531 && y>=199 && y<=649){
-				factoryP.setCood(x, y);
+				game.getfactoryP().setCood(x, y);
 			}
 			//if its within the choosing image, then move on to next stage
 			if(x>=600 && x<=1300 && y>=-50 && y<=350){
 				
-				factoryP.setCood(x, y);
-				game.getPlayers().get(0).addTiles(factoryP.getChosen());
-				if(factoryP.chosenTile){
+				game.getfactoryP().setCood(x, y);
+				game.getPlayers().get(0).addTiles(game.getfactoryP().getChosen());
+				if(game.getfactoryP().chosenTile){
 					pickedF = false;
 					factory = false;
 					pickRow = true;

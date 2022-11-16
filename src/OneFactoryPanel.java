@@ -11,17 +11,13 @@ public class OneFactoryPanel {
     private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle;
     private ArrayList<Tile>TArr;
     private TreeMap<String, Integer>possibleT;
-
-    private Game g = new Game();
+    Game game;
 	private Tile t1, t2, t3, t4;
 	private boolean isMiddle = false;
 	private boolean M;
 	private Factory ffs;
     public OneFactoryPanel() {
-        try {
-
-
-            
+        try {           
 			ffs = new Factory(isMiddle);
             TArr = new ArrayList<>();
             possibleT = new TreeMap<>();
@@ -34,10 +30,10 @@ public class OneFactoryPanel {
             black = ImageIO.read(new File("src/images/black tile.png"));
             TChoose = ImageIO.read(new File("src/images/TileChoosing.png"));
             factory = ImageIO.read(new File("src/images/factory.png"));
-            if(!isMiddle){
-			addTiles();
-            ffs.setTiles(TArr);
-            }
+            //if(!isMiddle){
+			//addTiles();
+            //ffs.setTiles(TArr);
+            
            
         } catch (Exception e) {
             return;
@@ -80,7 +76,7 @@ public class OneFactoryPanel {
 		//draw middle
 	}
 }
-public void addTiles(){
+/*public void addTiles(){
 
     t1 = new Tile("teal");
 	t2 = new Tile("black");
@@ -91,8 +87,9 @@ public void addTiles(){
 	TArr.add(t3);
 	TArr.add(t4);
 
-    //figure out how to get random tiles now
-}
+    //figure out how to get random tiles now/
+    /*ArrayList<Tile>  
+}*/
 public int getSize(){
     return TArr.size();
 }
