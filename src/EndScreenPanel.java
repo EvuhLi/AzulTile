@@ -12,6 +12,7 @@ public class EndScreenPanel{
         try{
 
             bkg = ImageIO.read(new File("src/images/azulejos.png"));
+            
 
 
         }  
@@ -24,7 +25,7 @@ public class EndScreenPanel{
     public void drawMenu(Graphics g) {
 
         g.drawImage(bkg, 0, 0, 1920, 1080, null);
-        
+
 		
 		
 	}	
