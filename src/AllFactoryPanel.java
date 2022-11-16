@@ -51,42 +51,57 @@ public void choosing(Graphics g){
 public void whichPanel(){ //i cahnged this because otherwise whenever u clicked anywhere if would return f9 and that would change the chosing screen
 	if(x>=265 && x<=362 && y>=200 && y<=297){
 		System.out.println("f1!");
-
+		changeClicked(f1);
 		temp = f1;
 	}
 	else if(x>=128 && x<=233 && y>=243 && y<=336){
+		changeClicked(f2);
 		System.out.println("f2!");
 		temp = f2;
 	}
 	else if(x>=94 && x<=194 && y>=357 && y<=453){
 		System.out.println("f3!");
+		changeClicked(f3);
 		temp = f3;
 	}
 	else if(x>=95 && x<=196 && y>=468 && y<=567){
 		System.out.println("f4!");
+		changeClicked(f4);
 		temp = f4;
 	}
 	else if(x>=201 && x<=299 && y>=545 && y<=637){
 		System.out.println("f5!");
+		changeClicked(f5);
 		temp = f5;
 	}
 	else if(x>=328 && x<=427 && y>=544 && y<=644){
 		System.out.println("f6!");
+		changeClicked(f6);
 		temp = f6;
 	}
 	else if(x>=432 && x<=530 && y>=469 && y<=565){
 		System.out.println("f7!");
+		changeClicked(f7);
 		temp = f7;
 	}
 	else if(x>=435 && x<=533 && y>=355 && y<=450){
 		System.out.println("f8!");
+		changeClicked(f8);
 		temp = f8;
 	}
 	else if(x >= 374 && y >= 244 && x <= 470 && y <= 338){
 		System.out.println("f9!");
+		changeClicked(f9);
 		temp = f9;
 	}
 	//else return f9; (it always returned this when u clicked near the choosing screen)
+}
+
+public void changeClicked(OneFactoryPanel fact){
+	for(int c = 0; c < factories.size(); c++){
+		if(factories.get(c).equals(fact))factories.get(c).clicked = true;
+		else factories.get(c).clicked = false;
+	}
 }
 public void setCood(int x1, int y1){
 	System.out.println("here");

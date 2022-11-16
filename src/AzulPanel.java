@@ -85,6 +85,8 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(phase == 2){
 			phase = 0;
 			factory = true;
+			game.getfactoryP().changeClicked(null);
+			game.getfactoryP().temp = null;
 			game.nextPlayer();
 		}
 		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
@@ -153,22 +155,22 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			}
 		}
 		else if(phase == 1){
-		if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
-			board.hover = 0;
+			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
+				board.hover = 0;
+			}
+			if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
+				board.hover = 1;
+			}
+			if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
+				board.hover = 2;
+			}
+			if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
+				board.hover = 3;
+			}
+			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
+				board.hover = 4;
+			} 
 		}
-		if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
-			board.hover = 1;
-		}
-		if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
-			board.hover = 2;
-		}
-		if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
-			board.hover = 3;
-		}
-		if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
-			board.hover = 4;
-		} 
-		}
-		repaint();
+		if(phase == 1 || start) repaint();
 	}
 }

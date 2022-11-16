@@ -6,14 +6,14 @@ import java.io.*;
 import java.util.*;
 
 
-public class OneFactoryPanel {
-
-    private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle;
+public class OneFactoryPanel{
+    private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle, highlight;
     private ArrayList<Tile>TArr;
     private TreeMap<String, Integer>possibleT;
     Game game;
 	private Tile t1, t2, t3, t4;
 	private boolean isMiddle = false;
+    boolean clicked;
 	private boolean M;
 	private Factory ffs;
     public OneFactoryPanel() {
@@ -22,7 +22,7 @@ public class OneFactoryPanel {
             TArr = new ArrayList<>();
             possibleT = new TreeMap<>();
 			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
-
+            highlight = ImageIO.read(new File("src/images/yellowfactory.png"));
             blue = ImageIO.read(new File("src/images/blue tile.png"));
             red = ImageIO.read(new File("src/images/red tile.png"));
             yellow = ImageIO.read(new File("src/images/yellow tile.png"));
@@ -51,9 +51,8 @@ public class OneFactoryPanel {
     public void paintFactory(int w, int h, int ww, int hh, Graphics g) {
         int size = ww / 10;
         int tSize = ww / 50;
-      
-		if(!isMiddle)
-		g.drawImage(factory, w, h, size, size, null);
+        if(clicked) g.drawImage(highlight, w +2, h + 6, size - 3, size- 3, null);
+		if(!isMiddle) g.drawImage(factory, w, h, size, size, null);
         else{
 			g.drawImage(factorymiddle, w, h, ww, hh, null);
 		}
