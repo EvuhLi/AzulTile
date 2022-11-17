@@ -95,6 +95,11 @@ public void whichPanel(){ //i cahnged this because otherwise whenever u clicked 
 		changeClicked(f9);
 		temp = f9;
 	}
+	else if(x>=205 && x<=423 && y>=312 && y<=536 ){
+		System.out.println("middle");
+		changeClicked(middle);
+		temp = middle;
+	}
 	//else return f9; (it always returned this when u clicked near the choosing screen)
 }
 
@@ -126,7 +131,7 @@ public ArrayList<Tile> getChosen(){
 	//get an array list for discarded and dont reset it each time so it draws out everything
 	 
 	//add something later for it to only work if there is an occoruence of it
-	if(x>=829 && y>=40 && x<=1063 && y<=61){
+	if(x>=829 && y>=40 && x<=1063 && y<=61 && temp.getAmount("yellow")>0){
 		//yellow
 		Tile x = new Tile("yellow");
 		 int occ = temp.getAmount("yellow");
