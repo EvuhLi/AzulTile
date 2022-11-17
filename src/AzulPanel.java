@@ -42,7 +42,14 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(factory && pickedF){
 			game.getfactoryP().choosing(g);
 		}
-		
+		if(phase == 1){
+			//clear that factory you picked
+			OneFactoryPanel cur = game.getfactoryP().getTemp();
+			OneFactoryPanel temp = game.getfactoryP().middle;
+			temp.drawMiddle(g);
+			cur.reset();
+		}
+ 
 	
 	}
 

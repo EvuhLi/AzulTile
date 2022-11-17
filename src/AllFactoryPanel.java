@@ -112,64 +112,84 @@ public void setCood(int x1, int y1){
 	//its in the middle
 	}
 }
-public ArrayList<Tile> getChosen(){
-	
- ArrayList<Tile> arr = new ArrayList<>();
- 
- //add something later for it to only work if there is an occoruence of it
- if(x>=829 && y>=40 && x<=1063 && y<=61){
-     //yellow
-     Tile x = new Tile("yellow");
-      int occ = temp.getAmount("yellow");
-      if(occ > 0) while(occ-->0){
-		arr.add(x);
-		chosenTile = true;
-	  } 
- }
- if(x>=829 && x<=1063 && y>=72 && y<=96){
-     //blue
-     Tile x = new Tile("blue");
-	 int occ = temp.getAmount("blue");
-	 if(occ > 0) while(occ-->0){
-		arr.add(x);
-		chosenTile = true;
-	  } 
- }
- 
- if(x>=829 && x<=1063 && y>=111 && y<=138){
-     //red
-     Tile x = new Tile("red");
-	 int occ = temp.getAmount("red");
-	 if(occ > 0) while(occ-->0){
-		arr.add(x);
-		chosenTile = true;
-	  } 
- }
- if(x>=829 && x<=1063 && y>=150 && y<=174){
-     //black
-     Tile x = new Tile("black");
-     int occ = temp.getAmount("black");
-	 if(occ > 0) while(occ-->0){
-		arr.add(x);
-		chosenTile = true;
-	} 
- }
- if(x>=829 && x<=1063 && y>=183 && y<=209){
-     //teal
-     Tile x = new Tile("teal");
-     int occ = temp.getAmount("teal");
-     if(occ > 0) while(occ-->0){
-		arr.add(x);
-		chosenTile = true;
-	 	} 
- 	}
- //bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player
-
- 	for(int i = 0; i<arr.size(); i++){
-		System.out.print(arr.get(i).getColor()+" ");
- 	}
- 	return arr;
+public OneFactoryPanel getTemp(){
+	return temp;
 }
+public ArrayList<Tile> getChosen(){
+  
+	ArrayList<Tile> arr = new ArrayList<>();
+	ArrayList<Tile> discard = new ArrayList<>();
+	//remove the occurences of the tile from the arraylist in one factory panel
+	//move the leftover tiles to the middle
+	 
+	 
+	//get an array list for discarded and dont reset it each time so it draws out everything
+	 
+	//add something later for it to only work if there is an occoruence of it
+	if(x>=829 && y>=40 && x<=1063 && y<=61){
+		//yellow
+		Tile x = new Tile("yellow");
+		 int occ = temp.getAmount("yellow");
+		 if(occ > 0) while(occ-->0){
+		   arr.add(x);
+		   chosenTile = true;
+		 }
+		 //Collections.addAll()
+		 discard = temp.getDiscarded("yellow");
+	}
+	if(x>=829 && x<=1063 && y>=72 && y<=96){
+		//blue
+		Tile x = new Tile("blue");
+		int occ = temp.getAmount("blue");
+		if(occ > 0) while(occ-->0){
+		   arr.add(x);
+		   chosenTile = true;
+		 }
+		 discard = temp.getDiscarded("bluew");
+	}
+	if(x>=829 && x<=1063 && y>=111 && y<=138){
+		//red
+		Tile x = new Tile("red");
+		int occ = temp.getAmount("red");
+		if(occ > 0) while(occ-->0){
+		   arr.add(x);
+		   chosenTile = true;
+		 }
+		 discard = temp.getDiscarded("red");
+	}
+	if(x>=829 && x<=1063 && y>=150 && y<=174){
+		//black
+		Tile x = new Tile("black");
+		int occ = temp.getAmount("black");
+		if(occ > 0) while(occ-->0){
+		   arr.add(x);
+		   chosenTile = true;
+	   }
+	   discard = temp.getDiscarded("black");
+	}
+	if(x>=829 && x<=1063 && y>=183 && y<=209){
+		//teal
+		Tile x = new Tile("teal");
+		int occ = temp.getAmount("teal");
+		if(occ > 0) while(occ-->0){
+		   arr.add(x);
+		   chosenTile = true;
+		   }
+			discard = temp.getDiscarded("teal");
+	   }
+	//bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player
+	 
+	 
+	   if(!temp.equals(middle)){
+	   for(int i = 0; i < discard.size(); i++){
+		   System.out.print(discard.get(i).getColor()+" ");
+	   }
+	   middle.setArray(discard);
+	   //middle.drawMiddle();
+	   }
+	   return arr;
+	}
+	
 
 public void paint(Graphics g, int Width, int Height) {
 

@@ -14,11 +14,8 @@ public class OneFactoryPanel{
 	private Tile t1, t2, t3, t4;
 	private boolean isMiddle = false;
     boolean clicked;
-	private boolean M;
-	private Factory ffs;
     public OneFactoryPanel() {
         try {           
-			ffs = new Factory(isMiddle);
             TArr = new ArrayList<>();
             possibleT = new TreeMap<>();
 			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
@@ -30,21 +27,70 @@ public class OneFactoryPanel{
             black = ImageIO.read(new File("src/images/black tile.png"));
             TChoose = ImageIO.read(new File("src/images/TileChoosing.png"));
             factory = ImageIO.read(new File("src/images/factory.png"));
-            //if(!isMiddle){
-			//addTiles();
-            //ffs.setTiles(TArr);
             
-           
         } catch (Exception e) {
             return;
         }
     }
 
+    public void reset(){
+        TArr.clear();
+    }
     
 	public void isMiddle(){
 		isMiddle = true;
 	}
-	
+	public void drawMiddle(Graphics g){
+        int xyellow = 235;
+        int xred = 300;
+        int xblue = 268;
+        int xblack = 330;
+        int xteal =  360;
+        int yyellow = 350;
+        int yred = 335;
+        int yblue = 335;
+        int yblack = 335;
+        int yteal = 350;
+        int s = 33;    
+        if(isMiddle){
+                for(int i = 0; i<TArr.size(); i++){
+                Tile t = TArr.get(i);
+                String col = t.getColor();
+                if(col.equals("yellow")){
+                    g.drawImage(t.getImage(), xyellow, yyellow, s, s, null);
+                     yyellow += 30;
+                }
+                if(col.equals("blue")){
+                    g.drawImage(t.getImage(), xblue, yblue, s, s, null);
+                    yblue += 30;
+                    }
+                if(col.equals("red")){
+                    g.drawImage(t.getImage(), xred, yred, s, s, null);
+                    yred += 30;
+                    }
+                if(col.equals("black")){
+                    g.drawImage(t.getImage(), xblack, yblack, s, s, null);
+                    yblack += 30;
+                    }
+                 if(col.equals("teal")){
+                    g.drawImage(t.getImage(), xteal, yteal, s, s, null);
+                    yteal += 30;
+                    }
+            }
+        }
+   
+    }
+    public ArrayList<Tile> getDiscarded(String str){
+        ArrayList<Tile> arr = new ArrayList<>();
+  
+        for(int i = 0; i<TArr.size(); i++){
+                if(!TArr.get(i).getColor().equals(str)){
+                    arr.add(TArr.get(i));
+                }
+        }
+        return arr;
+    }
+ 
     public void setArray(ArrayList<Tile>arr){
         TArr = arr;
     }
