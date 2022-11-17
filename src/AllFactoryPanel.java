@@ -29,7 +29,7 @@ public class AllFactoryPanel{
 	private int x, y;
 
 	public AllFactoryPanel() {
-		OneFactoryPanel arr [] = new OneFactoryPanel[]{f1, f2, f3, f4, f5, f6, f7, f8, f9};//only used to add factories to the arraylist
+		OneFactoryPanel arr [] = new OneFactoryPanel[]{f1, f2, f3, f4, f5, f6, f7, f8, f9, middle};//only used to add factories to the arraylist
 		factories = new ArrayList<>(Arrays.asList(arr));
 		
 		try {
@@ -95,6 +95,11 @@ public void whichPanel(){ //i cahnged this because otherwise whenever u clicked 
 		changeClicked(f9);
 		temp = f9;
 	}
+	else if(x>=205 && x<=423 && y>=312 && y<=536 ){
+		System.out.println("middle");
+		changeClicked(middle);
+		temp = middle;
+	}
 	//else return f9; (it always returned this when u clicked near the choosing screen)
 }
 
@@ -126,7 +131,7 @@ public ArrayList<Tile> getChosen(){
 	//get an array list for discarded and dont reset it each time so it draws out everything
 	 
 	//add something later for it to only work if there is an occoruence of it
-	if(x>=829 && y>=40 && x<=1063 && y<=61){
+	if(x>=829 && y>=40 && x<=1063 && y<=61 && temp.getAmount("yellow")>0){
 		//yellow
 		Tile x = new Tile("yellow");
 		 int occ = temp.getAmount("yellow");
@@ -137,7 +142,7 @@ public ArrayList<Tile> getChosen(){
 		 //Collections.addAll()
 		 discard.addAll(temp.getDiscarded("yellow"));
 	}
-	if(x>=829 && x<=1063 && y>=72 && y<=96){
+	if(x>=829 && x<=1063 && y>=72 && y<=96 && temp.getAmount("blue")>0){
 		//blue
 		Tile x = new Tile("blue");
 		int occ = temp.getAmount("blue");
@@ -147,7 +152,7 @@ public ArrayList<Tile> getChosen(){
 		 }
 		 discard.addAll(temp.getDiscarded("blue"));
 	}
-	if(x>=829 && x<=1063 && y>=111 && y<=138){
+	if(x>=829 && x<=1063 && y>=111 && y<=138&& temp.getAmount("red")>0){
 		//red
 		Tile x = new Tile("red");
 		int occ = temp.getAmount("red");
@@ -157,7 +162,7 @@ public ArrayList<Tile> getChosen(){
 		 }
 		 discard.addAll(temp.getDiscarded("red"));
 	}
-	if(x>=829 && x<=1063 && y>=150 && y<=174){
+	if(x>=829 && x<=1063 && y>=150 && y<=174&& temp.getAmount("black")>0){
 		//black
 		Tile x = new Tile("black");
 		int occ = temp.getAmount("black");
@@ -167,7 +172,7 @@ public ArrayList<Tile> getChosen(){
 	   }
 		 discard.addAll(temp.getDiscarded("black"));
 	}
-	if(x>=829 && x<=1063 && y>=183 && y<=209){
+	if(x>=829 && x<=1063 && y>=183 && y<=209&& temp.getAmount("teal")>0){
 		//teal
 		Tile x = new Tile("teal");
 		int occ = temp.getAmount("teal");

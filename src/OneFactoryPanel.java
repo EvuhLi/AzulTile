@@ -121,31 +121,30 @@ public class OneFactoryPanel{
 		//draw middle
 	}
 }
-/*public void addTiles(){
 
-    t1 = new Tile("teal");
-	t2 = new Tile("black");
-    t3 = new Tile("yellow");
-    t4 = new Tile("yellow");
-	TArr.add(t1);
-	TArr.add(t2);
-	TArr.add(t3);
-	TArr.add(t4);
-
-    //figure out how to get random tiles now/
-    /*ArrayList<Tile>  
-}*/
 public int getSize(){
     return TArr.size();
 }
     public void paintChoosing(Graphics g){
         g.drawImage(TChoose, 600, -55, 700, 400, null);
         g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-        g.drawString(""+getAmount("yellow"), 1029, 68);
-        g.drawString("" + getAmount("red"), 1029, 141);
-        g.drawString("" + getAmount("blue"), 1029, 104);
-        g.drawString("" + getAmount("black"), 1029, 173);
-        g.drawString("" + getAmount("teal"), 1029, 208);
+        
+        
+        int y = getAmount("yellow");
+        g.drawString("" + y, 1029, 68);
+       
+       int r = getAmount("red");
+        g.drawString("" + r, 1029, 141);
+
+
+        int b = getAmount("blue");
+        g.drawString("" + b, 1029, 104);
+
+        int bl = getAmount("black");
+        g.drawString("" + bl, 1029, 173);
+
+        int t = getAmount("teal");
+        g.drawString("" + t, 1029, 208);
 
 
         /*or(int i = 0; i<TArr.size(); i++){
