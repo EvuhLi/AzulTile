@@ -8,11 +8,11 @@ import java.util.*;
 
 public class OneFactoryPanel{
     private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle, highlight;
-    private ArrayList<Tile>TArr;
+    ArrayList<Tile>TArr;
     private TreeMap<String, Integer>possibleT;
     Game game;
 	private Tile t1, t2, t3, t4;
-	private boolean isMiddle = false;
+	boolean isMiddle = false;
     boolean clicked;
     public OneFactoryPanel() {
         try {           
@@ -34,6 +34,7 @@ public class OneFactoryPanel{
     }
 
     public void reset(){
+        if(!isMiddle)
         TArr.clear();
     }
     
@@ -94,10 +95,25 @@ public class OneFactoryPanel{
     public void setArray(ArrayList<Tile>arr){
         TArr = arr;
     }
+
+    public ArrayList<Tile> removeTile(String str){
+        for(int i = 0; i<TArr.size(); i++){
+
+            Tile f = TArr.get(i);
+            if(f.getColor().equals(str)){
+                TArr.remove(i);
+                i--;
+            }
+        }
+        return TArr;
+    }
     public void paintFactory(int w, int h, int ww, int hh, Graphics g) {
         int size = ww / 10;
         int tSize = ww / 50;
-        if(clicked) g.drawImage(highlight, w +2, h + 6, size - 3, size- 3, null);
+        if(isMiddle && clicked){
+            g.drawImage(highlight, 200, hh/2 + 210, 230, 230, null);
+        }
+        if(clicked && !isMiddle) g.drawImage(highlight, w +2, h + 6, size - 3, size- 3, null);
 		if(!isMiddle) g.drawImage(factory, w, h, size, size, null);
         else{
 			g.drawImage(factorymiddle, w, h, ww, hh, null);

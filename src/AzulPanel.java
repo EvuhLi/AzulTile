@@ -45,8 +45,15 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		if(factoryphase == 1){
 			//clear that factory you picked
-			OneFactoryPanel cur = game.getfactoryP().getTemp();
+			game.getfactoryP().whichPanel();
+			OneFactoryPanel cur =game.getfactoryP().getTemp();
+			if(!cur.isMiddle)
 			cur.reset();
+			else{
+				//System.out.println("MIDDLE REMOVE");
+				//remove the tiles 
+				
+			}
 		}
 		//try to make this happen AFTER you choose which row
 		if(!start)game.getfactoryP().middle.drawMiddle(g);
@@ -80,6 +87,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			if(x>=600 && x<=1300 && y>=-50 && y<=350){
 				
 				game.getfactoryP().setCood(x, y);
+				//do it here
 				game.getPlayers().get(0).addTiles(game.getfactoryP().getChosen());
 				if(game.getfactoryP().chosenTile){
 					pickedF = false;
