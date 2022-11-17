@@ -26,7 +26,7 @@ public class EndScreenPanel{
     public void drawMenu(Graphics g) {
 
         g.drawImage(bkg, 0, 0, 1920, 1080, null);
-
+        g.drawImage(gray, 100, 100, 1820, 1720, null );
 		
 		
 	}	
