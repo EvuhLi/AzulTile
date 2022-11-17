@@ -142,7 +142,7 @@ public ArrayList<Tile> getChosen(){
 		 //Collections.addAll()
 		 discard.addAll(temp.getDiscarded("yellow"));
 	}
-	if(x>=829 && x<=1063 && y>=72 && y<=96){
+	if(x>=829 && x<=1063 && y>=72 && y<=96 && temp.getAmount("blue")>0){
 		//blue
 		Tile x = new Tile("blue");
 		int occ = temp.getAmount("blue");
@@ -152,7 +152,7 @@ public ArrayList<Tile> getChosen(){
 		 }
 		 discard.addAll(temp.getDiscarded("blue"));
 	}
-	if(x>=829 && x<=1063 && y>=111 && y<=138){
+	if(x>=829 && x<=1063 && y>=111 && y<=138&& temp.getAmount("red")>0){
 		//red
 		Tile x = new Tile("red");
 		int occ = temp.getAmount("red");
@@ -162,7 +162,7 @@ public ArrayList<Tile> getChosen(){
 		 }
 		 discard.addAll(temp.getDiscarded("red"));
 	}
-	if(x>=829 && x<=1063 && y>=150 && y<=174){
+	if(x>=829 && x<=1063 && y>=150 && y<=174&& temp.getAmount("black")>0){
 		//black
 		Tile x = new Tile("black");
 		int occ = temp.getAmount("black");
@@ -172,7 +172,7 @@ public ArrayList<Tile> getChosen(){
 	   }
 		 discard.addAll(temp.getDiscarded("black"));
 	}
-	if(x>=829 && x<=1063 && y>=183 && y<=209){
+	if(x>=829 && x<=1063 && y>=183 && y<=209&& temp.getAmount("teal")>0){
 		//teal
 		Tile x = new Tile("teal");
 		int occ = temp.getAmount("teal");
