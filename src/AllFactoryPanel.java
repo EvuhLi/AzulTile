@@ -140,7 +140,7 @@ public ArrayList<Tile> getChosen(){
 		   chosenTile = true;
 		 }
 		 //Collections.addAll()
-		 discard.addAll(temp.getDiscarded("yellow"));
+		 if(!temp.equals(middle)) discard.addAll(temp.getDiscarded("yellow"));
 	}
 	if(x>=829 && x<=1063 && y>=72 && y<=96 && temp.getAmount("blue")>0){
 		//blue
