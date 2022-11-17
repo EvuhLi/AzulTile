@@ -116,5 +116,12 @@ public class Game {
 
         return four;
     }
+    public void endOfRound(){
+        for(int c = 0; c < 9; c++){
+          // factoryP.getArray().getSize() // returns arraylist of onefactorypanels (? is empty)
+        }
+       // if all factories are empty, row to board + score + check end of game + if it is, make boolean end true + change turns + once done rotating through turns, score end if valid + if valid, go to end menu
+    }
+
 }
 
