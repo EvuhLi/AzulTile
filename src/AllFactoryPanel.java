@@ -1,5 +1,4 @@
 import java.awt.*;
-
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,6 +11,8 @@ import java.util.*;
 public class AllFactoryPanel{
 	private BufferedImage factory, azulBoard, factorymiddle;
 	public boolean chosenTile = false;
+	private ArrayList<Tile> discard = new ArrayList<>();
+
 	OneFactoryPanel f1 = new OneFactoryPanel();
 	OneFactoryPanel f2 = new OneFactoryPanel();
 	OneFactoryPanel f3 = new OneFactoryPanel();
@@ -118,7 +119,6 @@ public OneFactoryPanel getTemp(){
 public ArrayList<Tile> getChosen(){
   
 	ArrayList<Tile> arr = new ArrayList<>();
-	ArrayList<Tile> discard = new ArrayList<>();
 	//remove the occurences of the tile from the arraylist in one factory panel
 	//move the leftover tiles to the middle
 	 
@@ -135,7 +135,7 @@ public ArrayList<Tile> getChosen(){
 		   chosenTile = true;
 		 }
 		 //Collections.addAll()
-		 discard = temp.getDiscarded("yellow");
+		 discard.addAll(temp.getDiscarded("yellow"));
 	}
 	if(x>=829 && x<=1063 && y>=72 && y<=96){
 		//blue
@@ -145,7 +145,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 		 }
-		 discard = temp.getDiscarded("bluew");
+		 discard.addAll(temp.getDiscarded("blue"));
 	}
 	if(x>=829 && x<=1063 && y>=111 && y<=138){
 		//red
@@ -155,7 +155,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 		 }
-		 discard = temp.getDiscarded("red");
+		 discard.addAll(temp.getDiscarded("red"));
 	}
 	if(x>=829 && x<=1063 && y>=150 && y<=174){
 		//black
@@ -165,7 +165,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 	   }
-	   discard = temp.getDiscarded("black");
+		 discard.addAll(temp.getDiscarded("black"));
 	}
 	if(x>=829 && x<=1063 && y>=183 && y<=209){
 		//teal
@@ -175,7 +175,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 		   }
-			discard = temp.getDiscarded("teal");
+		 discard.addAll(temp.getDiscarded("teal"));
 	   }
 	//bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player
 	 

@@ -45,12 +45,10 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(phase == 1){
 			//clear that factory you picked
 			OneFactoryPanel cur = game.getfactoryP().getTemp();
-			OneFactoryPanel temp = game.getfactoryP().middle;
-			temp.drawMiddle(g);
 			cur.reset();
 		}
- 
-	
+		//try to make this happen AFTER you choose which row
+		if(!start)game.getfactoryP().middle.drawMiddle(g);
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -76,6 +74,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			//if its within factory range at all
 			if(x>=94 && x<=531 && y>=199 && y<=649){
 				game.getfactoryP().setCood(x, y);
+				game.getfactoryP().whichPanel();
 			}
 			//if its within the choosing image, then move on to next stage
 			if(x>=600 && x<=1300 && y>=-50 && y<=350){
