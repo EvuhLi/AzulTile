@@ -83,6 +83,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 					pickedF = false;
 					factory = false;
 					phase = 1;
+					game.getfactoryP().chosenTile = false;
 				}
 			}			
 		}

@@ -69,7 +69,7 @@ public class PlayerPanel {
             row++;
             start-=16;
         }
-        g.setFont(new Font("Algerian", Font.PLAIN, 30));;
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 30));;
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), 74, 188);
         for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
@@ -82,7 +82,7 @@ public class PlayerPanel {
     public void drawMiddle(Graphics g, Player player, int width, int height){// Player player){
         g.drawImage(color(player.getColor()), 245, 35, 190, 130, null);
         g.drawImage(board, 250, 40, 180, 120, null);
-        g.setFont(new Font("Algerian", Font.PLAIN, 30));
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 30));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), 275, 188);
         int start = 255 + 80 - 15;
@@ -105,7 +105,7 @@ public class PlayerPanel {
     public void drawRight(Graphics g, Player player, int width, int height){
         g.drawImage(color(player.getColor()), 445, 35, 190, 130, null);
         g.drawImage(board, 450, 40, 180, 120, null);
-        g.setFont(new Font("Algerian", Font.PLAIN, 30));
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 30));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), 480, 188);
          int row = 0;
@@ -147,7 +147,7 @@ public class PlayerPanel {
         game.transferDiscard();
         g.drawImage(color(player.getColor()), width/2+40, height/2-110, 530, 360, null);
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
-        g.setFont(new Font("Algerian", Font.PLAIN, 75));
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 75));
         g.setColor(Color.black);
         g.drawString("SCORE: " + player.getScore(), width/2 + 110, height/2 + 305);
         if(pickedF) drawValidRows(g, player, width, height);
