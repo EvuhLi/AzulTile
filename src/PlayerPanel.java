@@ -75,6 +75,17 @@ public class PlayerPanel {
         for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
             g.drawImage(player.getBoard().getDiscard().get(c).getImage(), 56 + c * 35/2, 135, 15, 15, null);
         }
+        int ypos= 44;
+        for ( int r = 0; r < 5; r++){
+            int xpos= 143;
+            for ( int c = 0; c < 5; c++){
+                if (player.getBoard().b[r][c] != null) {
+                g.drawImage(player.getBoard().b[r][c].getImage(),xpos, ypos, 15, 15, null);
+                }
+                xpos +=16; 
+            }
+            ypos+= 16; 
+        } 
 
     }
 
@@ -98,9 +109,22 @@ public class PlayerPanel {
             row++;
             start-=16;
         }
+
         for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
             g.drawImage(player.getBoard().getDiscard().get(c).getImage(), 256 + c * 35/2, 135, 15, 15, null);
         }
+        int ypos= 44;
+        for ( int r = 0; r < 5; r++){
+            int xpos= 343;
+            for ( int c = 0; c < 5; c++){
+                if (player.getBoard().b[r][c] != null) {
+                g.drawImage(player.getBoard().b[r][c].getImage(),xpos, ypos, 15, 15, null);
+                }
+                xpos +=16; 
+            }
+            ypos+= 16; 
+        } 
+
     }
     public void drawRight(Graphics g, Player player, int width, int height){
         g.drawImage(color(player.getColor()), 445, 35, 190, 130, null);
@@ -119,20 +143,22 @@ public class PlayerPanel {
             row++;
             start-= 16;
         } // board 
-       /*   int xpos= 545;
+
+        
+        for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
+            g.drawImage(player.getBoard().getDiscard().get(c).getImage(), 456 + c * 35/2, 135, 15, 15, null);
+        }
         int ypos= 44;
         for ( int r = 0; r < 5; r++){
+            int xpos= 543;
             for ( int c = 0; c < 5; c++){
                 if (player.getBoard().b[r][c] != null) {
                 g.drawImage(player.getBoard().b[r][c].getImage(),xpos, ypos, 15, 15, null);
                 }
-                ypos +=16; 
+                xpos +=16; 
             }
-            xpos+= 16; 
-        } */
-        for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
-            g.drawImage(player.getBoard().getDiscard().get(c).getImage(), 456 + c * 35/2, 135, 15, 15, null);
-        }
+            ypos+= 16; 
+        } 
     }
     public void drawValidRows(Graphics g, Player p, int width, int height){
         if(game.phase == 1 && p.getPicked().size() > 0){
