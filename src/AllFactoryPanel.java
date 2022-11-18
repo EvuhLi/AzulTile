@@ -24,7 +24,7 @@ public class AllFactoryPanel{
 	OneFactoryPanel f9 = new OneFactoryPanel();
 	OneFactoryPanel middle = new OneFactoryPanel();
 	ArrayList<OneFactoryPanel> factories;
-	OneFactoryPanel temp;
+	static OneFactoryPanel temp;
 
 	private int x, y;
 
@@ -125,12 +125,7 @@ public ArrayList<Tile> getChosen(){
   
 	ArrayList<Tile> arr = new ArrayList<>();
 	//remove the occurences of the tile from the arraylist in one factory panel
-	//move the leftover tiles to the middle
-	 
-	 
-	//get an array list for discarded and dont reset it each time so it draws out everything
-	 
-	//add something later for it to only work if there is an occoruence of it
+	//move the leftover tiles to the middle	 
 	if(x>=829 && y>=40 && x<=1063 && y<=61 && temp.getAmount("yellow")>0){
 		//yellow
 		Tile x = new Tile("yellow");
@@ -140,7 +135,7 @@ public ArrayList<Tile> getChosen(){
 		   chosenTile = true;
 		 }
 		 //Collections.addAll()
-		 discard.addAll(temp.getDiscarded("yellow"));
+		 if(!temp.equals(middle)) discard.addAll(temp.getDiscarded("yellow"));
 	}
 	if(x>=829 && x<=1063 && y>=72 && y<=96 && temp.getAmount("blue")>0){
 		//blue
@@ -186,10 +181,17 @@ public ArrayList<Tile> getChosen(){
 	 
 	 
 	   if(!temp.equals(middle)){
+		System.out.println("NOT MIDDLE");
 	   for(int i = 0; i < discard.size(); i++){
 		   System.out.print(discard.get(i).getColor()+" ");
 	   }
+	   if(middle.TArr.size()==0)
 	   middle.setArray(discard);
+	   else{
+		for(int i = 0; i < arr.size(); i++){
+			System.out.print(arr.get(i).getColor()+"j ");
+		}
+	   }
 	   //middle.drawMiddle();
 	   }
 	   return arr;

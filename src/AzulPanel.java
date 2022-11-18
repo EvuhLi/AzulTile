@@ -13,7 +13,8 @@ import java.awt.event.MouseMotionListener;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
 	boolean start = true, factory = false, pickedF = false;
-	int phase = 0;
+	int factoryphase = 0;
+	int gamephase = 0;
 	MainMenuPanel menu;
 	Game game;
 	PlayerPanel board;
@@ -28,27 +29,35 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		height = h;
 		row = 0;
 	}
-
+	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		if(start){
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			board.drawAll(g, getWidth(), getHeight(), (phase == 1));
+			board.drawAll(g, getWidth(), getHeight(), (factoryphase == 1));
 			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
 		if(factory && pickedF){
 			game.getfactoryP().choosing(g);
 		}
-		if(phase == 1){
+		if(factoryphase == 1){
 			//clear that factory you picked
-			OneFactoryPanel cur = game.getfactoryP().getTemp();
+			game.getfactoryP().whichPanel();
+			OneFactoryPanel cur =game.getfactoryP().getTemp();
+			if(!cur.isMiddle)
 			cur.reset();
+			else{
+				//System.out.println("MIDDLE REMOVE");
+				//remove the tiles 
+				
+			}
 		}
 		//try to make this happen AFTER you choose which row
 		if(!start)game.getfactoryP().middle.drawMiddle(g);
+		//if(gamephase == 1)
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -78,44 +87,46 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			if(x>=600 && x<=1300 && y>=-50 && y<=350){
 				
 				game.getfactoryP().setCood(x, y);
+				//do it here
 				game.getPlayers().get(0).addTiles(game.getfactoryP().getChosen());
 				if(game.getfactoryP().chosenTile){
 					pickedF = false;
 					factory = false;
-					phase = 1;
+					factoryphase = 1;
 					game.getfactoryP().chosenTile = false;
 				}
 			}			
 		}
-		if(phase == 2){
-			phase = 0;
+		if(factoryphase == 2){
+			factoryphase = 0;
 			factory = true;
 			game.getfactoryP().changeClicked(null);
 			game.getfactoryP().temp = null;
 			game.nextPlayer();
+			gamephase = 1;
 		}
 		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
 		//need boolean for when player has picked tiles
-		if(phase == 1){
+		if(factoryphase == 1){
 			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
 				game.getPlayers().get(0).addToRow(0);
-				phase = 2;
+				factoryphase = 2;
 			}
 			if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
 				game.getPlayers().get(0).addToRow(1);
-				phase = 2;
+				factoryphase = 2;
 			}
 			if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
 				game.getPlayers().get(0).addToRow(2);
-				phase = 2;
+				factoryphase = 2;
 			}
 			if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
 				game.getPlayers().get(0).addToRow(3);
-				phase = 2;
+				factoryphase = 2;
 			}
 			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
 				game.getPlayers().get(0).addToRow(4);
-				phase = 2;
+				factoryphase = 2;
 			}
 		}
 		
@@ -159,7 +170,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				menu.hover = 2;
 			}
 		}
-		else if(phase == 1){
+		else if(factoryphase == 1){
 			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
 				board.hover = 0;
 			}
@@ -176,6 +187,6 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				board.hover = 4;
 			} 
 		}
-		if(phase == 1 || start) repaint();
+		if(factoryphase == 1 || start) repaint();
 	}
 }
