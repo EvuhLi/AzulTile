@@ -116,11 +116,29 @@ public class Game {
 
         return four;
     }
-    public void endOfRound(){
-        for(int c = 0; c < 9; c++){
-          // factoryP.getArray().getSize() // returns arraylist of onefactorypanels (? is empty)
+
+    public boolean facsEmpty(){
+        int temp = 0;
+            for(int c = 0; c < 9; c++){
+             if (factoryP.getArray().get(c).getSize()==0){
+                temp ++;
+             }
+            }
+            return temp==9;
         }
-       // if all factories are empty, row to board + score + check end of game + if it is, make boolean end true + change turns + once done rotating through turns, score end if valid + if valid, go to end menu
+    public void endOfRound(){
+        boolean end = false;
+        for ( int i = 0; i < players.size(); i++){
+            players.get(i).rowToBoard();
+           // if (players.get(i).getBoard().checkRow()){
+                end = true;
+            }
+      //  }
+        if (end){
+         //   endOfGame()
+        }
+        // iterate through players, check their rows and boards, score them, while checking check if their is a row, hold onto it and continue and at the end call end game method
+
     }
 
 }
