@@ -145,7 +145,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 		 }
-		 discard.addAll(temp.getDiscarded("blue"));
+		 if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("blue"));
 	}
 	if(x>=829 && x<=1063 && y>=111 && y<=138&& temp.getAmount("red")>0){
 		//red
@@ -155,7 +155,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 		 }
-		 discard.addAll(temp.getDiscarded("red"));
+		 if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("red"));
 	}
 	if(x>=829 && x<=1063 && y>=150 && y<=174&& temp.getAmount("black")>0){
 		//black
@@ -165,7 +165,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 	   }
-		 discard.addAll(temp.getDiscarded("black"));
+	   if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("black"));
 	}
 	if(x>=829 && x<=1063 && y>=183 && y<=209&& temp.getAmount("teal")>0){
 		//teal
@@ -175,7 +175,7 @@ public ArrayList<Tile> getChosen(){
 		   arr.add(x);
 		   chosenTile = true;
 		   }
-		 discard.addAll(temp.getDiscarded("teal"));
+		   if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("teal"));
 	   }
 	//bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player
 	 
