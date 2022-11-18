@@ -34,6 +34,11 @@ public class Board{
         colors[4][2] = "black";
         colors[4][3] = "teal";
         colors[4][4] = "blue";
+        for ( int r = 0; r < 5; r++){
+            for ( int c = 0; c < 5; c++){
+                b[r][c] = new Tile(colors[r][c]);
+            }
+        }
     }
 
     public boolean colorInBoard(String color, int row){
