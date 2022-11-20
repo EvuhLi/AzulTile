@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Board{
     Tile[][] b = new Tile[5][5];

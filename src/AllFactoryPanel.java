@@ -1,17 +1,7 @@
 import java.awt.*;
-import java.awt.image.*;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.io.*;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseEvent;
 import java.util.*;
 public class AllFactoryPanel{
-	private BufferedImage factory, azulBoard, factorymiddle;
 	public boolean chosenTile = false;
-	private ArrayList<Tile> discard = new ArrayList<>();
 
 	OneFactoryPanel f1 = new OneFactoryPanel();
 	OneFactoryPanel f2 = new OneFactoryPanel();
@@ -30,16 +20,7 @@ public class AllFactoryPanel{
 
 	public AllFactoryPanel() {
 		OneFactoryPanel arr [] = new OneFactoryPanel[]{f1, f2, f3, f4, f5, f6, f7, f8, f9, middle};//only used to add factories to the arraylist
-		factories = new ArrayList<>(Arrays.asList(arr));
-		
-		try {
-            factory = ImageIO.read(new File("src/images/factory.png"));
-			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
-
-		} catch (Exception E) {
-			System.out.println("Exception Error");
-			return;
-		}
+		factories = new ArrayList<>(Arrays.asList(arr));		
 	}
 
 	public ArrayList<OneFactoryPanel> getArray(){

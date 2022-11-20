@@ -36,8 +36,8 @@ public class Game {
         int randFirstPlayer = (int)(Math.random()*5);
         for(int c = 0; c < randFirstPlayer; c++){
             nextPlayer();
-            
         }
+        players.get(0).first = true;
 
     }
     public AllFactoryPanel getfactoryP(){

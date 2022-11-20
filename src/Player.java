@@ -6,12 +6,10 @@ public class Player {
     private Board b;
     private Row row;
     private String color;
-    private Tile first;
-    private Boolean hasFirst;
-    private ArrayList<Tile> tempDiscard;
+    public Boolean first;
 
     public Player(String color){
-        tempDiscard = new ArrayList<>();
+        first = false;
         this.color = color;
         tilePicked = new ArrayList<Tile>();
         score = 0;

@@ -1,12 +1,5 @@
 import java.awt.*;
-import java.awt.image.*;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.SwingPropertyChangeSupport;
-import java.util.*;
-import java.io.*;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
