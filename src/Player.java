@@ -45,10 +45,8 @@ public class Player {
         tilePicked.addAll(arr);
     }
     public void addToRow(int r){
-        if(validRow(r)){
-            row.addToRow(r, tilePicked);
-           //addRandom();
-        }    
+        row.addToRow(r, tilePicked);
+        
     }
     /*public void addRandom(){
         String color = "";

@@ -47,7 +47,7 @@ public class AllFactoryPanel{
 	}
 	public void choosing(Graphics g){
 		whichPanel();
-		if(temp!= null)temp.paintChoosing(g);
+		if(temp!= null)temp.paintChoosing(g, colorTile);
 	}
 	public void whichPanel(){ 
 		if(x>=265 && x<=362 && y>=200 && y<=297){

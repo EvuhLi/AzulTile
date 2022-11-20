@@ -7,13 +7,14 @@ import java.util.*;
 
 
 public class OneFactoryPanel{
-    private BufferedImage factory, TChoose, factorymiddle, highlight;
+    private BufferedImage factory, TChoose, factorymiddle, highlight, border;
     ArrayList<Tile>TArr;
     Game game;
 	boolean isMiddle = false;
     boolean clicked;
     public OneFactoryPanel() {
         try {           
+            border = ImageIO.read(new File("src/images/selectborder.png"));
             TArr = new ArrayList<>();
 			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
             highlight = ImageIO.read(new File("src/images/yellowfactory.png"));
@@ -130,9 +131,15 @@ public class OneFactoryPanel{
     public int getSize(){
         return TArr.size();
     }
-    public void paintChoosing(Graphics g){
+    public void paintChoosing(Graphics g, String color){
+
         g.drawImage(TChoose, 600, -55, 700, 400, null);
         g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
+        if(color.equals("yellow")) g.drawImage(border, 777, 49, 27, 27, null);
+        if(color.equals("blue")) g.drawImage(border, 777, 79, 27, 27, null);
+        if(color.equals("red")) g.drawImage(border, 777, 115, 27, 27, null);
+        if(color.equals("black")) g.drawImage(border, 777, 150, 27, 27, null);
+        if(color.equals("teal")) g.drawImage(border, 778, 183,  27, 27, null);
         
         
         int y = getAmount("yellow");

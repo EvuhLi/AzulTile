@@ -11,7 +11,7 @@ public class PlayerPanel {
     static BufferedImage yellowborder;
     static BufferedImage greenborder;
     static BufferedImage blueborder;
-    BufferedImage border, screenbg, logo, score, glowingrow, blackborder;
+    BufferedImage border, screenbg, logo, score, glowingrow, blackborder, nextplayer, blackbg;
     int hover;
 
 
@@ -19,6 +19,8 @@ public class PlayerPanel {
         game = g;
         hover = -1;
         try {
+            blackbg = ImageIO.read(new File("src/images/startgamebg.png"));
+            nextplayer = ImageIO.read(new File("src/images/nextplayer.png"));
             board = ImageIO.read(new File("src/images/Azul Board.jpg"));
             redtile = ImageIO.read(new File("src/images/red tile.png"));
             yellowtile = ImageIO.read(new File("src/images/yellow tile.png"));
@@ -41,12 +43,16 @@ public class PlayerPanel {
 			return;
 		}
     }
-    public void drawAll(Graphics g, int width, int height, boolean pickedF){
+    public void drawAll(Graphics g, int width, int height, int pick){
         g.drawImage(screenbg, 0, 0, width, height, null);
+        
+        if(pick == 3){
+            g.drawImage(nextplayer, 1020, 30, 215,  40, null);
+        }
         drawLeft(g, game.getPlayers().get(3), width, height);
         drawMiddle(g, game.getPlayers().get(2), width, height); // logic needs change
         drawRight(g, game.getPlayers().get(1), width, height); // logic needs change
-        drawTurn(g, width, height, game.getPlayers().get(0), pickedF);
+        drawTurn(g, width, height, game.getPlayers().get(0), pick == 1);
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
         if(hover > -1) drawHover(g, width, height);
@@ -71,7 +77,9 @@ public class PlayerPanel {
         }
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));;
         g.setColor(Color.black);
-        g.drawString("SCORE: " + player.getScore(), 74, 188);
+        g.drawImage(score, 55, 165, 125, 35, null);
+        g.drawString(player.getScore() + "", 185, 191);
+        //g.drawString("SCORE: " + player.getScore(), 74, 188);
         for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
             g.drawImage(player.getBoard().getDiscard().get(c).getImage(), 56 + c * 35/2, 135, 15, 15, null);
         }
@@ -95,7 +103,9 @@ public class PlayerPanel {
         g.drawImage(board, 250, 40, 180, 120, null);
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));
         g.setColor(Color.black);
-        g.drawString("SCORE: " + player.getScore(), 275, 188);
+        g.drawImage(score, 255, 165, 125, 35, null);
+        g.drawString(player.getScore() + "", 385, 191);
+        //g.drawString("SCORE: " + player.getScore(), 275, 188);
         int start = 255 + 80 - 15;
         int row = 0;
         for(int c = 44; c < 44 + 16 *5; c+=16){
@@ -131,7 +141,9 @@ public class PlayerPanel {
         g.drawImage(board, 450, 40, 180, 120, null);
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));
         g.setColor(Color.black);
-        g.drawString("SCORE: " + player.getScore(), 480, 188);
+        g.drawImage(score, 456, 165, 125, 35, null);
+        g.drawString(player.getScore() + "", 586, 191);
+        //g.drawString("SCORE: " + player.getScore(), 480, 188);
          int row = 0;
          int start = 455 + 80 - 15;
         for(int c = 44; c < 44 + 16 *5; c+=16){
@@ -173,9 +185,11 @@ public class PlayerPanel {
         game.transferDiscard();
         g.drawImage(color(player.getColor()), width/2+40, height/2-110, 530, 360, null);
         g.drawImage(board, width/2 + 50, height/2 - 100, 510, 340, null);
-        g.setFont(new Font("Times New Roman", Font.BOLD, 75));
+        g.setFont(new Font("Times New Roman", Font.BOLD, 70));
         g.setColor(Color.black);
-        g.drawString("SCORE: " + player.getScore(), width/2 + 115, height/2 + 305);
+        g.drawImage(score, width/2 + 100, height/2 + 250, 275, 76, null);
+        g.drawString(player.getScore() + "", width/2 + 380, height/2 + 307);
+        //g.drawString("SCORE: " + player.getScore(), width/2 + 115, height/2 + 305);
         if(pickedF) drawValidRows(g, player, width, height);
         //DIMENSIONS: tiles are 40 by 40 and increment by 45 each time
 

@@ -36,7 +36,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			board.drawAll(g, getWidth(), getHeight(), (pickphase == 1));
+			board.drawAll(g, getWidth(), getHeight(), pickphase);
 			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
@@ -65,12 +65,12 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
-		if(pickphase == 3){//&&){
+		if(pickphase == 3 && x >= 1020 && y >= 29 && x <= 1234 && y <= 68){//&&){
 			game.nextPlayer(); 
 			gamephase = 0;
 			pickphase = 0;
 		}
-		if(!start && !game.facsEmpty()){
+		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;
 			//if its within factory range at all
 			if(x>=94 && x<=531 && y>=199 && y<=649){
@@ -81,6 +81,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			}
 			//if its within the choosing image, then move on to next stage
 			if(x>=821 && x<=1066 && y>37 && y<=215 && pickphase > -1){
+				game.getfactoryP().colorTile = "";
 				pickphase = 0;
 				game.getfactoryP().setCood(x, y);
 				game.getPlayers().get(0).setTiles(game.getfactoryP().getChosen());
@@ -92,25 +93,36 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			}	
 			if(pickphase == 1){
 				if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
-					game.getPlayers().get(0).addToRow(0);
-					pickphase = 2;
+					if(game.getPlayers().get(0).validRow(0)){
+						game.getPlayers().get(0).addToRow(0);
+						pickphase = 2;
+					}
 				}
 				if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
-					game.getPlayers().get(0).addToRow(1);
-					pickphase = 2;
+					if(game.getPlayers().get(0).validRow(1)){
+						game.getPlayers().get(0).addToRow(1);
+						pickphase = 2;
+					}
 				}
 				if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
-					game.getPlayers().get(0).addToRow(2);
-					pickphase = 2;
+					if(game.getPlayers().get(0).validRow(2)){
+						game.getPlayers().get(0).addToRow(2);
+						pickphase = 2;
+					}
+					// game.getPlayers().get(0).addToRow(2);
+					// pickphase = 2;
 				}
 				if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
-					game.getPlayers().get(0).addToRow(3);
-					pickphase = 2;
+					if(game.getPlayers().get(0).validRow(3)){
+						game.getPlayers().get(0).addToRow(3);
+						pickphase = 2;
+					}
 				}
 				if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
-					game.getPlayers().get(0).addToRow(4);
-					pickphase = 2;
-					
+					if(game.getPlayers().get(0).validRow(4)){
+						game.getPlayers().get(0).addToRow(4);
+						pickphase = 2;
+					}
 				}
 			}
 			if(pickphase == 2){
@@ -124,9 +136,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				game.getfactoryP().changeClicked(null);
 				game.getfactoryP().temp = null;
 				game.getfactoryP().chosenTile = false;
-				game.round++;
 				//game.nextPlayer();
-				gamephase = 1;
 			}	
 		}
 		
