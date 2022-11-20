@@ -7,24 +7,16 @@ import java.util.*;
 
 
 public class OneFactoryPanel{
-    private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle, highlight;
+    private BufferedImage factory, TChoose, factorymiddle, highlight;
     ArrayList<Tile>TArr;
-    private TreeMap<String, Integer>possibleT;
     Game game;
-	private Tile t1, t2, t3, t4;
 	boolean isMiddle = false;
     boolean clicked;
     public OneFactoryPanel() {
         try {           
             TArr = new ArrayList<>();
-            possibleT = new TreeMap<>();
 			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
             highlight = ImageIO.read(new File("src/images/yellowfactory.png"));
-            blue = ImageIO.read(new File("src/images/blue tile.png"));
-            red = ImageIO.read(new File("src/images/red tile.png"));
-            yellow = ImageIO.read(new File("src/images/yellow tile.png"));
-            teal = ImageIO.read(new File("src/images/teal tile.png"));
-            black = ImageIO.read(new File("src/images/black tile.png"));
             TChoose = ImageIO.read(new File("src/images/TileChoosing.png"));
             factory = ImageIO.read(new File("src/images/factory.png"));
             
@@ -92,8 +84,8 @@ public class OneFactoryPanel{
         return arr;
     }
  
-    public void setArray(ArrayList<Tile>arr){
-        TArr = arr;
+    public void addArray(ArrayList<Tile>arr){
+        TArr.addAll(arr);
     }
 
     public ArrayList<Tile> removeTile(String str){
@@ -122,25 +114,22 @@ public class OneFactoryPanel{
         int fH = h+hh/11;
 
 		if(!isMiddle){
-        for(int i = 0; i<TArr.size(); i++){
-            if(i==0)
-                g.drawImage(TArr.get(i).getImage(), fW, fH, tSize, tSize, null);
-                else if(i==1)
-                g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/18, tSize, tSize, null);
-                else if(i==2)
-                g.drawImage(TArr.get(i).getImage(), w + ww/30, h + hh/18, tSize, tSize, null);
-                else
-                g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/11, tSize, tSize, null);
+            for(int i = 0; i<TArr.size(); i++){
+                if(i==0)
+                    g.drawImage(TArr.get(i).getImage(), fW, fH, tSize, tSize, null);
+                    else if(i==1)
+                    g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/18, tSize, tSize, null);
+                    else if(i==2)
+                    g.drawImage(TArr.get(i).getImage(), w + ww/30, h + hh/18, tSize, tSize, null);
+                    else
+                    g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/11, tSize, tSize, null);
+            }
         }
     }
-	else{
-		//draw middle
-	}
-}
 
-public int getSize(){
-    return TArr.size();
-}
+    public int getSize(){
+        return TArr.size();
+    }
     public void paintChoosing(Graphics g){
         g.drawImage(TChoose, 600, -55, 700, 400, null);
         g.setFont(new Font("Times New Roman", Font.PLAIN, 35));

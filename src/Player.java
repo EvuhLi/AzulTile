@@ -40,8 +40,9 @@ public class Player {
         return score;
     }
     
-    public void addTiles(ArrayList<Tile> arr){
-            tilePicked.addAll(arr);
+    public void setTiles(ArrayList<Tile> arr){
+        tilePicked.clear();
+        tilePicked.addAll(arr);
     }
     public void addToRow(int r){
         if(validRow(r)){

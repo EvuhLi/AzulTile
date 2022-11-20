@@ -6,10 +6,11 @@ public class Game {
      static ArrayList<Tile> bag, colors;
      static ArrayList<Tile> discard;
      static AllFactoryPanel factoryP;
+     static int round;
      static int pickedRow;
      static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
      public Game(){
-       
+        round = 0;
         players = new ArrayList<>();
         bag = new ArrayList<>();
         discard = new ArrayList<>();
@@ -55,8 +56,6 @@ public class Game {
     public void nextPlayer(){
         players.add(players.remove(0));
     }
-   
-
     
     public void resetBag(){
 
@@ -101,7 +100,7 @@ public class Game {
                 if(bag.size() < 1) resetBag();
                 tempTile.add(bag.remove(0));
             }
-            factoryP.getArray().get(c).setArray(tempTile);
+            factoryP.getArray().get(c).addArray(tempTile);
         }
     }
 
@@ -118,14 +117,13 @@ public class Game {
     }
 
     public boolean facsEmpty(){
-        int temp = 0;
-            for(int c = 0; c < 9; c++){
-             if (factoryP.getArray().get(c).getSize()==0){
-                temp ++;
-             }
+        for(int c = 0; c < 10; c++){
+           if (factoryP.getArray().get(c).getSize()>0){
+              return false;
             }
-            return temp==9;
         }
+        return true;
+    }
     public void endOfRound(){
         boolean end = false;
         for ( int i = 0; i < players.size(); i++){

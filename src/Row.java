@@ -18,6 +18,17 @@ public class Row{
         discard = new ArrayList<>();
         //temp:
     }
+    public String toString(){
+        String str = "";
+        for(Tile[] row : rows){
+            for(Tile tile: row){
+                if(tile!= null) str+= tile.getColor() + " ";
+                else str+= "null ";
+            }
+            str+= "\n";
+        }
+        return str;
+    }
     
     public boolean rowIsFull(int row){
         Tile[] temp = rows.get(row);

@@ -25,7 +25,7 @@ public class AllFactoryPanel{
 	OneFactoryPanel middle = new OneFactoryPanel();
 	ArrayList<OneFactoryPanel> factories;
 	static OneFactoryPanel temp;
-
+	static String colorTile;
 	private int x, y;
 
 	public AllFactoryPanel() {
@@ -49,7 +49,7 @@ public class AllFactoryPanel{
 		whichPanel();
 		if(temp!= null)temp.paintChoosing(g);
 	}
-	public void whichPanel(){ //i cahnged this because otherwise whenever u clicked anywhere if would return f9 and that would change the chosing screen
+	public void whichPanel(){ 
 		if(x>=265 && x<=362 && y>=200 && y<=297){
 			System.out.println("f1!");
 			if(f1.getSize() > 0){
@@ -124,6 +124,7 @@ public class AllFactoryPanel{
 	}
 
 	public void changeClicked(OneFactoryPanel fact){
+		colorTile = "";
 		for(int c = 0; c < factories.size(); c++){
 			if(factories.get(c).equals(fact))factories.get(c).clicked = true;
 			else factories.get(c).clicked = false;
@@ -141,82 +142,82 @@ public class AllFactoryPanel{
 	public OneFactoryPanel getTemp(){
 		return temp;
 	}
+
+	public void moveLeftoverTiles(){
+		if(!temp.equals(middle)){
+			middle.addArray(temp.getDiscarded(colorTile)); 
+			System.out.println("added to middle");
+		}
+		else temp.removeTile(colorTile);
+	}
 	public ArrayList<Tile> getChosen(){
-	
+		chosenTile = false;
 		ArrayList<Tile> arr = new ArrayList<>();
 		//remove the occurences of the tile from the arraylist in one factory panel
 		//move the leftover tiles to the middle	 
 		if(x>=829 && y>=40 && x<=1063 && y<=61 && temp.getAmount("yellow")>0){
-			//yellow
+			colorTile = "yellow";
+
+			// //yellow
 			Tile x = new Tile("yellow");
 			 int occ = temp.getAmount("yellow");
 			 if(occ > 0) while(occ-->0){
 			   arr.add(x);
-			   chosenTile = true;
 			}
-			 //Collections.addAll()
-			 if(!temp.equals(middle)) discard.addAll(temp.getDiscarded("yellow"));
-			 else temp.removeTile("yellow");
+			chosenTile = true;
+			//  //Collections.addAll()
+			
 		}
 		if(x>=829 && x<=1063 && y>=72 && y<=96 && temp.getAmount("blue")>0){
+			colorTile = "blue";
+
 			//blue
 			Tile x = new Tile("blue");
 			int occ = temp.getAmount("blue");
 			if(occ > 0) while(occ-->0){
 			   arr.add(x);
-			   chosenTile = true;
 			}
-			 if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("blue"));
-			 else temp.removeTile("blue");
+			chosenTile = true;
+			//  if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("blue"));
+			//  else temp.removeTile("blue");
 		}
 		if(x>=829 && x<=1063 && y>=111 && y<=138&& temp.getAmount("red")>0){
+			colorTile = "red";
 			//red
 			Tile x = new Tile("red");
 			int occ = temp.getAmount("red");
 			if(occ > 0) while(occ-->0){
 			   arr.add(x);
-			   chosenTile = true;
 			}
-			 if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("red"));
-			 else temp.removeTile("red");
+			chosenTile = true;
+			//  if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("red"));
+			//  else temp.removeTile("red");
 		}
 		if(x>=829 && x<=1063 && y>=150 && y<=174&& temp.getAmount("black")>0){
+			colorTile = "black";
 			//black
 			Tile x = new Tile("black");
 			int occ = temp.getAmount("black");
 			if(occ > 0) while(occ-->0){
 			   arr.add(x);
-			   chosenTile = true;
 		   }
-		   if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("black"));
-		   else temp.removeTile("black");
+		   chosenTile = true;
+
+		//    if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("black"));
+		//    else temp.removeTile("black");
 		}
 		if(x>=829 && x<=1063 && y>=183 && y<=209&& temp.getAmount("teal")>0){
+			colorTile = "teal";
 			//teal
 			Tile x = new Tile("teal");
 			int occ = temp.getAmount("teal");
 			if(occ > 0) while(occ-->0){
 			   arr.add(x);
-			   chosenTile = true;
-			   }
-			if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("teal"));
-			else temp.removeTile("teal");
-		 }
-		//bunch of coordinates to see which tiles you picked, then add those to this arraylist, wchih goes to the player
-	   
-	   
-		
-		 for(int i = 0; i < discard.size(); i++){
-	    System.out.print(discard.get(i).getColor()+" ");
-		 }
-		 if(middle.TArr.size()==0) middle.setArray(discard);
-	    else{
-			for(int i = 0; i < arr.size(); i++){
-				System.out.print(arr.get(i).getColor()+"j ");
 			}
+			chosenTile = true;
+			// if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("teal"));
+			// else temp.removeTile("teal");
 		}
-		 //middle.drawMiddle();
-		   
 		return arr;
 	}
 
@@ -245,6 +246,7 @@ public class AllFactoryPanel{
 
 		middle.isMiddle();
 		middle.paintFactory(205, Height/2 - 20, 220, 220, g);
+		middle.drawMiddle(g);
 		//g.drawImage(factorymiddle, 205, Height/2 - 20, 220, 220, null);
 		
 	}
