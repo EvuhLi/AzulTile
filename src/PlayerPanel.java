@@ -6,7 +6,7 @@ import java.io.*;
 
 public class PlayerPanel {
     Game game;
-    BufferedImage board, redtile, yellowtile, bluetile, tealtile, blacktile;
+    BufferedImage board, redtile, yellowtile, bluetile, tealtile, blacktile, firstTile;
     static BufferedImage redborder;
     static BufferedImage yellowborder;
     static BufferedImage greenborder;
@@ -19,6 +19,7 @@ public class PlayerPanel {
         game = g;
         hover = -1;
         try {
+            firstTile = ImageIO.read(new File("src/images/firstplayer.png"));
             blackbg = ImageIO.read(new File("src/images/startgamebg.png"));
             nextplayer = ImageIO.read(new File("src/images/nextplayer.png"));
             board = ImageIO.read(new File("src/images/Azul Board.jpg"));
@@ -45,9 +46,36 @@ public class PlayerPanel {
     }
     public void drawAll(Graphics g, int width, int height, int pick){
         g.drawImage(screenbg, 0, 0, width, height, null);
-        
+        if(pick == -1){
+            g.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            g.setColor(Color.gray);
+            g.drawString("Pick a Factory", width/2 - 150, height/2 - 120);
+            g.setColor(Color.white);
+            g.drawString("Pick a Factory", width/2 - 153, height/2 - 120);
+        }
+        if(pick == 0){
+            g.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            g.setColor(Color.gray);
+            g.drawString("Pick a", 663, 100);
+            g.drawString("Tile", 677, 124);
+            g.setColor(Color.white);
+            g.drawString("Pick a", 660, 100);
+            g.drawString("Tile", 674, 124);
+        }
+        if(pick == 1){
+            g.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            g.setColor(Color.gray);
+            g.drawString("Pick a Row", width/2 - 50, height/2 - 120);
+            g.setColor(Color.white);
+            g.drawString("Pick a Row", width/2 - 53, height/2 - 120);
+        }
         if(pick == 3){
-            g.drawImage(nextplayer, 1020, 30, 215,  40, null);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            g.setColor(Color.gray);
+            g.drawString("Next Player", 1023, 30);
+            g.setColor(Color.white);
+            g.drawString("Next Player", 1020, 30);
+            //g.drawImage(nextplayer, 1020, 30, 215,  40, null);
         }
         drawLeft(g, game.getPlayers().get(3), width, height);
         drawMiddle(g, game.getPlayers().get(2), width, height); // logic needs change
@@ -62,6 +90,9 @@ public class PlayerPanel {
     public void drawLeft(Graphics g, Player player, int width, int height){
         g.drawImage(color(player.getColor()), 45, 35, 190, 130, null);
         g.drawImage(board, 50, 40, 180, 120, null);
+        if(player.first){
+            g.drawImage(firstTile, 60, 130, 15, 15, null);
+        }
         //DIMENSTIONS: 80 by 80
         //g.drawImage(border, 56, 44, 80, 80, null);
         int start = 56 + 80 - 15;

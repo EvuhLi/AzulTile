@@ -10,7 +10,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	int gamephase = 0;
 	MainMenuPanel menu;
 	Game game;
-	PlayerPanel board;
+	PlayerPanel player;
 	int width, height;
 	int row;
 
@@ -29,7 +29,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			board.drawAll(g, getWidth(), getHeight(), pickphase);
+			player.drawAll(g, getWidth(), getHeight(), pickphase);
 			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
@@ -61,15 +61,16 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(pickphase == 3 && x >= 1020 && y >= 29 && x <= 1234 && y <= 68){//&&){
 			game.nextPlayer(); 
 			gamephase = 0;
-			pickphase = 0;
+			pickphase = -1;
 		}
 		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;
 			//if its within factory range at all
 			if(x>=94 && x<=531 && y>=199 && y<=649){
 				game.getfactoryP().setCood(x, y);
+			    game.getPlayers().get(0).getPicked().clear();
 				game.getfactoryP().whichPanel();
-				game.getPlayers().get(0).getPicked().clear();
+				// game.getPlayers().get(0).getPicked().clear();
 				pickphase = 0;
 			}
 			//if its within the choosing image, then move on to next stage
@@ -141,7 +142,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 				start = false;
 				game = new Game();
-				board = new PlayerPanel(game);
+				player = new PlayerPanel(game);
 				game.phase = 1;
 			}
 			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
@@ -175,19 +176,19 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		else if(pickphase == 1){
 			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
-				board.hover = 0;
+				player.hover = 0;
 			}
 			if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
-				board.hover = 1;
+				player.hover = 1;
 			}
 			if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
-				board.hover = 2;
+				player.hover = 2;
 			}
 			if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
-				board.hover = 3;
+				player.hover = 3;
 			}
 			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
-				board.hover = 4;
+				player.hover = 4;
 			} 
 		}
 		if(pickphase == 1 || start) repaint();

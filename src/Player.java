@@ -46,25 +46,6 @@ public class Player {
         row.addToRow(r, tilePicked);
         
     }
-    /*public void addRandom(){
-        String color = "";
-        int rand = (int)(Math.random()*5) + 1;
-        if(rand == 1) color = "red";
-        if(rand == 2) color = "black";
-        if(rand == 3) color = "teal";
-        if(rand == 4) color = "yellow";
-        if(rand == 5) color = "blue";
-        for(int c = 0; c < 5; c++){
-            tilePicked.add(new Tile(color));
-        }
-    }*/
-    /*public boolean hasFirst(){
-        //if(tilePicked.contains(tile one)){
-            return true;
-        }
-        return false;
-    }*/
-
     public boolean validRow(int rowNum){
         if(row.rowIsFull(rowNum)){  //checks if row is full (cant place more tiles)
             return false;
@@ -80,23 +61,23 @@ public class Player {
         }
         return true;//hihhgj
     }
-   public void rowToBoard (){
-    for ( int c = 0; c < 5; c++){
-        if (row.rowIsFull(c)){
-            row.getRow(c)[0].onBoard = true;
-            int temp = 0;
-            for ( int i = 0; i < 5; i ++){
-                if (b.colors[c][i].equals(row.getRow(c)[0].getColor())){
-                    temp = i;
+    public void rowToBoard (){
+        for ( int c = 0; c < 5; c++){
+            if (row.rowIsFull(c)){
+                b.addTile(c, row.getRow(c)[0]);
+                //board.row.getRow(c)[0].onBoard = true;
+                int temp = 0;
+                for ( int i = 0; i < 5; i ++){
+                    if (b.colors[c][i].equals(row.getRow(c)[0].getColor())){
+                        temp = i;
+                    }
                 }
-            }
-            b.b[c][temp] = row.getRow(c)[0];
-            for (int i = 5; i >= 1; i--){
-                Game.discard.add(row.getRow(c)[i]);
-                row.clearRow(c);
+                b.b[c][temp] = row.getRow(c)[0];
+                for (int i = 5; i >= 1; i--){
+                    Game.discard.add(row.getRow(c)[i]);
+                    row.clearRow(c);
+                }
             }
         }
     }
-}
-
 }

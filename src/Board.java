@@ -49,7 +49,13 @@ public class Board{
     public void addToDiscard(ArrayList<Tile> arr){
         discard.addAll(arr);
     }
-    public void addTiles(Row r){ 
+    public void addTile(int row, Tile tile){ 
+        for(int c = 0; c < 5; c++){
+            if(colors[row][c].equals(tile.getColor())){
+                b[row][c] = tile;
+                countScore(row, c);
+            }
+        }
        /*  ArrayList<Tile[]> rows = r.getRows();
         for ( int i = 0; i<rows.size(); i++){
             if (r.rowIsFull(i)){
