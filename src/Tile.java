@@ -35,6 +35,9 @@ public class Tile {
                 pic = ImageIO.read(new File("src/images/teal tile.png"));
     
             }
+            else if(color == "first"){
+                pic = ImageIO.read(new File("src/images/firstplayer.png"));
+            }
 
         }
         catch(Exception e){

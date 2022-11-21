@@ -44,30 +44,58 @@ public class OneFactoryPanel{
         int yblue = 335;
         int yblack = 335;
         int yteal = 350;
-        int s = 33;    
+        int s = 28;    
+        int c = 25;
+
         if(isMiddle){
                 for(int i = 0; i<TArr.size(); i++){
+                    
                 Tile t = TArr.get(i);
+                
                 String col = t.getColor();
+                if(col.equals("first")){
+                    g.drawImage(t.getImage(), 300, 504, s, s, null);
+                }
                 if(col.equals("yellow")){
+                    if(yyellow>=504){
+                        yyellow = 350;
+                        xyellow+=c/2;
+                    }
                     g.drawImage(t.getImage(), xyellow, yyellow, s, s, null);
-                     yyellow += 30;
+                    
+                     yyellow += c;
                 }
                 if(col.equals("blue")){
+                    if(yblue>=504){
+                        yblue = 350;
+                        xblue+=c/2;
+                    }
                     g.drawImage(t.getImage(), xblue, yblue, s, s, null);
-                    yblue += 30;
+                    yblue += c;
                     }
                 if(col.equals("red")){
+                    if(yred>=504){
+                        yred = 350;
+                        xred+=c/2;
+                    }
                     g.drawImage(t.getImage(), xred, yred, s, s, null);
-                    yred += 30;
+                    yred += c;
                     }
                 if(col.equals("black")){
+                    if(yblack>=504){
+                        yblack = 350;
+                        xblack+=c/2;
+                    }
                     g.drawImage(t.getImage(), xblack, yblack, s, s, null);
-                    yblack += 30;
+                    yblack += c;
                     }
                  if(col.equals("teal")){
+                    if(yteal>=504){
+                        yteal = 350;
+                        xteal+=c/2;
+                    }
                     g.drawImage(t.getImage(), xteal, yteal, s, s, null);
-                    yteal += 30;
+                    yteal += c;
                     }
             }
         }
@@ -88,6 +116,9 @@ public class OneFactoryPanel{
         TArr.addAll(arr);
     }
 
+    public void addTile(Tile t){
+        TArr.add(t);
+    }
     public ArrayList<Tile> removeTile(String str){
         for(int i = 0; i<TArr.size(); i++){
 
