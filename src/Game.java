@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Game {
-     static ArrayList<Player> players;
-     static ArrayList<Tile> bag, colors;
-     static ArrayList<Tile> discard;
-     static AllFactoryPanel factoryP;
-     static int round;// siri u can increment this to make sure that evwery player goes (it stops at 4)
-     static int pickedRow;
-     static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
-     public Game(){
+    static ArrayList<Player> players;
+    static ArrayList<Tile> bag, colors;
+    static ArrayList<Tile> discard;
+    static AllFactoryPanel factoryP;
+    static int round;// siri u can increment this to make sure that evwery player goes (it stops at 4)
+    static int pickedRow;
+    static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
+    public Game(){
         round = 0;
         players = new ArrayList<>();
         bag = new ArrayList<>();
@@ -73,18 +73,25 @@ public class Game {
         Collections.shuffle(bag);
         discard.clear();
     }
-    /*public void fillRows(){
-        int index = 0;
-        int row = 0;
-        for(int c = 0; c < 9; c++){
-            players.get(index).setTiles(factoryP.getArray().get(c).getColor());
-            players.get(index).addToRow(row);
-            index = (index+1)%4;
-            if(index == 0) row++;
+    public void fillRows(){
+        for(int c = 0; c < 4; c++){
+            for(int d = 0; d < 5; d++){
+                players.get(c).getRow().fillRow(randomColor(), d);
+            }
         }
-    }*/
+        for(int c = 0; c < factoryP.getArray().size(); c++){
+            factoryP.getArray().get(c).TArr.clear();
+        }
+    }
 
-
+    public String randomColor(){
+        int num = (int)(Math.random() * 5);
+        if(num == 0) return "teal";
+        if(num ==  1) return "blue";
+        if(num == 2) return "black";
+        if(num == 3) return "red";
+        else return "yellow";
+    }
     public void transferDiscard(){
         players.get(0).getBoard().addToDiscard(players.get(0).getRow().getDiscard());
         players.get(0). getRow().getDiscard().clear();
@@ -136,17 +143,21 @@ public class Game {
         }
         return true;
     }
-    public void endOfRound(){
+    public void endOfRound(int row){
         boolean end = false;
-        for ( int i = 0; i < players.size(); i++){
-            players.get(i).rowToBoard();
-           // if (players.get(i).getBoard().checkRow()){
-                end = true;
+        if(players.get(0).rowToBoard(row)){
+        //endgame
             }
+        
+        // for ( int i = 0; i < players.size(); i++){
+        //     players.get(i).rowToBoard();
+        //    // if (players.get(i).getBoard().checkRow()){
+        //         end = true;
+        //     }
       //  }
-        if (end){
-         //   endOfGame()
-        }
+        // if (end){
+        //  //   endOfGame()
+        // }
         // iterate through players, check their rows and boards, score them, while checking check if their is a row, hold onto it and continue and at the end call end game method
 
     }

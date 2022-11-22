@@ -227,7 +227,7 @@ public class AllFactoryPanel{
 
 		middle.isMiddle();
 		middle.paintFactory(205, Height/2 - 20, 220, 220, g);
-		middle.addTile(new Tile("first"));
+		//middle.addTile(new Tile("first"));
 		middle.drawMiddle(g);
 		//g.drawImage(factorymiddle, 205, Height/2 - 20, 220, 220, null);
 		

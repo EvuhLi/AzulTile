@@ -90,37 +90,40 @@ public class Board{
 
  //  }
 
-    public int countScore (int r, int c){
+    public void countScore (int r, int c){
         score++;
-        for ( int i = 1; r-i>-1 && b[r-i][c]!= null && b[r-i][c].onBoard; i++){
+        for ( int i = 1; r-i>-1 && b[r-i][c]!= null; i++){
             score++;
         }
-        for ( int i = 1; c-i>-1 && b[r][c-i]!= null && b[r][c-i].onBoard; i++){
+        for ( int i = 1; c-i>-1 && b[r][c-i]!= null; i++){
             score++;
         }
-        for ( int i = 1; r+i<5 && b[r+i][c]!= null && b[r+i][c].onBoard; i++){
+        for ( int i = 1; r+i<5 && b[r+i][c]!= null; i++){
             score++;
         }
-        for ( int i = 1; c+i<5 && b[r][c+i]!= null && b[r][c+i].onBoard; i++){
+        for ( int i = 1; c+i<5 && b[r][c+i]!= null; i++){
             score++;
         }
-        return score;
     }
     
-    public boolean countEndScore(){ // need to implement
+   // public boolean countEndScore(){ // need to implement
     //    int bonus = 0;
     //    return score + bonus;
   //  }
     
-    // public boolean checkEnd(){ // need to implement
-    //    for (Tile[] arr: b){
+    
+    public boolean checkEnd(int row){ // need to implement
+        for(int c = 0; c < 5; c++){
+            if(b[row][c] == null) return false;
+        }
+        return true;
+    
+        //    for (Tile[] arr: b){
     //        for (Tile i: arr){
     //          //  if (!i.onBoard){
      //               break;
      //           }
           //  }
-    //    }
-    return true;
-  }
+    }
 }
 

@@ -70,11 +70,13 @@ public class PlayerPanel {
             g.drawString("Pick a Row", width/2 - 53, height/2 - 120);
         }
         if(pick == 3){
+            g.setColor(new Color(219, 132, 77));
+            g.fillRect(1067, 35, 150, 30);
             g.setFont(new Font("Times New Roman", Font.BOLD, 28));
             g.setColor(Color.gray);
-            g.drawString("Next Player", 1023, 30);
+            g.drawString("Next Player", 1073, 60);
             g.setColor(Color.white);
-            g.drawString("Next Player", 1020, 30);
+            g.drawString("Next Player", 1070, 60);
             //g.drawImage(nextplayer, 1020, 30, 215,  40, null);
         }
         drawLeft(g, game.getPlayers().get(3), width, height);

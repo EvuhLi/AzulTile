@@ -3,24 +3,27 @@ import javax.swing.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
 	boolean start = true;
 	int pickphase = -1;
-	int gamephase = 0;
 	MainMenuPanel menu;
 	Game game;
 	PlayerPanel player;
 	int width, height;
-	int row;
+	int row, scorephase;
+	
 
 	public AzulPanel(int w, int h) {
+		scorephase = 0;
 		menu = new MainMenuPanel();
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		width = w;
 		height = h;
-		row = 0;
+		row = -1;
 	}
 	
 	public void paint(Graphics g) {
@@ -39,7 +42,6 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		
 		
 		//try to make this happen AFTER you choose which row
-		//if(gamephase == 1)
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -58,20 +60,52 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
-		if(pickphase == 3 && x >= 1020 && y >= 29 && x <= 1234 && y <= 68){//&&){
+		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
 			game.nextPlayer(); 
-			gamephase = 0;
 			pickphase = -1;
 		}
+		if(!start && scorephase == 0){
+			game.fillRows();
+			//pickphase = 3;
+			scorephase = 1;
+			row = 0;
+			pickphase = 3;
+		}
+		
+		if(!start && scorephase == 1 && pickphase != 3){
+			System.out.println("hi");
+			Timer timer =new Timer();
+			TimerTask task = new TimerTask(){
+				@Override
+				public void run() {
+					game.endOfRound(row);
+					row++;
+					repaint();
+					if(row == 5) timer.cancel();
+				}	
+			};
+			if(game.round < 4){
+				pickphase = -1;
+				timer.scheduleAtFixedRate(task, 0, 1000);
+				row = 0;
+				game.round++;
+			}
+			pickphase = 3;
+			if(game.round == 4) scorephase = 0; 
+		}
+		
 		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;
 			//if its within factory range at all
 			if(x>=94 && x<=531 && y>=199 && y<=649){
+				pickphase = -1;
 				game.getfactoryP().setCood(x, y);
 			    game.getPlayers().get(0).getPicked().clear();
 				game.getfactoryP().whichPanel();
 				// game.getPlayers().get(0).getPicked().clear();
-				pickphase = 0;
+				if(game.getfactoryP().getTemp()!= null){
+					pickphase = 0;
+				}
 			}
 			//if its within the choosing image, then move on to next stage
 			if(x>=821 && x<=1066 && y>37 && y<=215 && pickphase > -1){

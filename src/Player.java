@@ -61,23 +61,19 @@ public class Player {
         }
         return true;//hihhgj
     }
-    public void rowToBoard (){
-        for ( int c = 0; c < 5; c++){
-            if (row.rowIsFull(c)){
-                b.addTile(c, row.getRow(c)[0]);
-                //board.row.getRow(c)[0].onBoard = true;
-                int temp = 0;
-                for ( int i = 0; i < 5; i ++){
-                    if (b.colors[c][i].equals(row.getRow(c)[0].getColor())){
-                        temp = i;
-                    }
-                }
-                b.b[c][temp] = row.getRow(c)[0];
-                for (int i = 5; i >= 1; i--){
-                    Game.discard.add(row.getRow(c)[i]);
-                    row.clearRow(c);
-                }
+    public boolean rowToBoard (int r){
+        boolean end = false;
+        if (row.rowIsFull(r)){
+            
+            b.addTile(r, row.getRow(r)[0]);
+            score = b.score;
+            //board.row.getRow(c)[0].onBoard = true;
+            for (int i = row.getRow(r).length - 1; i >= 1; i--){
+                Game.discard.add(row.getRow(r)[i]);
             }
+            row.clearRow(r);
+            end = b.checkEnd(r);
         }
+        return end;
     }
 }
