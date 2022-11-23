@@ -1,30 +1,22 @@
 import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.io.*;
 import java.util.*;
 
 
 public class OneFactoryPanel{
-    private BufferedImage factory, blue, red, yellow, TChoose, teal, black, factorymiddle, highlight;
+    private BufferedImage factory, TChoose, factorymiddle, highlight, border;
     ArrayList<Tile>TArr;
-    private TreeMap<String, Integer>possibleT;
     Game game;
-	private Tile t1, t2, t3, t4;
 	boolean isMiddle = false;
     boolean clicked;
     public OneFactoryPanel() {
         try {           
+            border = ImageIO.read(new File("src/images/selectborder.png"));
             TArr = new ArrayList<>();
-            possibleT = new TreeMap<>();
 			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
             highlight = ImageIO.read(new File("src/images/yellowfactory.png"));
-            blue = ImageIO.read(new File("src/images/blue tile.png"));
-            red = ImageIO.read(new File("src/images/red tile.png"));
-            yellow = ImageIO.read(new File("src/images/yellow tile.png"));
-            teal = ImageIO.read(new File("src/images/teal tile.png"));
-            black = ImageIO.read(new File("src/images/black tile.png"));
             TChoose = ImageIO.read(new File("src/images/TileChoosing.png"));
             factory = ImageIO.read(new File("src/images/factory.png"));
             
@@ -52,30 +44,58 @@ public class OneFactoryPanel{
         int yblue = 335;
         int yblack = 335;
         int yteal = 350;
-        int s = 33;    
+        int s = 28;    
+        int c = 25;
+
         if(isMiddle){
                 for(int i = 0; i<TArr.size(); i++){
+                    
                 Tile t = TArr.get(i);
+                
                 String col = t.getColor();
+                if(col.equals("first")){
+                    g.drawImage(t.getImage(), 300, 504, s, s, null);
+                }
                 if(col.equals("yellow")){
+                    if(yyellow>=504){
+                        yyellow = 350;
+                        xyellow+=c/2;
+                    }
                     g.drawImage(t.getImage(), xyellow, yyellow, s, s, null);
-                     yyellow += 30;
+                    
+                     yyellow += c;
                 }
                 if(col.equals("blue")){
+                    if(yblue>=504){
+                        yblue = 350;
+                        xblue+=c/2;
+                    }
                     g.drawImage(t.getImage(), xblue, yblue, s, s, null);
-                    yblue += 30;
+                    yblue += c;
                     }
                 if(col.equals("red")){
+                    if(yred>=504){
+                        yred = 350;
+                        xred+=c/2;
+                    }
                     g.drawImage(t.getImage(), xred, yred, s, s, null);
-                    yred += 30;
+                    yred += c;
                     }
                 if(col.equals("black")){
+                    if(yblack>=504){
+                        yblack = 350;
+                        xblack+=c/2;
+                    }
                     g.drawImage(t.getImage(), xblack, yblack, s, s, null);
-                    yblack += 30;
+                    yblack += c;
                     }
                  if(col.equals("teal")){
+                    if(yteal>=504){
+                        yteal = 350;
+                        xteal+=c/2;
+                    }
                     g.drawImage(t.getImage(), xteal, yteal, s, s, null);
-                    yteal += 30;
+                    yteal += c;
                     }
             }
         }
@@ -92,10 +112,13 @@ public class OneFactoryPanel{
         return arr;
     }
  
-    public void setArray(ArrayList<Tile>arr){
-        TArr = arr;
+    public void addArray(ArrayList<Tile>arr){
+        TArr.addAll(arr);
     }
 
+    public void addTile(Tile t){
+        TArr.add(t);
+    }
     public ArrayList<Tile> removeTile(String str){
         for(int i = 0; i<TArr.size(); i++){
 
@@ -122,28 +145,31 @@ public class OneFactoryPanel{
         int fH = h+hh/11;
 
 		if(!isMiddle){
-        for(int i = 0; i<TArr.size(); i++){
-            if(i==0)
-                g.drawImage(TArr.get(i).getImage(), fW, fH, tSize, tSize, null);
-                else if(i==1)
-                g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/18, tSize, tSize, null);
-                else if(i==2)
-                g.drawImage(TArr.get(i).getImage(), w + ww/30, h + hh/18, tSize, tSize, null);
-                else
-                g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/11, tSize, tSize, null);
+            for(int i = 0; i<TArr.size(); i++){
+                if(i==0)
+                    g.drawImage(TArr.get(i).getImage(), fW, fH, tSize, tSize, null);
+                    else if(i==1)
+                    g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/18, tSize, tSize, null);
+                    else if(i==2)
+                    g.drawImage(TArr.get(i).getImage(), w + ww/30, h + hh/18, tSize, tSize, null);
+                    else
+                    g.drawImage(TArr.get(i).getImage(), w + ww/20, h + hh/11, tSize, tSize, null);
+            }
         }
     }
-	else{
-		//draw middle
-	}
-}
 
-public int getSize(){
-    return TArr.size();
-}
-    public void paintChoosing(Graphics g){
+    public int getSize(){
+        return TArr.size();
+    }
+    public void paintChoosing(Graphics g, String color){
+
         g.drawImage(TChoose, 600, -55, 700, 400, null);
         g.setFont(new Font("Times New Roman", Font.PLAIN, 35));
+        if(color.equals("yellow")) g.drawImage(border, 777, 49, 27, 27, null);
+        if(color.equals("blue")) g.drawImage(border, 777, 79, 27, 27, null);
+        if(color.equals("red")) g.drawImage(border, 777, 115, 27, 27, null);
+        if(color.equals("black")) g.drawImage(border, 777, 150, 27, 27, null);
+        if(color.equals("teal")) g.drawImage(border, 778, 183,  27, 27, null);
         
         
         int y = getAmount("yellow");

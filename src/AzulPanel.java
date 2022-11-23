@@ -1,33 +1,29 @@
 import java.awt.*;
-import java.awt.image.*;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.SwingPropertyChangeSupport;
-import java.util.*;
-import java.io.*;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
-	boolean start = true, factory = false, pickedF = false;
-	int factoryphase = 0;
-	int gamephase = 0;
+	boolean start = true;
+	int pickphase = -1;
 	MainMenuPanel menu;
 	Game game;
-	PlayerPanel board;
+	PlayerPanel player;
 	int width, height;
-	int row;
+	int row, scorephase;
+	
 
 	public AzulPanel(int w, int h) {
+		scorephase = 0;
 		menu = new MainMenuPanel();
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		width = w;
 		height = h;
-		row = 0;
+		row = -1;
 	}
 	
 	public void paint(Graphics g) {
@@ -36,28 +32,16 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			board.drawAll(g, getWidth(), getHeight(), (factoryphase == 1));
+			player.drawAll(g, getWidth(), getHeight(), pickphase);
 			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
-		if(factory && pickedF){
+		if(game.phase == 1){
 			game.getfactoryP().choosing(g);
 		}
-		if(factoryphase == 1){
-			//clear that factory you picked
-			game.getfactoryP().whichPanel();
-			OneFactoryPanel cur =game.getfactoryP().getTemp();
-			if(!cur.isMiddle)
-			cur.reset();
-			else{
-				//System.out.println("MIDDLE REMOVE");
-				//remove the tiles 
-				
-			}
-		}
+		
+		
 		//try to make this happen AFTER you choose which row
-		if(!start)game.getfactoryP().middle.drawMiddle(g);
-		//if(gamephase == 1)
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -76,70 +60,124 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
-		if(factory){
-			pickedF = true;
-			//if its within factory range at all
-			if(x>=94 && x<=531 && y>=199 && y<=649){
-				game.getfactoryP().setCood(x, y);
-				game.getfactoryP().whichPanel();
-			}
-			//if its within the choosing image, then move on to next stage
-			if(x>=600 && x<=1300 && y>=-50 && y<=350){
-				
-				game.getfactoryP().setCood(x, y);
-				//do it here
-				game.getPlayers().get(0).addTiles(game.getfactoryP().getChosen());
-				if(game.getfactoryP().chosenTile){
-					pickedF = false;
-					factory = false;
-					factoryphase = 1;
-					game.getfactoryP().chosenTile = false;
-				}
-			}			
+		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
+			game.nextPlayer(); 
+			pickphase = -1;
 		}
-		if(factoryphase == 2){
-			factoryphase = 0;
-			factory = true;
-			game.getfactoryP().changeClicked(null);
-			game.getfactoryP().temp = null;
-			game.nextPlayer();
-			gamephase = 1;
-		}
-		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
-		//need boolean for when player has picked tiles
-		if(factoryphase == 1){
-			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
-				game.getPlayers().get(0).addToRow(0);
-				factoryphase = 2;
-			}
-			if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
-				game.getPlayers().get(0).addToRow(1);
-				factoryphase = 2;
-			}
-			if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
-				game.getPlayers().get(0).addToRow(2);
-				factoryphase = 2;
-			}
-			if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
-				game.getPlayers().get(0).addToRow(3);
-				factoryphase = 2;
-			}
-			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
-				game.getPlayers().get(0).addToRow(4);
-				factoryphase = 2;
-			}
+		if(!start && scorephase == 0){
+			game.fillRows();
+			//pickphase = 3;
+			scorephase = 1;
+			row = 0;
+			pickphase = 3;
 		}
 		
-		//after the start screen
-			
-
+		if(!start && scorephase == 1 && pickphase != 3){
+			System.out.println("hi");
+			Timer timer =new Timer();
+			TimerTask task = new TimerTask(){
+				@Override
+				public void run() {
+					game.endOfRound(row);
+					row++;
+					repaint();
+					if(row == 5) timer.cancel();
+				}	
+			};
+			if(game.round < 4){
+				pickphase = -1;
+				timer.scheduleAtFixedRate(task, 0, 1000);
+				row = 0;
+				game.round++;
+			}
+			pickphase = 3;
+			if(game.round == 4) scorephase = 0; 
+		}
+		
+		if(!start && !game.facsEmpty() && pickphase < 2){
+			//pickedF = true;
+			//if its within factory range at all
+			if(x>=94 && x<=531 && y>=199 && y<=649){
+				pickphase = -1;
+				game.getfactoryP().setCood(x, y);
+			    game.getPlayers().get(0).getPicked().clear();
+				game.getfactoryP().whichPanel();
+				// game.getPlayers().get(0).getPicked().clear();
+				if(game.getfactoryP().getTemp()!= null){
+					pickphase = 0;
+				}
+			}
+			//if its within the choosing image, then move on to next stage
+			if(x>=821 && x<=1066 && y>37 && y<=215 && pickphase > -1){
+				game.getfactoryP().colorTile = "";
+				pickphase = 0;
+				game.getfactoryP().setCood(x, y);
+				game.getPlayers().get(0).setTiles(game.getfactoryP().getChosen());
+				System.out.println("size " + game.getPlayers().get(0).getPicked().size());
+				if(game.getfactoryP().chosenTile){
+					pickphase = 1;//tiles have been chosen
+					game.getfactoryP().chosenTile = false;
+				}
+			}	
+			if(pickphase == 1){
+				if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
+					if(game.getPlayers().get(0).validRow(0)){
+						game.getPlayers().get(0).addToRow(0);
+						pickphase = 2;
+					}
+				}
+				if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
+					if(game.getPlayers().get(0).validRow(1)){
+						game.getPlayers().get(0).addToRow(1);
+						pickphase = 2;
+					}
+				}
+				if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
+					if(game.getPlayers().get(0).validRow(2)){
+						game.getPlayers().get(0).addToRow(2);
+						pickphase = 2;
+					}
+					// game.getPlayers().get(0).addToRow(2);
+					// pickphase = 2;
+				}
+				if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
+					if(game.getPlayers().get(0).validRow(3)){
+						game.getPlayers().get(0).addToRow(3);
+						pickphase = 2;
+					}
+				}
+				if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
+					if(game.getPlayers().get(0).validRow(4)){
+						game.getPlayers().get(0).addToRow(4);
+						pickphase = 2;
+					}
+				}
+			}
+			if(pickphase == 2){
+				game.getfactoryP().moveLeftoverTiles();
+				//game.getPlayers().get(0).setTiles(game.getfactoryP().getChosen());
+				OneFactoryPanel cur =game.getfactoryP().getTemp();
+				if(!cur.isMiddle) cur.reset();
+				pickphase = 3;
+				//factory = false;
+				//pickedF = false;
+				game.getfactoryP().changeClicked(null);
+				game.getfactoryP().temp = null;
+				game.getfactoryP().chosenTile = false;
+				//game.nextPlayer();
+			}	
+		}
+		
+		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
+		//need boolean for when player has picked tiles
+		
 		
 		if(start){
 			if(x >= 90 && x <= 560 && y >=getHeight()/2 + 100 && y <= getHeight()/2 + 160){
 				start = false;
 				game = new Game();
-				board = new PlayerPanel(game);
-				factory = true;
+				player = new PlayerPanel(game);
+				game.phase = 1;
 			}
 			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 				menu.download = true;
@@ -170,23 +208,23 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				menu.hover = 2;
 			}
 		}
-		else if(factoryphase == 1){
+		else if(pickphase == 1){
 			if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
-				board.hover = 0;
+				player.hover = 0;
 			}
 			if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
-				board.hover = 1;
+				player.hover = 1;
 			}
 			if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
-				board.hover = 2;
+				player.hover = 2;
 			}
 			if(x >= 750 && x <= 925 && y >= 390 && y <= 430){
-				board.hover = 3;
+				player.hover = 3;
 			}
 			if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
-				board.hover = 4;
+				player.hover = 4;
 			} 
 		}
-		if(factoryphase == 1 || start) repaint();
+		if(pickphase == 1 || start) repaint();
 	}
 }

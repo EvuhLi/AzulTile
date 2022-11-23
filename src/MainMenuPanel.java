@@ -4,7 +4,6 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.awt.*;
 			
 public class MainMenuPanel implements Runnable{
 	
@@ -56,7 +55,6 @@ public class MainMenuPanel implements Runnable{
 		try{
 			URL url = new URL("https://www.cadl.org/application/files/6515/8257/3893/EN-Azul-Rules-Next-Move-web.pdf");
 			HttpURLConnection http =(HttpURLConnection)url.openConnection();
-			double fileSize = (double)http.getContentLengthLong();
 			BufferedInputStream in = new BufferedInputStream(http.getInputStream());
 			FileOutputStream fos = new FileOutputStream(this.out);
 			BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);

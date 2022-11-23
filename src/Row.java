@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.imageio.plugins.tiff.TIFFDirectory;
+
 public class Row{
     Tile[] one = new Tile[1];
     Tile[] two = new Tile[2];
@@ -18,7 +20,22 @@ public class Row{
         discard = new ArrayList<>();
         //temp:
     }
-    
+    public String toString(){
+        String str = "";
+        for(Tile[] row : rows){
+            for(Tile tile: row){
+                if(tile!= null) str+= tile.getColor() + " ";
+                else str+= "null ";
+            }
+            str+= "\n";
+        }
+        return str;
+    }
+    public void fillRow(String color, int row){
+        for(int c = 0; c < rows.get(row).length; c++){
+            rows.get(row)[c] = new Tile(color);
+        }
+    }
     public boolean rowIsFull(int row){
         Tile[] temp = rows.get(row);
         for(Tile tile : temp){
