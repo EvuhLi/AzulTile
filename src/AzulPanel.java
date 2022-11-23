@@ -77,16 +77,20 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		
 		if(!start && scorephase == 2){
+			scorephase = 3;
 			System.out.println("hi");
 			Timer timer =new Timer();
 			TimerTask task = new TimerTask(){
 				@Override
 				public void run() {
-					game.endOfRound(row);
-					row++;
-					repaint();
+					if(row > -1){
+						game.endOfRound(row);
+						row++;
+						repaint();
+					}
+					if(row == -1) row = 0;
 					if(row == 5){ 
-						row = 0;
+						row = -1;
 						game.nextPlayer();
 						game.round++;
 						repaint(); //🐧 🙀 (*/ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
@@ -95,7 +99,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				}	
 			};
 			if(game.round < 4){
-				timer.scheduleAtFixedRate(task, 0, 3000);
+				timer.scheduleAtFixedRate(task, 1000, 1000);
 			}
 			// scorephase = 1;
 			if(game.round == 4) scorephase = 0; 
