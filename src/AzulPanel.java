@@ -85,16 +85,19 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 					game.endOfRound(row);
 					row++;
 					repaint();
-					if(row == 5) timer.cancel();
+					if(row == 5){ 
+						row = 0;
+						game.nextPlayer();
+						game.round++;
+						repaint(); //🐧 🙀 (*/ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
+					}
+					if(game.round == 4) timer.cancel();
 				}	
 			};
 			if(game.round < 4){
-				pickphase = -1;
-				timer.scheduleAtFixedRate(task, 0, 1000);
-				row = 0;
-				game.round++;
+				timer.scheduleAtFixedRate(task, 0, 3000);
 			}
-			scorephase = 1;
+			// scorephase = 1;
 			if(game.round == 4) scorephase = 0; 
 		}
 		
