@@ -20,7 +20,7 @@ public class AllFactoryPanel{
 
 	public AllFactoryPanel() {
 		OneFactoryPanel arr [] = new OneFactoryPanel[]{f1, f2, f3, f4, f5, f6, f7, f8, f9, middle};//only used to add factories to the arraylist
-		factories = new ArrayList<>(Arrays.asList(arr));		
+		factories = new ArrayList<>(Arrays.asList(arr));	
 	}
 
 	public ArrayList<OneFactoryPanel> getArray(){

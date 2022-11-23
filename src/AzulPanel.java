@@ -32,7 +32,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			player.drawAll(g, getWidth(), getHeight(), pickphase);
+			player.drawAll(g, getWidth(), getHeight(), pickphase, scorephase);
 			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
@@ -60,6 +60,10 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
+		if(scorephase == 1 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){
+			game.nextPlayer();
+			scorephase = 2;
+		}
 		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
 			game.nextPlayer(); 
 			pickphase = -1;
@@ -72,7 +76,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			pickphase = 3;
 		}
 		
-		if(!start && scorephase == 1 && pickphase != 3){
+		if(!start && scorephase == 2){
 			System.out.println("hi");
 			Timer timer =new Timer();
 			TimerTask task = new TimerTask(){
@@ -90,7 +94,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				row = 0;
 				game.round++;
 			}
-			pickphase = 3;
+			scorephase = 1;
 			if(game.round == 4) scorephase = 0; 
 		}
 		
