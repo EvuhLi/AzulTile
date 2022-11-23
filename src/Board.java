@@ -33,7 +33,6 @@ public class Board{
         colors[4][2] = "black";
         colors[4][3] = "teal";
         colors[4][4] = "blue";
-
     }
 
     public boolean colorInBoard(String color, int row){
