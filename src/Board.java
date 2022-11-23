@@ -33,6 +33,7 @@ public class Board{
         colors[4][2] = "black";
         colors[4][3] = "teal";
         colors[4][4] = "blue";
+
     }
 
     public boolean colorInBoard(String color, int row){
@@ -105,10 +106,10 @@ public class Board{
         }
     }
     
-   // public boolean countEndScore(){ // need to implement
+   public void countEndScore(){ // need to implement
     //    int bonus = 0;
     //    return score + bonus;
-  //  }
+  }
     
     
     public boolean checkEnd(int row){ // need to implement

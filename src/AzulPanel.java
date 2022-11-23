@@ -32,7 +32,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			player.drawAll(g, getWidth(), getHeight(), pickphase, scorephase);
+			player.drawAll(g, getWidth(), getHeight(), pickphase);
 			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
@@ -60,51 +60,58 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		int x = e.getX();
 		int y = e.getY();
 		System.out.println("loc is (" + x + "," + y + ")");
-		if(scorephase == 1 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){
-			game.nextPlayer();
-			scorephase = 2;
-		}
+		
 		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
 			game.nextPlayer(); 
+			if(scorephase == 3) scorephase = 0;
 			pickphase = -1;
 		}
-		if(!start && scorephase == 0){
-			game.fillRows();
-			//pickphase = 3;
-			scorephase = 1;
-			row = 0;
-			pickphase = 3;
-		}
 		
-		if(!start && scorephase == 2){
-			scorephase = 3;
+		
+		if(!start && scorephase == 1 && pickphase == -1){
+			scorephase = 2;
 			System.out.println("hi");
 			Timer timer =new Timer();
 			TimerTask task = new TimerTask(){
 				@Override
 				public void run() {
-					if(row > -1){
+					if(row == 8) row = 9;
+					if(row == 6) row = 7;
+					if(row > -1 && row < 5){
 						game.endOfRound(row);
 						row++;
 						repaint();
 					}
 					if(row == -1) row = 0;
-					if(row == 5){ 
+					if(row == 5){
+						row = 6;
+					}
+					if(row == 7) row = 8;
+					if(row == 9){ 
 						row = -1;
 						game.nextPlayer();
 						game.round++;
 						repaint(); //🐧 🙀 (*/ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
 					}
 					if(game.round == 4) timer.cancel();
-				}	
+				}
 			};
 			if(game.round < 4){
-				timer.scheduleAtFixedRate(task, 1000, 1000);
+				timer.scheduleAtFixedRate(task, 2000, 1000);
 			}
-			// scorephase = 1;
-			if(game.round == 4) scorephase = 0; 
+			// scorephase = 1; 
+				System.out.println("hello");
+				scorephase = 3;
+				pickphase = 3;
+			
 		}
-		
+		if(!start && scorephase == 0 && pickphase != 3){ 
+			game.fillRows();
+			//pickphase = 3;
+			scorephase = 1;
+			row = 0;
+			pickphase = 3;
+		}
 		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;
 			//if its within factory range at all

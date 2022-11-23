@@ -9,6 +9,7 @@ public class Game {
     static int round;// siri u can increment this to make sure that evwery player goes (it stops at 4)
     static int pickedRow;
     static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
+    boolean end;
     public Game(){
         round = 0;
         players = new ArrayList<>();
@@ -144,10 +145,9 @@ public class Game {
         return true;
     }
     public void endOfRound(int row){
-        boolean end = false;
         if(players.get(0).rowToBoard(row)){
-        //endgame
-            }
+            // end of game
+        }
         
         // for ( int i = 0; i < players.size(); i++){
         //     players.get(i).rowToBoard();
@@ -161,6 +161,10 @@ public class Game {
         // iterate through players, check their rows and boards, score them, while checking check if their is a row, hold onto it and continue and at the end call end game method
 
     }
-
+    public void endOfGame(){
+        for ( int i = 0; i < 4; i ++){
+            players.get(i).getBoard().countEndScore();
+        }
+    }
 }
 

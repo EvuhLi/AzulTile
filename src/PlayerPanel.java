@@ -44,15 +44,8 @@ public class PlayerPanel {
 			return;
 		}
     }
-    public void drawAll(Graphics g, int width, int height, int pick, int score){
+    public void drawAll(Graphics g, int width, int height, int pick){
         g.drawImage(screenbg, 0, 0, width, height, null);
-        if(score == 1){
-            g.setFont(new Font("Times New Roman", Font.BOLD, 28));
-            g.setColor(Color.gray);
-            g.drawString("Pick a Factory", width/2 - 150, height/2 - 120);
-            g.setColor(Color.white);
-            g.drawString("Pick a Factory", width/2 - 153, height/2 - 120);
-        }
         if(pick == -1){
             g.setFont(new Font("Times New Roman", Font.BOLD, 28));
             g.setColor(Color.gray);
