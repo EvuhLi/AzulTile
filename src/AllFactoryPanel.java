@@ -96,6 +96,11 @@ public class AllFactoryPanel{
 		}
 		else if(x>=205 && x<=423 && y>=312 && y<=536 ){
 			System.out.println("middle");
+			if(middle.hasOne()){
+				//set player to #1
+				//paint #1 on the board
+				//remove the #1 
+			}
 			if(middle.getSize() > 0){
 				changeClicked(middle);
 				temp = middle;
@@ -115,10 +120,6 @@ public class AllFactoryPanel{
 		System.out.println("here");
 		x = x1;
 		y = y1;
-
-		if(x>=205 && x<=423 && y>=312 && y<=536 ){
-		//its in the middle
-		}
 	}
 	public OneFactoryPanel getTemp(){
 		return temp;
@@ -159,8 +160,7 @@ public class AllFactoryPanel{
 			   arr.add(x);
 			}
 			chosenTile = true;
-			//  if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("blue"));
-			//  else temp.removeTile("blue");
+		
 		}
 		if(x>=829 && x<=1063 && y>=111 && y<=138&& temp.getAmount("red")>0){
 			colorTile = "red";
@@ -171,8 +171,7 @@ public class AllFactoryPanel{
 			   arr.add(x);
 			}
 			chosenTile = true;
-			//  if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("red"));
-			//  else temp.removeTile("red");
+			
 		}
 		if(x>=829 && x<=1063 && y>=150 && y<=174&& temp.getAmount("black")>0){
 			colorTile = "black";
@@ -184,8 +183,6 @@ public class AllFactoryPanel{
 		   }
 		   chosenTile = true;
 
-		//    if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("black"));
-		//    else temp.removeTile("black");
 		}
 		if(x>=829 && x<=1063 && y>=183 && y<=209&& temp.getAmount("teal")>0){
 			colorTile = "teal";
@@ -196,8 +193,7 @@ public class AllFactoryPanel{
 			   arr.add(x);
 			}
 			chosenTile = true;
-			// if(!temp.equals(middle))  discard.addAll(temp.getDiscarded("teal"));
-			// else temp.removeTile("teal");
+		
 		}
 		return arr;
 	}
@@ -227,9 +223,8 @@ public class AllFactoryPanel{
 
 		middle.isMiddle();
 		middle.paintFactory(205, Height/2 - 20, 220, 220, g);
-		//middle.addTile(new Tile("first"));
+		middle.addTile(new Tile("first"));
 		middle.drawMiddle(g);
-		//g.drawImage(factorymiddle, 205, Height/2 - 20, 220, 220, null);
 		
 	}
 }

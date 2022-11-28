@@ -158,6 +158,14 @@ public class OneFactoryPanel{
         }
     }
 
+    public boolean hasOne(){
+        for(int i = 0; i<TArr.size(); i++){
+            if(TArr.get(i).getColor().equals("first")){
+                return true;
+            }
+        }
+        return false;
+    }
     public int getSize(){
         return TArr.size();
     }

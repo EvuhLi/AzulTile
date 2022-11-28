@@ -105,11 +105,13 @@ public class Board{
             score++;
         }
     }
-    
-   public void countEndScore(){ // need to implement
-    //    int bonus = 0;
-    //    return score + bonus;
-  }
+
+    public void countEndScore(){
+      //  int bonus = 0;
+        //for ( int r = 0; r < 5; r ++){
+          //  for ( int c = 0; c < 5; c++)
+       // }
+    } 
     
     
     public boolean checkEnd(int row){ // need to implement
