@@ -93,24 +93,34 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						game.round++;
 						repaint(); //🐧 🙀 (*/ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
 					}
-					if(game.round == 4) timer.cancel();
+					if(game.round == 4){
+						timer.cancel();
+						System.out.println("ehhloe");
+						scorephase = 0;
+						pickphase = -1;
+						game.round = 0;
+						game.resetFactories();
+					}
 				}
 			};
 			if(game.round < 4){
 				timer.scheduleAtFixedRate(task, 2000, 1000);
 			}
-			// scorephase = 1; 
-				System.out.println("hello");
-				scorephase = 3;
-				pickphase = 3;
+			// if(game.round == 4){// scorephase = 1; 
+			// 	System.out.println("hello");
+			// 	scorephase = 3;
+			// 	pickphase = 3;
+			// }
 			
 		}
-		if(!start && scorephase == 0 && pickphase != 3){ 
-			game.fillRows();
+		if(!start && scorephase == 0 && pickphase != 3 && game.facsEmpty()){ 
+			System.out.println("empty");
+			//game.fillRows();
 			//pickphase = 3;
 			scorephase = 1;
 			row = 0;
-			pickphase = 3;
+			pickphase = -1;
+			//pickphase = 3;
 		}
 		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;

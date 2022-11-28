@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Factory {
     boolean middle;
     ArrayList<Tile> tiles;
-
+    //🦧
     public Factory(boolean m){
         middle = m;
         tiles = new ArrayList<>();

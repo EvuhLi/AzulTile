@@ -87,6 +87,7 @@ public class PlayerPanel {
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
         if(hover > -1) drawHover(g, width, height);
         hover = -1;
+        //🦧
     }
 
     public void drawLeft(Graphics g, Player player, int width, int height){

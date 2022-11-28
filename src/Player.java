@@ -44,7 +44,7 @@ public class Player {
     }
     public void addToRow(int r){
         row.addToRow(r, tilePicked);
-        
+        //🦧
     }
     public boolean validRow(int rowNum){
         if(row.rowIsFull(rowNum)){  //checks if row is full (cant place more tiles)

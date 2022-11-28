@@ -4,7 +4,7 @@ import javax.imageio.ImageIO;
 import java.io.*;
 
 public class EndScreenPanel{
-
+    //🦧
     private BufferedImage bkg, gray;
 
     public EndScreenPanel(){

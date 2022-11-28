@@ -175,9 +175,9 @@ public class OneFactoryPanel{
         int y = getAmount("yellow");
         g.drawString("" + y, 1029, 68);
        
-       int r = getAmount("red");
+        int r = getAmount("red");
         g.drawString("" + r, 1029, 141);
-
+        //🦧
 
         int b = getAmount("blue");
         g.drawString("" + b, 1029, 104);
