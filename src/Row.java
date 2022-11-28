@@ -35,6 +35,7 @@ public class Row{
         for(int c = 0; c < rows.get(row).length; c++){
             rows.get(row)[c] = new Tile(color);
         }
+        //🦧
     }
     public boolean rowIsFull(int row){
         Tile[] temp = rows.get(row);

@@ -17,7 +17,7 @@ public class Tile {
     }
 
     private void setPic(String color){
-
+        //🦧
         try{
             if(color == "black"){
                 pic = ImageIO.read(new File("src/images/black tile.png"));

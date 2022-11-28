@@ -130,7 +130,7 @@ public class Game {
         for(int i = 0; i < 4; i++) {
 
             four.add(bag.remove(i));
-
+            //🦧
         }
 
         return four;
@@ -138,7 +138,7 @@ public class Game {
 
     public boolean facsEmpty(){
         for(int c = 0; c < 10; c++){
-           if (factoryP.getArray().get(c).getSize()>0){
+           if (factoryP.getArray().get(c).getSize() > 0){
               return false;
             }
         }

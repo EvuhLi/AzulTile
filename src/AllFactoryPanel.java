@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.*;
 public class AllFactoryPanel{
 	public boolean chosenTile = false;
-
+	//🦧
 	OneFactoryPanel f1 = new OneFactoryPanel();
 	OneFactoryPanel f2 = new OneFactoryPanel();
 	OneFactoryPanel f3 = new OneFactoryPanel();
