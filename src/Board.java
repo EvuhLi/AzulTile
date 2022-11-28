@@ -107,25 +107,7 @@ public class Board{
     }
 
     public void countEndScore(){
-      //  int bonus = 0;
-        //for ( int r = 0; r < 5; r ++){
-          //  for ( int c = 0; c < 5; c++)
-       // }
-    } 
     
-    
-    public boolean checkEnd(int row){ // need to implement
-        for(int c = 0; c < 5; c++){
-            if(b[row][c] == null) return false;
-        }
-        return true;
-    
-        //    for (Tile[] arr: b){
-    //        for (Tile i: arr){
-    //          //  if (!i.onBoard){
-     //               break;
-     //           }
-          //  }
     }
 }
 
