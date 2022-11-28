@@ -104,10 +104,10 @@ public class PlayerPanel {
             int x = start;
             for(int d = 0; d < 1 + (c - (44))/16; d++){
                 if(player.getRow().getRow(row)[d]!= null) g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
-                x+=16;
+                x-=16;
             }
             row++;
-            start-=16;
+            //start-=16;
         }
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));;
         g.setColor(Color.black);
@@ -148,10 +148,10 @@ public class PlayerPanel {
                 if(player.getRow().getRow(row)[d] != null){
                     g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
                 }
-                x+=16;
+                x-=16;
             }
             row++;
-            start-=16;
+            //start-=16;
         }
 
         for(int c = 0; c < player.getBoard().getDiscard().size(); c++){
@@ -184,10 +184,10 @@ public class PlayerPanel {
             int x = start;
             for(int d = 0; d < 1 + (c - (44))/16; d++){
                 if(player.getRow().getRow(row)[d]!= null) g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 15, 15, null);
-                x+=16;
+                x-=16;
             }
             row++;
-            start-= 16;
+            //start-= 16;
         } // board 
 
         
@@ -233,13 +233,13 @@ public class PlayerPanel {
         int start = width/2+70 + 220 - 40;
         for(int c = height/2 - 87; c < height/2-87 + 40 * 5; c+= 45){
             int x = start;
-            for(int d = 0; d < 1+ (c-(height/2-87))/45; d++){
+            for(int d = 0; d < player.getRow().getRow(row).length; d++){
                 //Tile tile = game.getPlayers().get(game.turn).getRow().getRow(row)[d];
                 if(player.getRow().getRow(row)[d]!= null) g.drawImage(player.getRow().getRow(row)[d].getImage(), x, c, 40, 40, null);
-                x+=45;
+                x-=45;
             }
             row++;
-            start-=45;
+            //start-=45;
         }
         for(int c = 0; c < player.getBoard().getDiscard().size() && c < 7; c++){
             g.drawImage(player.getBoard().getDiscard().get(c).getImage(), width/2 + 70 + c * 98/2, height/2 + 170, 40, 40, null);

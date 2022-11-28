@@ -71,6 +71,9 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(!start && scorephase == 1 && pickphase == -1){
 			scorephase = 2;
 			System.out.println("hi");
+			for(int c = 0; c < 5; c++){
+				
+			}
 			Timer timer =new Timer();
 			TimerTask task = new TimerTask(){
 				@Override
