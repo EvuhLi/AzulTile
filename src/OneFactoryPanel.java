@@ -121,12 +121,20 @@ public class OneFactoryPanel{
     }
     public ArrayList<Tile> removeTile(String str){
         for(int i = 0; i<TArr.size(); i++){
+            System.out.print(TArr.get(i).getColor()+" ");
+        }
+        System.out.println();
+        for(int i = 0; i<TArr.size(); i++){
 
             Tile f = TArr.get(i);
             if(f.getColor().equals(str)){
                 TArr.remove(i);
                 i--;
             }
+        }
+
+        for(int i = 0; i<TArr.size(); i++){
+            System.out.print(TArr.get(i).getColor()+" ");
         }
         return TArr;
     }
