@@ -71,6 +71,9 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(!start && scorephase == 1 && pickphase == -1){
 			scorephase = 2;
 			System.out.println("hi");
+			for(int c = 0; c < 5; c++){
+				
+			}
 			Timer timer =new Timer();
 			TimerTask task = new TimerTask(){
 				@Override
@@ -183,7 +186,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			}
 			if(pickphase == 2){
 				game.getfactoryP().moveLeftoverTiles();
-				//game.getPlayers().get(0).setTiles(game.getfactoryP().getChosen());
+				// game.getPlayers().get(0).setTiles(game.getfactoryP().getChosen());
 				OneFactoryPanel cur =game.getfactoryP().getTemp();
 				if(!cur.isMiddle) cur.reset();
 				pickphase = 3;
