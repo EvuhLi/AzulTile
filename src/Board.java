@@ -127,17 +127,24 @@ public class Board{
             x=0;
         }
         // check all colors
+        int t = 0;
         ArrayList<String> cols = new ArrayList<>();
         cols.add("red");
         cols.add("blue");
         cols.add("teal");
         cols.add("yellow");
         cols.add("black");
-        for (int r = 0; r < 5; r ++){
-            if (colorInBoard(cols.get(r), r)){
-                
+        for (int i = 0; i < 5; i ++){
+            for ( int r = 0; r<5; r++){
+                if (colorInBoard(cols.get(i), r)){
+                    t++;
+                }
             }
+            if (t==5) bonus+=10;
+            t=0;
         }
+
+        score += bonus;
     } 
     
     

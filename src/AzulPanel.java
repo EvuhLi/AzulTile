@@ -258,4 +258,5 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		if(pickphase == 1 || start) repaint();
 	}
+	
 }
