@@ -39,8 +39,30 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(game.phase == 1){
 			game.getfactoryP().choosing(g);
 		}
+		if(!start && scorephase == 1 && pickphase == -1){
+			scorephase = 2;
+			System.out.println("hi");
+			if(game.round < 4){
+				//timer.scheduleAtFixedRate(task, 2000, 1000);
+			} 
+			for(int c = 0; c < 5; c++){
+				if(game.getPlayers().get(0).getRow().rowIsFull(c)){
+					int xx = width/2+70 + 220 - 40;
+					//width/3 * 2 + 105;
+					Timer timer = new Timer();
+					TimerTask task = new TimerTask() {
+						@Override
+						public void run(){
+							if(xx < width/3 * 2 + 105){
+								//g.drawImage()
+
+							}
+						}
+					};
+				}
+			}
 		
-		
+		}
 		//try to make this happen AFTER you choose which row
 	}
 
@@ -71,10 +93,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(!start && scorephase == 1 && pickphase == -1){
 			scorephase = 2;
 			System.out.println("hi");
-			for(int c = 0; c < 5; c++){
-				
-			}
-			Timer timer =new Timer();
+			/*Timer timer =new Timer();
 			TimerTask task = new TimerTask(){
 				@Override
 				public void run() {
@@ -94,7 +113,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						row = -1;
 						game.nextPlayer();
 						game.round++;
-						repaint(); //🐧 🙀 (*/ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
+						repaint(); //🐧 🙀 (ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
 					}
 					if(game.round == 4){
 						timer.cancel();
@@ -108,7 +127,24 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			};
 			if(game.round < 4){
 				timer.scheduleAtFixedRate(task, 2000, 1000);
+			} */
+			for(int c = 0; c < 5; c++){
+				if(game.getPlayers().get(0).getRow().rowIsFull(c)){
+					int xx = width/2+70 + 220 - 40;
+					//width/3 * 2 + 105;
+					Timer timer = new Timer();
+					TimerTask task = new TimerTask() {
+						@Override
+						public void run(){
+							if(xx < width/3 * 2 + 105){
+								//g.drawImage()
+
+							}
+						}
+					};
+				}
 			}
+			
 			// if(game.round == 4){// scorephase = 1; 
 			// 	System.out.println("hello");
 			// 	scorephase = 3;
