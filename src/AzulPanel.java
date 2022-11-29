@@ -165,6 +165,16 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			//pickedF = true;
 			//if its within factory range at all
 			if(x>=94 && x<=531 && y>=199 && y<=649){
+				if(x>=205 && x<=423 && y>=312 && y<=536 ){
+					if(game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
+						//set player to #1
+						//paint #1 on the board
+						//remove the #1 
+					}
+				}
 				pickphase = -1;
 				game.getfactoryP().setCood(x, y);
 			    game.getPlayers().get(0).getPicked().clear();
@@ -174,6 +184,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 					pickphase = 0;
 				}
 			}
+
 			//if its within the choosing image, then move on to next stage
 			if(x>=821 && x<=1066 && y>37 && y<=215 && pickphase > -1){
 				game.getfactoryP().colorTile = "";
@@ -294,4 +305,5 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		if(pickphase == 1 || start) repaint();
 	}
+	
 }

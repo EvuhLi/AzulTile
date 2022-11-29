@@ -107,10 +107,44 @@ public class Board{
     }
 
     public void countEndScore(){
-      //  int bonus = 0;
-        //for ( int r = 0; r < 5; r ++){
-          //  for ( int c = 0; c < 5; c++)
-       // }
+        int bonus= 0;
+        // check row
+        int f = 0;
+        for ( int r = 0; r < 5; r ++){
+            for ( int c = 0; c < 5; c++){
+                if (b[r][c]!=null) f++;
+            }
+            if (f==5) bonus += 2; 
+            f=0;
+        }
+        // check column
+        int x = 0;
+        for ( int c = 0; c < 5; c++){
+            for ( int r = 0; r < 5; r++){
+                if (b[r][c]!=null) x++;
+            }
+            if (x==5) bonus+=7;
+            x=0;
+        }
+        // check all colors
+        int t = 0;
+        ArrayList<String> cols = new ArrayList<>();
+        cols.add("red");
+        cols.add("blue");
+        cols.add("teal");
+        cols.add("yellow");
+        cols.add("black");
+        for (int i = 0; i < 5; i ++){
+            for ( int r = 0; r<5; r++){
+                if (colorInBoard(cols.get(i), r)){
+                    t++;
+                }
+            }
+            if (t==5) bonus+=10;
+            t=0;
+        }
+
+        score += bonus;
     } 
     
     

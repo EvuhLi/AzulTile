@@ -166,5 +166,6 @@ public class Game {
             players.get(i).getBoard().countEndScore();
         }
     }
+
 }
 
