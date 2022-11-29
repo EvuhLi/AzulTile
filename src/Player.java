@@ -17,9 +17,11 @@ public class Player {
         row = new Row();
         //tilePicked.add(new Tile("red"));
     }
+    public void addFirstTile(){
+        
+    }
     public void isOne(boolean f){
         first = f;
-
     }
     public Board getBoard(){
         return b;

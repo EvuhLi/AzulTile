@@ -121,6 +121,7 @@ public class Game {
                 tempTile.add(bag.remove(0));
             }
             factoryP.getArray().get(c).addArray(tempTile);
+            factoryP.middle.addTile(new Tile("first"));
         }
     }
 

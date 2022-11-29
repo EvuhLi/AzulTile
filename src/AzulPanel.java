@@ -165,16 +165,6 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			//pickedF = true;
 			//if its within factory range at all
 			if(x>=94 && x<=531 && y>=199 && y<=649){
-				if(x>=205 && x<=423 && y>=312 && y<=536 ){
-					if(game.getfactoryP().middle.hasOne()){
-						System.out.println("I AM IN THE MIDDLE !");
-						game.getPlayers().get(0).isOne(true);
-						game.getfactoryP().middle.removeTile("first");
-						//set player to #1
-						//paint #1 on the board
-						//remove the #1 
-					}
-				}
 				pickphase = -1;
 				game.getfactoryP().setCood(x, y);
 			    game.getPlayers().get(0).getPicked().clear();
@@ -198,10 +188,19 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				}
 			}	
 			if(pickphase == 1){
+					//repaint();
+					//set player to #1
+					//paint #1 on the board
+					//remove the #1 
 				if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
 					if(game.getPlayers().get(0).validRow(0)){
 						game.getPlayers().get(0).addToRow(0);
 						pickphase = 2;
+					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
 					}
 				}
 				if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
@@ -209,11 +208,21 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						game.getPlayers().get(0).addToRow(1);
 						pickphase = 2;
 					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
+					}
 				}
 				if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
 					if(game.getPlayers().get(0).validRow(2)){
 						game.getPlayers().get(0).addToRow(2);
 						pickphase = 2;
+					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
 					}
 					// game.getPlayers().get(0).addToRow(2);
 					// pickphase = 2;
@@ -223,14 +232,24 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						game.getPlayers().get(0).addToRow(3);
 						pickphase = 2;
 					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
+					}
 				}
 				if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
 					if(game.getPlayers().get(0).validRow(4)){
 						game.getPlayers().get(0).addToRow(4);
 						pickphase = 2;
 					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
+					}
 				}
-			}
+
 			if(pickphase == 2){
 				game.getfactoryP().moveLeftoverTiles();
 				// game.getPlayers().get(0).setTiles(game.getfactoryP().getChosen());
@@ -244,6 +263,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				game.getfactoryP().chosenTile = false;
 				//game.nextPlayer();
 			}	
+		}
 		}
 		
 		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
