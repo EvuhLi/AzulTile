@@ -39,8 +39,30 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(game.phase == 1){
 			game.getfactoryP().choosing(g);
 		}
+		if(!start && scorephase == 1 && pickphase == -1){
+			scorephase = 2;
+			System.out.println("hi");
+			if(game.round < 4){
+				//timer.scheduleAtFixedRate(task, 2000, 1000);
+			} 
+			for(int c = 0; c < 5; c++){
+				if(game.getPlayers().get(0).getRow().rowIsFull(c)){
+					int xx = width/2+70 + 220 - 40;
+					//width/3 * 2 + 105;
+					Timer timer = new Timer();
+					TimerTask task = new TimerTask() {
+						@Override
+						public void run(){
+							if(xx < width/3 * 2 + 105){
+								//g.drawImage()
+
+							}
+						}
+					};
+				}
+			}
 		
-		
+		}
 		//try to make this happen AFTER you choose which row
 	}
 
@@ -71,10 +93,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(!start && scorephase == 1 && pickphase == -1){
 			scorephase = 2;
 			System.out.println("hi");
-			for(int c = 0; c < 5; c++){
-				
-			}
-			Timer timer =new Timer();
+			/*Timer timer =new Timer();
 			TimerTask task = new TimerTask(){
 				@Override
 				public void run() {
@@ -94,7 +113,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						row = -1;
 						game.nextPlayer();
 						game.round++;
-						repaint(); //🐧 🙀 (*/ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
+						repaint(); //🐧 🙀 (ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
 					}
 					if(game.round == 4){
 						timer.cancel();
@@ -108,7 +127,24 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			};
 			if(game.round < 4){
 				timer.scheduleAtFixedRate(task, 2000, 1000);
+			} */
+			for(int c = 0; c < 5; c++){
+				if(game.getPlayers().get(0).getRow().rowIsFull(c)){
+					int xx = width/2+70 + 220 - 40;
+					//width/3 * 2 + 105;
+					Timer timer = new Timer();
+					TimerTask task = new TimerTask() {
+						@Override
+						public void run(){
+							if(xx < width/3 * 2 + 105){
+								//g.drawImage()
+
+							}
+						}
+					};
+				}
 			}
+			
 			// if(game.round == 4){// scorephase = 1; 
 			// 	System.out.println("hello");
 			// 	scorephase = 3;
@@ -138,6 +174,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 					pickphase = 0;
 				}
 			}
+
 			//if its within the choosing image, then move on to next stage
 			if(x>=821 && x<=1066 && y>37 && y<=215 && pickphase > -1){
 				game.getfactoryP().colorTile = "";
@@ -151,10 +188,19 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				}
 			}	
 			if(pickphase == 1){
+					//repaint();
+					//set player to #1
+					//paint #1 on the board
+					//remove the #1 
 				if(x >= 885 && x <= 925  && y >= 255 && y <= 295) {
 					if(game.getPlayers().get(0).validRow(0)){
 						game.getPlayers().get(0).addToRow(0);
 						pickphase = 2;
+					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
 					}
 				}
 				if(x >= 835 && x <= 925 && y >= 300 && y <= 340) {
@@ -162,11 +208,21 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						game.getPlayers().get(0).addToRow(1);
 						pickphase = 2;
 					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
+					}
 				}
 				if(x >= 795 && x <= 925 && y >= 345 && y <= 385){
 					if(game.getPlayers().get(0).validRow(2)){
 						game.getPlayers().get(0).addToRow(2);
 						pickphase = 2;
+					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
 					}
 					// game.getPlayers().get(0).addToRow(2);
 					// pickphase = 2;
@@ -176,14 +232,24 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						game.getPlayers().get(0).addToRow(3);
 						pickphase = 2;
 					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
+					}
 				}
 				if(x >= 700 && x <= 925 && y >= 435 && y <= 475){
 					if(game.getPlayers().get(0).validRow(4)){
 						game.getPlayers().get(0).addToRow(4);
 						pickphase = 2;
 					}
+					if(game.getfactoryP().temp.equals(game.getfactoryP().middle) && game.getfactoryP().middle.hasOne()){
+						System.out.println("I AM IN THE MIDDLE !");
+						game.getPlayers().get(0).isOne(true);
+						game.getfactoryP().middle.removeTile("first");
+					}
 				}
-			}
+
 			if(pickphase == 2){
 				game.getfactoryP().moveLeftoverTiles();
 				// game.getPlayers().get(0).setTiles(game.getfactoryP().getChosen());
@@ -197,6 +263,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				game.getfactoryP().chosenTile = false;
 				//game.nextPlayer();
 			}	
+		}
 		}
 		
 		//g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);

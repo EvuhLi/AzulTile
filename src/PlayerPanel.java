@@ -89,7 +89,7 @@ public class PlayerPanel {
         hover = -1;
         //🦧
     }
-
+    
     public void drawLeft(Graphics g, Player player, int width, int height){
         g.drawImage(color(player.getColor()), 45, 35, 190, 130, null);
         g.drawImage(board, 50, 40, 180, 120, null);
@@ -214,6 +214,9 @@ public class PlayerPanel {
                 }
             }
         }
+    }
+    public void moveTile(Graphics g, int row, int x, int height){
+        g.drawImage(game.players.get(0).getRow().getRow(row)[0].getImage(), x, height/2 - 87 + 45 * row, null);
     }
     public void drawTurn(Graphics g, int width, int height, Player player, boolean pickedF){
         game.transferDiscard();

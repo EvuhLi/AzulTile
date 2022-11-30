@@ -96,11 +96,7 @@ public class AllFactoryPanel{
 		}
 		else if(x>=205 && x<=423 && y>=312 && y<=536 ){
 			System.out.println("middle");
-			if(middle.hasOne()){
-				//set player to #1
-				//paint #1 on the board
-				//remove the #1 
-			}
+			
 			if(middle.getSize() > 0){
 				changeClicked(middle);
 				temp = middle;
@@ -223,7 +219,7 @@ public class AllFactoryPanel{
 
 		middle.isMiddle();
 		middle.paintFactory(205, Height/2 - 20, 220, 220, g);
-		middle.addTile(new Tile("first"));
+		//if(!middle.hmiddle.addTile(new Tile("first"));
 		middle.drawMiddle(g);
 		
 	}
