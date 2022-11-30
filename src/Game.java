@@ -38,7 +38,7 @@ public class Game {
         for(int c = 0; c < randFirstPlayer; c++){
             nextPlayer();
         }
-        players.get(0).first = true;
+        //players.get(0).first = true;
 
     }
     public AllFactoryPanel getfactoryP(){
@@ -94,6 +94,10 @@ public class Game {
         else return "yellow";
     }
     public void transferDiscard(){
+        if(players.get(0).first == true){
+            players.get(0).getBoard().discard.add(new Tile("first"));
+            players.get(0).first = false;
+        }
         players.get(0).getBoard().addToDiscard(players.get(0).getRow().getDiscard());
         players.get(0). getRow().getDiscard().clear();
         if(players.get(0).getBoard().getDiscard().size() > 7){
