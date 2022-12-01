@@ -17,10 +17,10 @@ public class Game {
         discard = new ArrayList<>();
         pickedRow = -1;
         factoryP = new AllFactoryPanel();
-        players.add(new Player("red"));
-        players.add(new Player("yellow"));
-        players.add(new Player("green"));
-        players.add(new Player("blue"));
+        players.add(new Player("Red"));
+        players.add(new Player("Yellow"));
+        players.add(new Player("Green"));
+        players.add(new Player("Blue"));
 
        
         phase = 1;
