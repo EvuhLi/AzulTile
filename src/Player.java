@@ -7,6 +7,7 @@ public class Player {
     private Row row;
     private String color;
     public Boolean first;
+    public boolean full;
 
     public Player(String color){
         first = false;
@@ -66,8 +67,7 @@ public class Player {
         }
         return true;//hihhgj
     }
-    public boolean rowToBoard (int r){
-        boolean end = false;
+    public void rowToBoard (int r){
         if (row.rowIsFull(r)){
             
             b.addTile(r, row.getRow(r)[0]);
@@ -77,9 +77,7 @@ public class Player {
                 Game.discard.add(row.getRow(r)[i]);
             }
             row.clearRow(r);
-            end = b.checkEnd(r);
         }
-        return end;
     }
 
     public int countPenalty(){
@@ -94,6 +92,9 @@ public class Player {
                     p -= 3;
                 }
             }
+        }
+        for ( int i = row.getDiscard().size() - 1; i >= 0; i++){
+            Game.discard.add(row.getDiscard().remove(i));
         }
         return p;
     }

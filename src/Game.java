@@ -166,13 +166,34 @@ public class Game {
         // iterate through players, check their rows and boards, score them, while checking check if their is a row, hold onto it and continue and at the end call end game method
 
    // }
-    public void rend(){
-        for ( int i = 0; i < players.size() ; i ++){
+    public boolean playerEnd(){
+        // row to board (simultaneously scores)
+        for ( int r = 0; r < 5; r++){
+            players.get(0).rowToBoard(r);
+        }
+        // counting penalty
+        if (Math.abs(players.get(0).countPenalty()) <= players.get(0).getBoard().score){
+            players.get(0).getBoard().score += players.get(0).countPenalty();
+        } else {
+            players.get(0).getBoard().score = 0;
+        }
+        // checking players
+        players.get(0).full = players.get(0).getBoard().checkEnd();
+        if (players.get(0).full) return true;
+        return false;
+
+        
+      /*   for ( int i = 0; i < players.size() ; i ++){
             for (int r = 0; r < 5; r++){
                 players.get(i).rowToBoard(r);
             }
+            players.get(i).full = players.get(i).getBoard().checkEnd();
         }
-        // check end
+        for (int i = 0; i < players.size(); i++){
+            if ( players.get(i).full){
+                endOfGame();
+            }
+        } */
     }
     
     public void endOfGame(){
