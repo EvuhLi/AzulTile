@@ -81,4 +81,20 @@ public class Player {
         }
         return end;
     }
+
+    public int countPenalty(){
+        int p = 0;
+        for ( int i = 0; i < row.getDiscard().size(); i++){
+            if (row.getDiscard().get(i)!= null){
+                if (i < 2){
+                    p -= 1;
+                } else if ( i < 5){
+                    p -=2;
+                } else {
+                    p -= 3;
+                }
+            }
+        }
+        return p;
+    }
 }

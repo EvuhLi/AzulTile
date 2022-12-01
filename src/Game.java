@@ -149,10 +149,10 @@ public class Game {
         }
         return true;
     }
-    public void endOfRound(int row){
-        if(players.get(0).rowToBoard(row)){
-            // end of game
-        }
+ //   public void endOfRound(int row){
+       // if(players.get(0).rowToBoard(row)){
+         //   // end of game
+      //  }
         
         // for ( int i = 0; i < players.size(); i++){
         //     players.get(i).rowToBoard();
@@ -165,7 +165,16 @@ public class Game {
         // }
         // iterate through players, check their rows and boards, score them, while checking check if their is a row, hold onto it and continue and at the end call end game method
 
+   // }
+    public void rend(){
+        for ( int i = 0; i < players.size() ; i ++){
+            for (int r = 0; r < 5; r++){
+                players.get(i).rowToBoard(r);
+            }
+        }
+        // check end
     }
+    
     public void endOfGame(){
         for ( int i = 0; i < 4; i ++){
             players.get(i).getBoard().countEndScore();

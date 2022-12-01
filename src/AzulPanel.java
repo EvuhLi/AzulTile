@@ -23,7 +23,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		addMouseMotionListener(this);
 		width = w;
 		height = h;
-		row = -1;
+		row = 0;
 	}
 	
 	public void paint(Graphics g) {
@@ -39,30 +39,8 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(game.phase == 1){
 			game.getfactoryP().choosing(g);
 		}
-		if(!start && scorephase == 1 && pickphase == -1){
-			scorephase = 2;
-			System.out.println("hi");
-			if(game.round < 4){
-				//timer.scheduleAtFixedRate(task, 2000, 1000);
-			} 
-			for(int c = 0; c < 5; c++){
-				if(game.getPlayers().get(0).getRow().rowIsFull(c)){
-					int xx = width/2+70 + 220 - 40;
-					//width/3 * 2 + 105;
-					Timer timer = new Timer();
-					TimerTask task = new TimerTask() {
-						@Override
-						public void run(){
-							if(xx < width/3 * 2 + 105){
-								//g.drawImage()
-
-							}
-						}
-					};
-				}
-			}
+			
 		
-		}
 		//try to make this happen AFTER you choose which row
 	}
 
@@ -91,60 +69,30 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		
 		
 		if(!start && scorephase == 1 && pickphase == -1){
-			scorephase = 2;
+			//scorephase = 2;
 			System.out.println("hi");
-			/*Timer timer =new Timer();
-			TimerTask task = new TimerTask(){
-				@Override
-				public void run() {
-					if(row == 8) row = 9;
-					if(row == 6) row = 7;
-					if(row > -1 && row < 5){
-						game.endOfRound(row);
-						row++;
-						repaint();
-					}
-					if(row == -1) row = 0;
-					if(row == 5){
-						row = 6;
-					}
-					if(row == 7) row = 8;
-					if(row == 9){ 
-						row = -1;
-						game.nextPlayer();
-						game.round++;
-						repaint(); //🐧 🙀 (ω＼*) 🦧🦧🦧🦧🦧🦧🦧🦧🦧(‾◡◝)
-					}
-					if(game.round == 4){
-						timer.cancel();
-						System.out.println("ehhloe");
-						scorephase = 0;
-						pickphase = -1;
-						game.round = 0;
-						game.resetFactories();
-					}
-				}
-			};
-			if(game.round < 4){
-				timer.scheduleAtFixedRate(task, 2000, 1000);
-			} */
-			for(int c = 0; c < 5; c++){
-				if(game.getPlayers().get(0).getRow().rowIsFull(c)){
+			
+			while(row < 5){
+				if(game.getPlayers().get(0).getRow().rowIsFull(row)){
 					int xx = width/2+70 + 220 - 40;
 					//width/3 * 2 + 105;
 					Timer timer = new Timer();
 					TimerTask task = new TimerTask() {
 						@Override
 						public void run(){
-							if(xx < width/3 * 2 + 105){
-								//g.drawImage()
-
-							}
+							game.getPlayers().get(0).addToRow(row);
+							if(row == 4) timer.cancel();
 						}
 					};
+					timer.schedule(task, 1000);
 				}
+				row++;
 			}
-			
+			game.nextPlayer();
+			game.round++;
+			if(game.round == 4){
+				scorephase = 0; pickphase = -1;game.round = 0; game.resetFactories();
+			}
 			// if(game.round == 4){// scorephase = 1; 
 			// 	System.out.println("hello");
 			// 	scorephase = 3;
