@@ -179,6 +179,7 @@ public class Game {
         for ( int i = 0; i < 4; i ++){
             players.get(i).getBoard().countEndScore();
         }
+        // call end screen
     }
 
 }
