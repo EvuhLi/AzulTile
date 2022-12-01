@@ -142,7 +142,7 @@ public class OneFactoryPanel{
         int size = ww / 10;
         int tSize = ww / 50;
         if(isMiddle && clicked){
-            g.drawImage(highlight, 200, hh/2 + 210, 230, 230, null);
+            g.drawImage(highlight, ww*90/100, hh*14/10+10, 235, 235, null);
         }
         if(clicked && !isMiddle) g.drawImage(highlight, w +2, h + 6, size - 3, size- 3, null);
 		if(!isMiddle) g.drawImage(factory, w, h, size, size, null);
