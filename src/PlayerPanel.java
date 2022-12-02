@@ -46,6 +46,15 @@ public class PlayerPanel {
     }
     public void drawAll(Graphics g, int width, int height, int pick){
         g.drawImage(screenbg, 0, 0, width, height, null);
+        if(pick == -2){
+            g.setColor(new Color(219, 132, 77));
+            g.fillRect(1167 - 50, 35, 75, 30);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 28));
+            g.setColor(Color.gray);
+            g.drawString("Score", 1173 - 50, 60);
+            g.setColor(Color.white);
+            g.drawString("Score", 1170 - 50, 60);
+        }
         if(pick == -1){
             g.setFont(new Font("Times New Roman", Font.BOLD, 28));
             g.setColor(Color.gray);
@@ -265,8 +274,8 @@ public class PlayerPanel {
 		if(color.equals("red")) return redborder;
         if(color.equals("blue"))  return blueborder;
         if(color.equals("green")) return greenborder;
-        if(color.equals("yellow")) return yellowborder;
-        return redborder;
+        else return yellowborder;
+        //return redborder;
 	}
     public void drawHover(Graphics g, int width, int height){
         if(game.getPlayers().get(0).getPicked().size() > 0 && game.getPlayers().get(0).validRow(hover)) g.drawImage(blackborder, width/2 + 250 - hover*45, height/2 - 87 + 45*hover, (hover+1)*44, 40, null);
