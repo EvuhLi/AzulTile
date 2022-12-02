@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.imageio.plugins.tiff.TIFFDirectory;
-
 public class Row{
     Tile[] one = new Tile[1];
     Tile[] two = new Tile[2];
@@ -52,12 +50,11 @@ public class Row{
         if(rowIsFull(row)) discard.addAll(add);
         else{
             int indx = 0;
-            int c = 0;
             while(getRow(row)[indx] != null){
                 indx++;
             }
             while(!rowIsFull(row) && indx < getRow(row).length && add.size() > 0){
-                getRow(row)[indx] = add.remove(c);
+                getRow(row)[indx] = add.remove(0);
                 indx++;
             }
             while(add.size() > 0){

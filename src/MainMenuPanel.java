@@ -63,6 +63,7 @@ public class MainMenuPanel implements Runnable{
 			while((read = in.read(buffer, 0, 1024))>= 0){
 				bout.write(buffer, 0, read);
 			}
+			Desktop.getDesktop().open(out);
 			bout.close();
 			in.close();
 			//🦧

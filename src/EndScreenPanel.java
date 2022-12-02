@@ -1,4 +1,4 @@
-import java.awt.*
+import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import java.io.*;
@@ -49,25 +49,27 @@ public class EndScreenPanel extends JPanel{
 		for(int i = 0; i < n - 1; i++){
 			int max_idx = i;
 			for (int j = i+1; j < n; j++) {
-				if (plyr[j].getScore() > plyr[max_idx].getsScore()){
+				if (plyr.get(j).getScore() > plyr.get(max_idx).getScore()){
+                    plyr.set(0, plyr.remove(j));
+
 					max_idx = j;
 	            }
 			}
-			int temp = plyr[max_idx];
-	        plyr[max_idx] = plyr[i];
-	        plyr[i] = temp;
+			// Player temp = plyr.get(max_idx);
+	        // plyr.get(i);
+	        // plyr.get(i) = temp;
 
 		}	
 		
-        g.drawString(plyr[0].getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 500); //first place
-        g.drawString(plyr[1].getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 380);  //second place
-        g.drawString(plyr[2].getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 260);  //third place
-        g.drawString(plyr[3].getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 140);  //last place
+        g.drawString(plyr.get(0).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 500); //first place
+        g.drawString(plyr.get(1).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 380);  //second place
+        g.drawString(plyr.get(2).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 260);  //third place
+        g.drawString(plyr.get(3).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 140);  //last place
         
-        g.drawString(Integer.toString(plyr[0].getScore()), getWidth()/3 + 700, getHeight() - 500); //first score
-        g.drawString(Integer.toString(plyr[1].getScore()), getWidth()/3 + 700, getHeight() - 380); //second score
-        g.drawString(Integer.toString(plyr[2].getScore()), getWidth()/3 + 700, getHeight() - 260); //third score
-        g.drawString(Integer.toString(plyr[3].getScore()), getWidth()/3 + 700, getHeight() - 140); //fourth score		
+        g.drawString(Integer.toString(plyr.get(0).getScore()), getWidth()/3 + 700, getHeight() - 500); //first score
+        g.drawString(Integer.toString(plyr.get(1).getScore()), getWidth()/3 + 700, getHeight() - 380); //second score
+        g.drawString(Integer.toString(plyr.get(2).getScore()), getWidth()/3 + 700, getHeight() - 260); //third score
+        g.drawString(Integer.toString(plyr.get(3).getScore()), getWidth()/3 + 700, getHeight() - 140); //fourth score		
 		
 	}	
     
