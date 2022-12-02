@@ -37,8 +37,12 @@ public class Board{
     }
 
     public boolean colorInBoard(String color, int row){
+        System.out.println(color);
         for(int c = 0; c < 5; c++){
-            if (b[row][c] != null && b[row][c].getColor().equals(color)) return true;
+            if (b[row][c] != null && b[row][c].getColor().equals(color)){
+                System.out.println(b[row][c].getColor());
+                return true;
+            }
         }
         return false;
     }
@@ -57,39 +61,7 @@ public class Board{
                 countScore(row, c);
             }
         }
-       /*  ArrayList<Tile[]> rows = r.getRows();
-        for ( int i = 0; i<rows.size(); i++){
-            if (r.rowIsFull(i)){
-                Tile[] atm = rows.get(i);
-                atm[atm.length - 1].onBoard = true; 
-
-            */  }
-      //  }
-     /*    int w = 0;
-        for (Tile[] row: r.getRows()){ // for each cant edit? 
-            if (r.rowIsFull(w)){
-                row[row.length-1].onBoard = true;
-                int c = 0;
-                for (int i = 0; i<colors[w].length; i++){
-                    if (row[0].getColor().equals(colors[w][i])){
-                        c = i;
-                    }
-                }
-                b[w][c] = row[row.length - 1];
-                Arrays.fill(row, null); // move to discard (except 1st) + fill w/ null 
-                countScore(w, c);
-            }
-            w++;
-         } */
-        // gah
-            // if full 
-                // change last tile in arrayList to onboard true
-                // iterate through that row on the colors matrix to see which spot that color is in
-                // set that spot to the last tile in the arrayList
-                // empty the rest of the row
-                // count score(r and c that we found by iterating through the colors matrix)
-
- //  }
+    }
 
     public void countScore (int r, int c){
         score++;

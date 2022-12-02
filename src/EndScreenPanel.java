@@ -61,10 +61,10 @@ public class EndScreenPanel extends JPanel{
 
 		}	
 		
-        g.drawString(plyr.get(0).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 500); //first place
-        g.drawString(plyr.get(1).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 380);  //second place
-        g.drawString(plyr.get(2).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 260);  //third place
-        g.drawString(plyr.get(3).getColor() + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 140);  //last place
+        g.drawString(plyr.get(0).getColor().substring(0, 1).toUpperCase() + plyr.get(0).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 500); //first place
+        g.drawString(plyr.get(1).getColor().substring(0, 1).toUpperCase() + plyr.get(1).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 380);  //second place
+        g.drawString(plyr.get(2).getColor().substring(0, 1).toUpperCase() + plyr.get(2).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 260);  //third place
+        g.drawString(plyr.get(3).getColor().substring(0, 1).toUpperCase() + plyr.get(3).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 140);  //last place
         
         g.drawString(Integer.toString(plyr.get(0).getScore()), getWidth()/3 + 700, getHeight() - 500); //first score
         g.drawString(Integer.toString(plyr.get(1).getScore()), getWidth()/3 + 700, getHeight() - 380); //second score

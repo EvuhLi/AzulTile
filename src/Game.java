@@ -11,16 +11,16 @@ public class Game {
     static int phase; //1 is build, 2 is score, 3 is end game. we can use this instead of booleans beacause its easier
     boolean end;
     public Game(){
-        round = 0;
+        round = -1;
         players = new ArrayList<>();
         bag = new ArrayList<>();
         discard = new ArrayList<>();
         pickedRow = -1;
         factoryP = new AllFactoryPanel();
-        players.add(new Player("Red"));
-        players.add(new Player("Yellow"));
-        players.add(new Player("Green"));
-        players.add(new Player("Blue"));
+        players.add(new Player("red"));
+        players.add(new Player("yellow"));
+        players.add(new Player("green"));
+        players.add(new Player("blue"));
 
        
         phase = 1;
@@ -78,6 +78,9 @@ public class Game {
         for(int c = 0; c < 4; c++){
             for(int d = 0; d < 5; d++){
                 players.get(c).getRow().fillRow(randomColor(), d);
+            }
+            for(int d = 0; d < 4; d++){
+                players.get(c).getRow().getDiscard().add(new Tile(randomColor()));
             }
         }
         for(int c = 0; c < factoryP.getArray().size(); c++){
@@ -168,9 +171,7 @@ public class Game {
    // }
     public boolean playerEnd(){
         // row to board (simultaneously scores)
-        for ( int r = 0; r < 5; r++){
-            players.get(0).rowToBoard(r);
-        }
+    
         // counting penalty
         if (Math.abs(players.get(0).countPenalty()) <= players.get(0).getBoard().score){
             players.get(0).getBoard().score += players.get(0).countPenalty();

@@ -274,8 +274,8 @@ public class PlayerPanel {
 		if(color.equals("red")) return redborder;
         if(color.equals("blue"))  return blueborder;
         if(color.equals("green")) return greenborder;
-        if(color.equals("yellow")) return yellowborder;
-        return redborder;
+        else return yellowborder;
+        //return redborder;
 	}
     public void drawHover(Graphics g, int width, int height){
         if(game.getPlayers().get(0).getPicked().size() > 0 && game.getPlayers().get(0).validRow(hover)) g.drawImage(blackborder, width/2 + 250 - hover*45, height/2 - 87 + 45*hover, (hover+1)*44, 40, null);

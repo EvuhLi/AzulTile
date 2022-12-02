@@ -78,19 +78,27 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			timer.scheduleAtFixedRate(new TimerTask(){
 				@Override
 				public void run(){
-					System.out.println("fkds;l");
 					while(row < 5 && !game.getPlayers().get(0).getRow().rowIsFull(row)) row++; System.out.println(row);
-					if(row == 5){
-						//do penalties
+					if(row == 6){
+						
+					}
+					if(row == 5){	
+						//System.out.println(game.getPlayers().get(0).countPenalty());
+						game.getPlayers().get(0).setScore(Math.max(game.getPlayers().get(0).getScore() + game.getPlayers().get(0).countPenalty(), 0));
+						game.discard.addAll(game.getPlayers().get(0).getBoard().getDiscard());
+						game.getPlayers().get(0).getBoard().getDiscard().clear();
+						
+						System.out.println("penalty " + game.getPlayers().get(0).getScore());
+						repaint();
+						//row++;
 						pickphase = 3;
 						game.round++;
-						if(game.round == 4){
-							scorephase = 0; pickphase = -1;game.round = 0; game.resetFactories();
+						if(game.round == 3){
+							scorephase = 3; pickphase = 3;game.round = -1; game.resetFactories();
 						}
-						repaint();
 						timer.cancel();
 					}
-					else {
+					else if(row >= 0 && row <= 4){
 						game.getPlayers().get(0).rowToBoard(row); 
 						repaint();
 						row++;
@@ -114,9 +122,9 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				scorephase = 1;
 			}
 		}
-		if(!start && scorephase == 0 && pickphase != 3){// && game.facsEmpty()){ 
+		if(!start && scorephase == 0 && pickphase != 3 && game.facsEmpty()){ 
 			System.out.println("empty");
-			game.fillRows();
+			//game.fillRows();
 			scorephase = 1;
 			row = 0;
 			pickphase = -2;

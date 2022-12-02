@@ -33,8 +33,8 @@ public class Player {
     public String getColor(){
         return color;
     }
-    public void addScore(int x){
-        score+=x;
+    public void setScore(int x){
+        score=x;
     }
 
     public ArrayList<Tile> getPicked(){
@@ -62,7 +62,7 @@ public class Player {
         if(!row.getRow(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())){  //checks if row has same color as picked tile
             return false;
         }
-        if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){  //checks if board already contains that color (cant place same tile color)
+        if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){
             return false;
         }
         return true;//hihhgj
@@ -81,21 +81,18 @@ public class Player {
     }
 
     public int countPenalty(){
+        System.out.println("coufjsda");
         int p = 0;
-        for ( int i = 0; i < row.getDiscard().size(); i++){
-            if (row.getDiscard().get(i)!= null){
-                if (i < 2){
-                    p -= 1;
-                } else if ( i < 5){
-                    p -=2;
-                } else {
-                    p -= 3;
-                }
+        for ( int i = 0; i < b.getDiscard().size(); i++){
+            if (i < 2){
+                p -= 1;
+            } else if ( i < 5){
+                p -=2;
+            } else {
+                p -= 3;
             }
         }
-        for ( int i = row.getDiscard().size() - 1; i >= 0; i++){
-            Game.discard.add(row.getDiscard().remove(i));
-        }
         return p;
+
     }
 }
