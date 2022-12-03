@@ -97,10 +97,8 @@ public class Game {
         else return "yellow";
     }
     public void transferDiscard(){
-        if(players.get(0).first == true){
-            players.get(0).getBoard().discard.add(new Tile("first"));
-            players.get(0).first = false;
-        }
+            // players.get(0).first = false;
+        
         players.get(0).getBoard().addToDiscard(players.get(0).getRow().getDiscard());
         players.get(0). getRow().getDiscard().clear();
         if(players.get(0).getBoard().getDiscard().size() > 7){
@@ -169,6 +167,10 @@ public class Game {
         // iterate through players, check their rows and boards, score them, while checking check if their is a row, hold onto it and continue and at the end call end game method
 
    // }
+    public void firstPlayer(){
+        while(!players.get(0).first) nextPlayer();
+        players.get(0).isOne(false);
+    }
     public boolean playerEnd(){
         // row to board (simultaneously scores)
     
@@ -180,8 +182,7 @@ public class Game {
         }
         // checking players
         players.get(0).full = players.get(0).getBoard().checkEnd();
-        if (players.get(0).full) return true;
-        return false;
+        return (players.get(0).full);
 
         
       /*   for ( int i = 0; i < players.size() ; i ++){

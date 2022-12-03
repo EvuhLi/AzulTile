@@ -23,6 +23,10 @@ public class Player {
     }
     public void isOne(boolean f){
         first = f;
+        if(f){
+            b.discard.add(new Tile("first"));
+
+        }
     }
     public Board getBoard(){
         return b;
@@ -53,19 +57,17 @@ public class Player {
         //🦧
     }
     public boolean validRow(int rowNum){
+        
         if(row.rowIsFull(rowNum)){  //checks if row is full (cant place more tiles)
             return false;
         }  
         if(row.getRow(rowNum).length == 0) return true;
+        if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)) return false;
         //System.out.println(row.getRow(rowNum));//[0].getColor());
         if(row.getRow(rowNum)[0] == null) return true;
-        if(!row.getRow(rowNum)[0].getColor().equals(tilePicked.get(0).getColor())){  //checks if row has same color as picked tile
-            return false;
-        }
-        if(b.colorInBoard(tilePicked.get(0).getColor(), rowNum)){
-            return false;
-        }
-        return true;//hihhgj
+        return(row.getRow(rowNum)[0].getColor().equals(tilePicked.get(0).getColor()));  //checks if row has same color as picked tile
+        
+        
     }
     public void rowToBoard (int r){
         if (row.rowIsFull(r)){

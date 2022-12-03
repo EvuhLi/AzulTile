@@ -37,10 +37,8 @@ public class Board{
     }
 
     public boolean colorInBoard(String color, int row){
-        System.out.println(color);
         for(int c = 0; c < 5; c++){
             if (b[row][c] != null && b[row][c].getColor().equals(color)){
-                System.out.println(b[row][c].getColor());
                 return true;
             }
         }
