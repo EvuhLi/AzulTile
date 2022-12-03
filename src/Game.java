@@ -56,6 +56,7 @@ public class Game {
     }
     public void nextPlayer(){
         players.add(players.remove(0));
+        // playerEnd();
     }
     
     public void resetBag(){
@@ -184,7 +185,7 @@ public class Game {
         players.get(0).full = players.get(0).getBoard().checkEnd();
         return (players.get(0).full);
 
-        
+
       /*   for ( int i = 0; i < players.size() ; i ++){
             for (int r = 0; r < 5; r++){
                 players.get(i).rowToBoard(r);
