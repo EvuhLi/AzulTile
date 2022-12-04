@@ -8,6 +8,7 @@ import java.util.TimerTask;
 
 public class AzulPanel extends JPanel implements MouseListener, MouseMotionListener{
 	boolean start = true;
+	boolean end = false;
 	int pickphase = -1;
 	MainMenuPanel menu;
 	Game game;
@@ -83,7 +84,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						//System.out.println(game.getPlayers().get(0).countPenalty());
 						game.getPlayers().get(0).setScore(Math.max(game.getPlayers().get(0).getScore() + game.getPlayers().get(0).countPenalty(), 0));
 						for ( int i = 0; i < game.getPlayers().get(0).getBoard().getDiscard().size(); i++){
-							if (game.getPlayers().get(0).getBoard().getDiscard().get(i) != null && !game.getPlayers().get(0).first){
+							if (game.getPlayers().get(0).getBoard().getDiscard().get(i) != null && !game.getPlayers().get(0).getBoard().getDiscard().get(i).getColor().equals("first")){
 								game.discard.add(game.getPlayers().get(0).getBoard().getDiscard().get(i));
 							}
 						}
@@ -95,12 +96,17 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						pickphase = 3;
 						game.round++;
 						if(game.round == 3){
-							scorephase = 3; pickphase = 3;game.round = -1; game.resetFactories();
+							scorephase = 3; pickphase = 3;game.round = -1; 
+							if (end){
+								game.endOfGame();
+								// call end screen panel
+							} else {game.resetFactories();}
 						}
 						timer.cancel();
 					}
 					else if(row >= 0 && row <= 4){
 						game.getPlayers().get(0).rowToBoard(row); 
+						end = game.getPlayers().get(0).getBoard().checkEnd();
 						repaint();
 						row++;
 					}
