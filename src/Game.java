@@ -206,5 +206,15 @@ public class Game {
         // call end screen
     }
 
+    public void fillRow(){
+        for (int c = 0; c < 5; c++) {
+            players.get(0).getBoard().b[0][c] = new Tile("red");
+           
+        }
+        end = true;
+        players.get(0).getBoard().checkEnd();
+
+    }
+
 }
 
