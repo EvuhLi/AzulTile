@@ -12,8 +12,6 @@ public class Tile {
 
         color = c;
         setPic(color);
-        
-
     }
 
     private void setPic(String color){

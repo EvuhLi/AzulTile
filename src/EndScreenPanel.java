@@ -3,7 +3,6 @@ import java.awt.image.*;
 import javax.imageio.ImageIO;
 import java.io.*;
 import javax.swing.*;
-import java.util.Collections;
 import java.util.ArrayList;
 
 public class EndScreenPanel extends JPanel{

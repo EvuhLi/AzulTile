@@ -39,10 +39,10 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			game.getfactoryP().paint(g, getWidth(), getHeight());
 		}
 		//if they have chosen a factory, paint the options
-		if(game.phase == 1){
+		if(Game.phase == 1){
 			game.getfactoryP().choosing(g);
 		}
-		if(game.phase == 3){
+		if(Game.phase == 3){
 			endScreen.paint(g, game.getPlayers());
 		}
 			
@@ -68,7 +68,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		System.out.println("loc is (" + x + "," + y + ")");
 				
 		
-		if(!start && scorephase == 1 && pickphase == -2 && x >= 1119 && x <= 1190 && y >= 34 && y <= 63 && game.round < 4){
+		if(!start && scorephase == 1 && pickphase == -2 && x >= 1119 && x <= 1190 && y >= 34 && y <= 63 && Game.round < 4){
 			pickphase = -3;
 			scorephase = 2;
 			System.out.println("hi");
@@ -84,7 +84,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						game.getPlayers().get(0).setScore(Math.max(game.getPlayers().get(0).getScore() + game.getPlayers().get(0).countPenalty(), 0));
 						for ( int i = 0; i < game.getPlayers().get(0).getBoard().getDiscard().size(); i++){
 							if (game.getPlayers().get(0).getBoard().getDiscard().get(i) != null && !game.getPlayers().get(0).first){
-								game.discard.add(game.getPlayers().get(0).getBoard().getDiscard().get(i));
+								Game.discard.add(game.getPlayers().get(0).getBoard().getDiscard().get(i));
 							}
 						}
 						game.getPlayers().get(0).getBoard().getDiscard().clear();
@@ -93,9 +93,9 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						repaint();
 						//row++;
 						pickphase = 3;
-						game.round++;
-						if(game.round == 3){
-							scorephase = 3; pickphase = 3;game.round = -1; game.resetFactories();
+						Game.round++;
+						if(Game.round == 3){
+							scorephase = 3; pickphase = 3;Game.round = -1; //game.resetFactories();
 						}
 						timer.cancel();
 					}
@@ -116,9 +116,12 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		}
 		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
 			game.nextPlayer(); 
-			if(scorephase == 3) scorephase = 0;
+			if(scorephase == 3){
+				scorephase = 0;
+				game.resetFactories();
+			}
 			pickphase = -1;
-			if(game.round > -1){
+			if(Game.round > -1){
 				pickphase = -2;
 				scorephase = 1;
 			}
@@ -132,7 +135,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			row = 0;
 			pickphase = -2;
 		}
-		if(!start && scorephase == 0 && pickphase != 3 && fillRows && game.facsEmpty()){ 
+		if(!start && scorephase == 0 && pickphase != 3 && fillRows){ 
 			System.out.println("empty");
 			fillRows = false;
 			game.fillRows();
@@ -275,7 +278,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				start = false;
 				game = new Game();
 				player = new PlayerPanel(game);
-				game.phase = 1;
+				Game.phase = 1;
 			}
 			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 				menu.download = true;
