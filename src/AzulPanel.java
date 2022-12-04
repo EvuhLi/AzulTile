@@ -46,6 +46,9 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		if(game.phase == 3){
 			endScreen.paint(g, game.getPlayers());
 		}
+		if(end == true){
+			endScreen.paint(g, game.getPlayers());
+		}
 			
 		
 		//try to make this happen AFTER you choose which row
