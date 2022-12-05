@@ -38,7 +38,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		else{
 			if(end == true && scorephase == 0){
 				System.out.println("aoiwdh");
-				endScreen.paint(g, game.getPlayers());
+				endScreen.paint(g, game.getPlayers(), getWidth(), getHeight());
 			}
 			else{
 				player.drawAll(g, getWidth(), getHeight(), pickphase); 

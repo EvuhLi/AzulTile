@@ -31,7 +31,7 @@ public class EndScreenPanel extends JPanel{
 
     //for ArrayList Player either call the game class arraylist in this paint method, or call the paint method in a different class
 
-    public void paint(Graphics g, ArrayList<Player> plyr) {
+    public void paint(Graphics g, ArrayList<Player> plyr, int width, int height) {
 
         //String score = Integer.toString(pLayerScore);
     	
@@ -42,10 +42,10 @@ public class EndScreenPanel extends JPanel{
         g.setColor(Color.white);
         System.out.println("2");
 
-		g.setFont(new Font("Times New Roman", Font.PLAIN , 40));  
+		g.setFont(new Font("Times New Roman", Font.PLAIN , 80));  
 		System.out.println("After setting");
-		//g.drawString("Final Scores", getWidth()/2, 0);
-        g.drawString("Final Scores", 1029, 68);
+		//g.drawString("Final Scores", width/2, 0);
+        g.drawString("Final Scores", 450, 125);
 
 		System.out.println("drawfinal");
 		int n = plyr.size();
@@ -66,7 +66,7 @@ public class EndScreenPanel extends JPanel{
         //         }
         //     }
         // }
-        // g.drawString(" Player  .......................................................", getWidth()/3 - 330, getHeight() - 500); //first place
+        // g.drawString(" Player  .......................................................", width/3 - 330, height - 500); //first place
 
 
        
@@ -75,16 +75,16 @@ public class EndScreenPanel extends JPanel{
         //         "[" + entry.getKey()
         //         + ", " + entry.getValue() + "]");
 
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+        g.drawString(" Player  .......................................................", width/3 - 330, height - 500); //first place
+        g.drawString(" Player  .......................................................", width/3 - 330, height - 380);  //second place
+        g.drawString(" Player  .......................................................", width/3 - 330, height - 260);  //third place
+        g.drawString(" Player  .......................................................", width/3 - 330, height - 140);  //last place
 
-        // g.drawString(entryArray[0].getValue().getColor().substring(0, 1).toUpperCase() + plyr.get(0).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 500); //first place
-        // g.drawString(entryArray[1].getValue().getColor().substring(0, 1).toUpperCase() + plyr.get(1).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 380);  //second place
-        // g.drawString(entryArray[2].getValue().getColor().substring(0, 1).toUpperCase() + plyr.get(2).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 260);  //third place
-        // g.drawString(entryArray[3].getValue().getColor().substring(0, 1).toUpperCase() + plyr.get(3).getColor().substring(1) + " Player  .......................................................", getWidth()/3 - 330, getHeight() - 140);  //last place
-        
-        // g.drawString(Integer.toString(tree.get(0).getScore()), getWidth()/3 + 700, getHeight() - 500); //first score
-        // g.drawString(Integer.toString(tree.get(1).getScore()), getWidth()/3 + 700, getHeight() - 380); //second score
-        // g.drawString(Integer.toString(tree.get(2).getScore()), getWidth()/3 + 700, getHeight() - 260); //third score
-        // g.drawString(Integer.toString(tree.get(3).getScore()), getWidth()/3 + 700, getHeight() - 140); //fourth score		
+        g.drawString("hi", width/3 + 700, height - 500); //first score
+        g.drawString("hi", width/3 + 700, height - 380); //second score
+        g.drawString("hi", width/3 + 700, height - 260); //third score
+        g.drawString("hi", width/3 + 700, height - 140); //fourth score		
 		
 	}	
     
