@@ -16,7 +16,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	PlayerPanel player;
 	int width, height;
 	int row, scorephase;
-	boolean fillRows = true;
+	boolean fillRows = false;
 	
 
 	public AzulPanel(int w, int h) {
