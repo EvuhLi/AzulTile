@@ -15,8 +15,8 @@ public class EndScreenPanel extends JPanel{
     public EndScreenPanel(){
         try{
 
-            bkg = ImageIO.read(new File("src/images/azulejos.png"));
-            gray = ImageIO.read(new File("src/images/startgamebg.png"));
+            bkg = ImageIO.read(getClass().getResourceAsStream("/images/azulejos.png"));
+            gray = ImageIO.read(getClass().getResourceAsStream("/images/startgamebg.png"));
 
         }  
         catch(Exception e){

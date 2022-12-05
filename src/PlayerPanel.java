@@ -19,26 +19,26 @@ public class PlayerPanel {
         game = g;
         hover = -1;
         try {
-            firstTile = ImageIO.read(new File("src/images/firstplayer.png"));
-            blackbg = ImageIO.read(new File("src/images/startgamebg.png"));
-            nextplayer = ImageIO.read(new File("src/images/nextplayer.png"));
-            board = ImageIO.read(new File("src/images/Azul Board.jpg"));
-            redtile = ImageIO.read(new File("src/images/red tile.png"));
-            yellowtile = ImageIO.read(new File("src/images/yellow tile.png"));
-            bluetile = ImageIO.read(new File("src/images/blue tile.png"));
-            tealtile = ImageIO.read(new File("src/images/teal tile.png"));
-            blacktile = ImageIO.read(new File("src/images/black tile.png"));
-            border = ImageIO.read(new File("src/images/border.png"));
-			screenbg = ImageIO.read(new File("src/images/bluebg.png"));
-            logo = ImageIO.read(new File("src/images/logo.png"));
-            score = ImageIO.read(new File("src/images/score.png"));
-            redborder = ImageIO.read(new File("src/images/redborder.png"));
-            yellowborder = ImageIO.read(new File("src/images/yellowborder.png"));
-            blueborder = ImageIO.read(new File("src/images/blueborder.png"));
-            greenborder = ImageIO.read(new File("src/images/greenborder.png"));
-            glowingrow = ImageIO.read(new File("src/images/glowing row.png"));
-            blackborder = ImageIO.read(new File("src/images/blackborder.png"));
-            arrow = ImageIO.read(new File("src/images/arrow.png"));
+            firstTile = ImageIO.read(getClass().getResourceAsStream("/images/firstplayer.png"));
+            blackbg = ImageIO.read(getClass().getResourceAsStream("/images/startgamebg.png"));
+            nextplayer = ImageIO.read(getClass().getResourceAsStream("/images/nextplayer.png"));
+            board = ImageIO.read(getClass().getResourceAsStream("/images/Azul Board.jpg"));
+            redtile = ImageIO.read(getClass().getResourceAsStream("/images/red tile.png"));
+            yellowtile = ImageIO.read(getClass().getResourceAsStream("/images/yellow tile.png"));
+            bluetile = ImageIO.read(getClass().getResourceAsStream("/images/blue tile.png"));
+            tealtile = ImageIO.read(getClass().getResourceAsStream("/images/teal tile.png"));
+            blacktile = ImageIO.read(getClass().getResourceAsStream("/images/black tile.png"));
+            border = ImageIO.read(getClass().getResourceAsStream("/images/border.png"));
+			screenbg = ImageIO.read(getClass().getResourceAsStream("/images/bluebg.png"));
+            logo = ImageIO.read(getClass().getResourceAsStream("/images/logo.png"));
+            score = ImageIO.read(getClass().getResourceAsStream("/images/score.png"));
+            redborder = ImageIO.read(getClass().getResourceAsStream("/images/redborder.png"));
+            yellowborder = ImageIO.read(getClass().getResourceAsStream("/images/yellowborder.png"));
+            blueborder = ImageIO.read(getClass().getResourceAsStream("/images/blueborder.png"));
+            greenborder = ImageIO.read(getClass().getResourceAsStream("/images/greenborder.png"));
+            glowingrow = ImageIO.read(getClass().getResourceAsStream("/images/glowing row.png"));
+            blackborder = ImageIO.read(getClass().getResourceAsStream("/images/blackborder.png"));
+            arrow = ImageIO.read(getClass().getResourceAsStream("/images/arrow.png"));
 
 		} catch (Exception E) {
 			System.out.println(E.getMessage());
