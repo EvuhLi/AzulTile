@@ -51,21 +51,23 @@ public class EndScreenPanel extends JPanel{
 		int n = plyr.size();
 
 
-        // ArrayList<Integer> scores = new ArrayList<>();
-        // for(int c = 0; c < 4; c++){
-        //     scores.add(plyr.get(c).getScore());
-        // }
-        // Collections.sort(scores);
-        // // Convert entrySet to Array using toArray method
-        // Player[] sort = new Player[4];
-        // for(int c = 0; c < 4; c++){
-        //     for(int d = 0; d < 4; d++){
-        //         if(plyr.get(c).getScore()== scores.get(d)){
-        //             sort[d] = plyr.get(c);
-        //             break;
-        //         }
-        //     }
-        // }
+        ArrayList<Integer> scores = new ArrayList<>();
+        for(int c = 0; c < 4; c++){
+            scores.add(plyr.get(c).getScore());
+        }
+        Collections.sort(scores);
+        // Convert entrySet to Array using toArray method
+        Player[] sort = new Player[4];
+        for(int c = 0; c < 4; c++){
+            for(int d = 0; d < 4; d++){
+                if(plyr.get(c).getScore()== scores.get(d)){
+                    if(sort[d] == null){
+                        sort[d] = plyr.get(c);
+                        break;
+                    }
+                }
+            }
+        }
         // g.drawString(" Player  .......................................................", width/3 - 330, height - 500); //first place
 
 
@@ -76,15 +78,15 @@ public class EndScreenPanel extends JPanel{
         //         + ", " + entry.getValue() + "]");
 
         g.setFont(new Font("Times New Roman", Font.PLAIN, 40));
-        g.drawString(" Player  .......................................................", width/3 - 330, height - 500); //first place
-        g.drawString(" Player  .......................................................", width/3 - 330, height - 380);  //second place
-        g.drawString(" Player  .......................................................", width/3 - 330, height - 260);  //third place
-        g.drawString(" Player  .......................................................", width/3 - 330, height - 140);  //last place
+        g.drawString(sort[3].getColor().substring(0, 1).toUpperCase() + sort[3].getColor().substring(1) + " Player  .......................................................", width/3 - 330, height - 500); //first place
+        g.drawString(sort[2].getColor().substring(0, 1).toUpperCase() + sort[2].getColor().substring(1) + " Player  .......................................................", width/3 - 330, height - 380);  //second place
+        g.drawString(sort[1].getColor().substring(0, 1).toUpperCase() + sort[1].getColor().substring(1) + " Player  .......................................................", width/3 - 330, height - 260);  //third place
+        g.drawString(sort[0].getColor().substring(0, 1).toUpperCase() + sort[0].getColor().substring(1) + " Player  .......................................................", width/3 - 330, height - 140);  //last place
 
-        g.drawString("hi", width/3 + 700, height - 500); //first score
-        g.drawString("hi", width/3 + 700, height - 380); //second score
-        g.drawString("hi", width/3 + 700, height - 260); //third score
-        g.drawString("hi", width/3 + 700, height - 140); //fourth score		
+        g.drawString(sort[3].getScore() + "", width/3 + 700, height - 500); //first score
+        g.drawString(sort[2].getScore() + "", width/3 + 700, height - 380); //second score
+        g.drawString(sort[1].getScore() + "", width/3 + 700, height - 260); //third score
+        g.drawString(sort[0].getScore() + "", width/3 + 700, height - 140); //fourth score		
 		
 	}	
     

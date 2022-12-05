@@ -38,7 +38,7 @@ public class Game {
         for(int c = 0; c < randFirstPlayer; c++){
             nextPlayer();
         }
-        fillRow();
+        //fillRow();
         //players.get(0).first = true;
 
     }
@@ -174,12 +174,7 @@ public class Game {
         players.get(0).isOne(false);
     }
     
-    public void endOfGame(){
-        for ( int i = 0; i < 4; i ++){
-            players.get(i).getBoard().countEndScore();
-        }
-        // call end screen
-    }
+    
 
     public void fillRow(){
         for (int c = 0; c < 5; c++) {

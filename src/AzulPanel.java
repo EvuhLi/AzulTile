@@ -36,7 +36,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			if(end == true && scorephase == 0){
+			if(end == true && scorephase == 10){
 				System.out.println("aoiwdh");
 				endScreen.paint(g, game.getPlayers(), getWidth(), getHeight());
 			}
@@ -102,10 +102,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						Game.round++;
 						if(game.round == 3){
 							scorephase = 3; pickphase = 3;game.round = -1; 
-							if (end){
-								game.endOfGame();
-								// call end screen panel
-							}
+							
 						}
 						timer.cancel();
 					}
@@ -125,11 +122,22 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			// }
 			
 		}
-		// if(end && scorephase == 0){
-		//     System.out.println("HERE??");
-		// 	endScreen.paint(getGraphics());
-		// }
+		if(end && scorephase == 0){
+			for(int c = 0; c < 4; c++){
+				System.out.println(game.getPlayers().get(c).getColor() + game.getPlayers().get(c).getScore());
+				game.getPlayers().get(c).addToScore(game.getPlayers().get(c).getBoard().countEndScore());
+			//	game.getPlayers().get(c).getBoard().countEndScore();
+				//game.getPlayers().get(c).addToScore(game.getPlayers().get(c).getBoard().score);
+				System.out.println(game.getPlayers().get(c).getColor() + game.getPlayers().get(c).getScore());
+			}
+			scorephase = 10;
+			repaint();
+		}
 		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
+			if(end){ //FIX THSSISI
+				pickphase = 10;
+				repaint();
+			}
 			game.nextPlayer(); 
 			if(scorephase == 3){
 				scorephase = 0;

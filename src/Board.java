@@ -78,7 +78,7 @@ public class Board{
         
     }
 
-    public void countEndScore(){
+    public int countEndScore(){
         int bonus= 0;
         // check row
         int f = 0;
@@ -115,8 +115,7 @@ public class Board{
             if (t==5) bonus+=10;
             t=0;
         }
-
-        score += bonus;
+        return bonus;
     } 
     
     
