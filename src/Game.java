@@ -38,6 +38,7 @@ public class Game {
         for(int c = 0; c < randFirstPlayer; c++){
             nextPlayer();
         }
+        fillRow();
         //players.get(0).first = true;
 
     }
@@ -172,32 +173,6 @@ public class Game {
         while(!players.get(0).first) nextPlayer();
         players.get(0).isOne(false);
     }
-    public boolean playerEnd(){
-        // row to board (simultaneously scores)
-    
-        // counting penalty
-        if (Math.abs(players.get(0).countPenalty()) <= players.get(0).getBoard().score){
-            players.get(0).getBoard().score += players.get(0).countPenalty();
-        } else {
-            players.get(0).getBoard().score = 0;
-        }
-        // checking players
-        players.get(0).full = players.get(0).getBoard().checkEnd();
-        return (players.get(0).full);
-
-
-      /*   for ( int i = 0; i < players.size() ; i ++){
-            for (int r = 0; r < 5; r++){
-                players.get(i).rowToBoard(r);
-            }
-            players.get(i).full = players.get(i).getBoard().checkEnd();
-        }
-        for (int i = 0; i < players.size(); i++){
-            if ( players.get(i).full){
-                endOfGame();
-            }
-        } */
-    }
     
     public void endOfGame(){
         for ( int i = 0; i < 4; i ++){
@@ -212,7 +187,7 @@ public class Game {
            
         }
         end = true;
-        players.get(0).getBoard().checkEnd();
+        
 
     }
 

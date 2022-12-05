@@ -16,7 +16,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 	PlayerPanel player;
 	int width, height;
 	int row, scorephase;
-	boolean fillRows = false;
+	boolean fillRows = true;
 	
 
 	public AzulPanel(int w, int h) {
@@ -36,19 +36,21 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			player.drawAll(g, getWidth(), getHeight(), pickphase);
-			game.getfactoryP().paint(g, getWidth(), getHeight());
+			if(end == true && scorephase == 0){
+				System.out.println("aoiwdh");
+				endScreen.paint(g, game.getPlayers());
+			}
+			else{
+				player.drawAll(g, getWidth(), getHeight(), pickphase); 
+				game.getfactoryP().paint(g, getWidth(), getHeight());
+			}	
 		}
 		//if they have chosen a factory, paint the options
 		if(Game.phase == 1){
 			game.getfactoryP().choosing(g);
 		}
-		if(Game.phase == 3){
-			endScreen.paint(g, game.getPlayers());
-		}
-		if(end == true){
-			endScreen.paint(g, game.getPlayers());
-		}
+		
+		
 			
 		
 		//try to make this happen AFTER you choose which row
@@ -109,12 +111,12 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 					}
 					else if(row >= 0 && row <= 4){
 						game.getPlayers().get(0).rowToBoard(row); 
-						end = game.getPlayers().get(0).getBoard().checkEnd();
+						if(game.getPlayers().get(0).getBoard().checkEnd(row)) end = true;
 						repaint();
 						row++;
 					}
 				}
-			}, 1000,  1000);
+			}, 1000,  10);
 					
 			// if(game.round == 4){// scorephase = 1; 
 			// 	System.out.println("hello");
@@ -123,6 +125,10 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			// }
 			
 		}
+		// if(end && scorephase == 0){
+		//     System.out.println("HERE??");
+		// 	endScreen.paint(getGraphics());
+		// }
 		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
 			game.nextPlayer(); 
 			if(scorephase == 3){

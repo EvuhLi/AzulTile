@@ -120,15 +120,14 @@ public class Board{
     } 
     
     
-     public boolean checkEnd(){ 
+    public boolean checkEnd(int row){ 
         int f = 0;
         for ( int r = 0; r < 5; r ++){
-            for ( int c = 0; c < 5; c++){
-                if (b[r][c]!=null) f++;
-            }
-            if (f==5) return true;
+            if (b[row][r]!=null)
+             f++;
+            
         }
-        return false;
+        return f == 5;
      } 
 }
 
