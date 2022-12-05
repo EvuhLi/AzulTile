@@ -113,7 +113,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						row++;
 					}
 				}
-			}, 1000,  10);
+			}, 1000,  1000);
 					
 			// if(game.round == 4){// scorephase = 1; 
 			// 	System.out.println("hello");
