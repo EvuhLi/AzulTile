@@ -158,14 +158,14 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			row = 0;
 			pickphase = -2;
 		}
-		if(!start && scorephase == 0 && pickphase != 3 && fillRows){ 
-			System.out.println("empty");
-			fillRows = false;
-			game.fillRows();
-			scorephase = 1;
-			row = 0;
-			pickphase = -2;
-		}
+		// if(!start && scorephase == 0 && pickphase != 3 && fillRows){ 
+		// 	System.out.println("empty");
+		// 	fillRows = false;
+		// 	game.fillRows();
+		// 	scorephase = 1;
+		// 	row = 0;
+		// 	pickphase = -2;
+		// }
 		
 		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;
