@@ -63,19 +63,23 @@ public class Board{
 
     public void countScore (int r, int c){
         score++;
+        boolean rowPts = false;
         for ( int i = 1; r-i>-1 && b[r-i][c]!= null; i++){
             score++;
-        }
-        for ( int i = 1; c-i>-1 && b[r][c-i]!= null; i++){
-            score++;
+            rowPts = true;
         }
         for ( int i = 1; r+i<5 && b[r+i][c]!= null; i++){
             score++;
+            rowPts = true;
+        }
+        for ( int i = 1; c-i>-1 && b[r][c-i]!= null; i++){
+            score++;
+            if(rowPts){score++; rowPts = false;}
         }
         for ( int i = 1; c+i<5 && b[r][c+i]!= null; i++){
             score++;
+            if(rowPts){score++; rowPts = false;}
         }
-        
     }
 
     public void countEndScore(){
