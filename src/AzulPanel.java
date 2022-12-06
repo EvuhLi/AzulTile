@@ -36,19 +36,21 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			menu.drawMenu(g, getWidth(), getHeight());
 		}
 		else{
-			player.drawAll(g, getWidth(), getHeight(), pickphase);
-			game.getfactoryP().paint(g, getWidth(), getHeight());
+			if(end == true && scorephase == 10){
+				System.out.println("aoiwdh");
+				endScreen.paint(g, game.getPlayers(), getWidth(), getHeight());
+			}
+			else{
+				player.drawAll(g, getWidth(), getHeight(), pickphase); 
+				game.getfactoryP().paint(g, getWidth(), getHeight());
+			}	
 		}
 		//if they have chosen a factory, paint the options
-		if(game.phase == 1){
+		if(Game.phase == 1){
 			game.getfactoryP().choosing(g);
 		}
-		if(game.phase == 3){
-			endScreen.paint(g, game.getPlayers());
-		}
-		if(end == true){
-			endScreen.paint(g, game.getPlayers());
-		}
+		
+		
 			
 		
 		//try to make this happen AFTER you choose which row
@@ -72,7 +74,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 		System.out.println("loc is (" + x + "," + y + ")");
 				
 		
-		if(!start && scorephase == 1 && pickphase == -2 && x >= 1119 && x <= 1190 && y >= 34 && y <= 63 && game.round < 4){
+		if(!start && scorephase == 1 && pickphase == -2 && x >= 1119 && x <= 1190 && y >= 34 && y <= 63 && Game.round < 4){
 			pickphase = -3;
 			scorephase = 2;
 			System.out.println("hi");
@@ -97,19 +99,16 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						repaint();
 						//row++;
 						pickphase = 3;
-						game.round++;
+						Game.round++;
 						if(game.round == 3){
 							scorephase = 3; pickphase = 3;game.round = -1; 
-							if (end){
-								game.endOfGame();
-								// call end screen panel
-							} else {game.resetFactories();}
+							
 						}
 						timer.cancel();
 					}
 					else if(row >= 0 && row <= 4){
 						game.getPlayers().get(0).rowToBoard(row); 
-						end = game.getPlayers().get(0).getBoard().checkEnd();
+						if(game.getPlayers().get(0).getBoard().checkEnd(row)) end = true;
 						repaint();
 						row++;
 					}
@@ -123,11 +122,29 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			// }
 			
 		}
+		if(end && scorephase == 0){
+			for(int c = 0; c < 4; c++){
+				System.out.println(game.getPlayers().get(c).getColor() + game.getPlayers().get(c).getScore());
+				game.getPlayers().get(c).addToScore(game.getPlayers().get(c).getBoard().countEndScore());
+			//	game.getPlayers().get(c).getBoard().countEndScore();
+				//game.getPlayers().get(c).addToScore(game.getPlayers().get(c).getBoard().score);
+				System.out.println(game.getPlayers().get(c).getColor() + game.getPlayers().get(c).getScore());
+			}
+			scorephase = 10;
+			repaint();
+		}
 		if(pickphase == 3 && x >= 1069 && y >= 35 && x <= 1217 && y <= 64){//&&){
+			if(end){ //FIX THSSISI
+				pickphase = 10;
+				repaint();
+			}
 			game.nextPlayer(); 
-			if(scorephase == 3) scorephase = 0;
+			if(scorephase == 3){
+				scorephase = 0;
+				game.resetFactories();
+			}
 			pickphase = -1;
-			if(game.round > -1){
+			if(Game.round > -1){
 				pickphase = -2;
 				scorephase = 1;
 			}
@@ -141,14 +158,14 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			row = 0;
 			pickphase = -2;
 		}
-		if(!start && scorephase == 0 && pickphase != 3 && fillRows && game.facsEmpty()){ 
-			System.out.println("empty");
-			fillRows = false;
-			game.fillRows();
-			scorephase = 1;
-			row = 0;
-			pickphase = -2;
-		}
+		// if(!start && scorephase == 0 && pickphase != 3 && fillRows){ 
+		// 	System.out.println("empty");
+		// 	fillRows = false;
+		// 	game.fillRows();
+		// 	scorephase = 1;
+		// 	row = 0;
+		// 	pickphase = -2;
+		// }
 		
 		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;
@@ -284,7 +301,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 				start = false;
 				game = new Game();
 				player = new PlayerPanel(game);
-				game.phase = 1;
+				Game.phase = 1;
 			}
 			if(x >= 100 && x <= 550 && y >= getHeight()/2 + 200 && y <= getHeight()/2 + 275){
 				menu.download = true;

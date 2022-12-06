@@ -37,6 +37,7 @@ public class Board{
     }
 
     public boolean colorInBoard(String color, int row){
+        System.out.println(color + " " + row);
         for(int c = 0; c < 5; c++){
             if (b[row][c] != null && b[row][c].getColor().equals(color)){
                 return true;
@@ -82,7 +83,7 @@ public class Board{
         }
     }
 
-    public void countEndScore(){
+    public int countEndScore(){
         int bonus= 0;
         // check row
         int f = 0;
@@ -119,20 +120,18 @@ public class Board{
             if (t==5) bonus+=10;
             t=0;
         }
-
-        score += bonus;
+        return bonus;
     } 
     
     
-     public boolean checkEnd(){ 
+    public boolean checkEnd(int row){ 
         int f = 0;
         for ( int r = 0; r < 5; r ++){
-            for ( int c = 0; c < 5; c++){
-                if (b[r][c]!=null) f++;
-            }
-            if (f==5) return true;
+            if (b[row][r]!=null)
+             f++;
+            
         }
-        return false;
+        return f == 5;
      } 
 }
 

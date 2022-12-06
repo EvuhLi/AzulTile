@@ -13,14 +13,12 @@ public class MainMenuPanel implements Runnable{
 	int hover = -1;
 	File out = new File(home+"/Downloads/AzulTilesInstructions.pdf"); 
 	public MainMenuPanel(){
-		
 		try {
-	
-			bkg = ImageIO.read(new File("src/images/azulejos.png"));
-			startGameLetter = ImageIO.read(new File("src/images/StartGame.png"));
-			startgamebg = ImageIO.read(new File("src/images/startgamebg.png"));
-			logo = ImageIO.read(new File("src/images/logo.png"));
-			howtoplay = ImageIO.read(new File("src/images/howtoplay.png"));	
+			bkg = ImageIO.read(getClass().getResourceAsStream("/images/azulejos.png"));
+			startGameLetter = ImageIO.read(getClass().getResourceAsStream("/images/StartGame.png"));
+			startgamebg = ImageIO.read(getClass().getResourceAsStream("/images/startgamebg.png"));
+			logo = ImageIO.read(getClass().getResourceAsStream("/images/logo.png"));
+			howtoplay = ImageIO.read(getClass().getResourceAsStream("/images/howtoplay.png"));	
 		}
 		catch(Exception e){
 		

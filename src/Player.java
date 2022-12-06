@@ -18,8 +18,9 @@ public class Player {
         row = new Row();
         //tilePicked.add(new Tile("red"));
     }
-    public void addFirstTile(){
-        
+    
+    public void addToScore(int x){
+        score+= x;
     }
     public void isOne(boolean f){
         first = f;

@@ -12,31 +12,29 @@ public class Tile {
 
         color = c;
         setPic(color);
-        
-
     }
 
     private void setPic(String color){
         //🦧
         try{
             if(color == "black"){
-                pic = ImageIO.read(new File("src/images/black tile.png"));
+                pic = ImageIO.read(getClass().getResourceAsStream("/images/black tile.png"));
     
             }else if(color == "blue"){
-                pic = ImageIO.read(new File("src/images/blue tile.png"));
+                pic = ImageIO.read(getClass().getResourceAsStream("/images/blue tile.png"));
     
             }else if(color == "red"){
-                pic = ImageIO.read(new File("src/images/red tile.png"));
+                pic = ImageIO.read(getClass().getResourceAsStream("/images/red tile.png"));
     
             }else if(color == "yellow"){
-                pic = ImageIO.read(new File("src/images/yellow tile.png"));
+                pic = ImageIO.read(getClass().getResourceAsStream("/images/yellow tile.png"));
     
             }else if(color == "teal"){
-                pic = ImageIO.read(new File("src/images/teal tile.png"));
+                pic = ImageIO.read(getClass().getResourceAsStream("/images/teal tile.png"));
     
             }
             else if(color == "first"){
-                pic = ImageIO.read(new File("src/images/firstplayer.png"));
+                pic = ImageIO.read(getClass().getResourceAsStream("/images/firstplayer.png"));
             }
 
         }

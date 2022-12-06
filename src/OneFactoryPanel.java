@@ -13,12 +13,12 @@ public class OneFactoryPanel{
     boolean clicked;
     public OneFactoryPanel() {
         try {           
-            border = ImageIO.read(new File("src/images/selectborder.png"));
+            border = ImageIO.read(getClass().getResourceAsStream("/images/selectborder.png"));
             TArr = new ArrayList<>();
-			factorymiddle = ImageIO.read(new File("src/images/factorymiddle.png"));
-            highlight = ImageIO.read(new File("src/images/yellowfactory.png"));
-            TChoose = ImageIO.read(new File("src/images/TileChoosing.png"));
-            factory = ImageIO.read(new File("src/images/factory.png"));
+			factorymiddle = ImageIO.read(getClass().getResourceAsStream("/images/factorymiddle.png"));
+            highlight = ImageIO.read(getClass().getResourceAsStream("/images/yellowfactory.png"));
+            TChoose = ImageIO.read(getClass().getResourceAsStream("/images/TileChoosing.png"));
+            factory = ImageIO.read(getClass().getResourceAsStream("/images/factory.png"));
             
         } catch (Exception e) {
             return;

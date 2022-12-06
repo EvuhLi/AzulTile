@@ -11,7 +11,7 @@ public class PlayerPanel {
     static BufferedImage yellowborder;
     static BufferedImage greenborder;
     static BufferedImage blueborder;
-    BufferedImage border, screenbg, logo, score, glowingrow, blackborder, nextplayer, blackbg;
+    BufferedImage border, screenbg, logo, score, glowingrow, blackborder, nextplayer, blackbg, arrow;
     int hover;
 
 
@@ -19,25 +19,26 @@ public class PlayerPanel {
         game = g;
         hover = -1;
         try {
-            firstTile = ImageIO.read(new File("src/images/firstplayer.png"));
-            blackbg = ImageIO.read(new File("src/images/startgamebg.png"));
-            nextplayer = ImageIO.read(new File("src/images/nextplayer.png"));
-            board = ImageIO.read(new File("src/images/Azul Board.jpg"));
-            redtile = ImageIO.read(new File("src/images/red tile.png"));
-            yellowtile = ImageIO.read(new File("src/images/yellow tile.png"));
-            bluetile = ImageIO.read(new File("src/images/blue tile.png"));
-            tealtile = ImageIO.read(new File("src/images/teal tile.png"));
-            blacktile = ImageIO.read(new File("src/images/black tile.png"));
-            border = ImageIO.read(new File("src/images/border.png"));
-			screenbg = ImageIO.read(new File("src/images/bluebg.png"));
-            logo = ImageIO.read(new File("src/images/logo.png"));
-            score = ImageIO.read(new File("src/images/score.png"));
-            redborder = ImageIO.read(new File("src/images/redborder.png"));
-            yellowborder = ImageIO.read(new File("src/images/yellowborder.png"));
-            blueborder = ImageIO.read(new File("src/images/blueborder.png"));
-            greenborder = ImageIO.read(new File("src/images/greenborder.png"));
-            glowingrow = ImageIO.read(new File("src/images/glowing row.png"));
-            blackborder = ImageIO.read(new File("src/images/blackborder.png"));
+            firstTile = ImageIO.read(getClass().getResourceAsStream("/images/firstplayer.png"));
+            blackbg = ImageIO.read(getClass().getResourceAsStream("/images/startgamebg.png"));
+            nextplayer = ImageIO.read(getClass().getResourceAsStream("/images/nextplayer.png"));
+            board = ImageIO.read(getClass().getResourceAsStream("/images/Azul Board.jpg"));
+            redtile = ImageIO.read(getClass().getResourceAsStream("/images/red tile.png"));
+            yellowtile = ImageIO.read(getClass().getResourceAsStream("/images/yellow tile.png"));
+            bluetile = ImageIO.read(getClass().getResourceAsStream("/images/blue tile.png"));
+            tealtile = ImageIO.read(getClass().getResourceAsStream("/images/teal tile.png"));
+            blacktile = ImageIO.read(getClass().getResourceAsStream("/images/black tile.png"));
+            border = ImageIO.read(getClass().getResourceAsStream("/images/border.png"));
+			screenbg = ImageIO.read(getClass().getResourceAsStream("/images/bluebg.png"));
+            logo = ImageIO.read(getClass().getResourceAsStream("/images/logo.png"));
+            score = ImageIO.read(getClass().getResourceAsStream("/images/score.png"));
+            redborder = ImageIO.read(getClass().getResourceAsStream("/images/redborder.png"));
+            yellowborder = ImageIO.read(getClass().getResourceAsStream("/images/yellowborder.png"));
+            blueborder = ImageIO.read(getClass().getResourceAsStream("/images/blueborder.png"));
+            greenborder = ImageIO.read(getClass().getResourceAsStream("/images/greenborder.png"));
+            glowingrow = ImageIO.read(getClass().getResourceAsStream("/images/glowing row.png"));
+            blackborder = ImageIO.read(getClass().getResourceAsStream("/images/blackborder.png"));
+            arrow = ImageIO.read(getClass().getResourceAsStream("/images/arrow.png"));
 
 		} catch (Exception E) {
 			System.out.println(E.getMessage());
@@ -70,6 +71,7 @@ public class PlayerPanel {
             g.setColor(Color.white);
             g.drawString("Pick a", 660, 100);
             g.drawString("Tile", 674, 124);
+            g.drawImage(arrow, width/2 , 150, 75, 60, null);
         }
         if(pick == 1){
             g.setFont(new Font("Times New Roman", Font.BOLD, 28));
@@ -86,7 +88,8 @@ public class PlayerPanel {
             g.drawString("Next Player", 1073, 60);
             g.setColor(Color.white);
             g.drawString("Next Player", 1070, 60);
-            //g.drawImage(nextplayer, 1020, 30, 215,  40, null);
+            g.drawImage(arrow, width - 190, 100, 75, 60, null);
+            //g.drawImage(nextplayer, 1020, 30, 215,  40, null)
         }
         drawLeft(g, game.getPlayers().get(3), width, height);
         drawMiddle(g, game.getPlayers().get(2), width, height); // logic needs change
@@ -94,8 +97,10 @@ public class PlayerPanel {
         drawTurn(g, width, height, game.getPlayers().get(0), pick == 1);
         g.drawImage(border, 0, 0, width, height, null);
         g.drawImage(logo, width/2+150, 30, 300, 210, null);
-        if(hover > -1) drawHover(g, width, height);
-        hover = -1;
+        if(hover > -1){
+            drawHover(g, width, height);
+            hover = -1;
+        }
         //🦧
     }
     
@@ -216,7 +221,7 @@ public class PlayerPanel {
         } 
     }
     public void drawValidRows(Graphics g, Player p, int width, int height){
-        if(game.phase == 1 && p.getPicked().size() > 0){
+        if(Game.phase == 1 && p.getPicked().size() > 0){
             for(int c = 0; c < 5; c++){
                 if(p.validRow(c)){
                     g.drawImage(glowingrow, width/2 + 250 - c*45, height/2 - 87 + 45*c, (c+1)*44, 40, null);
@@ -225,7 +230,7 @@ public class PlayerPanel {
         }
     }
     public void moveTile(Graphics g, int row, int x, int height){
-        g.drawImage(game.players.get(0).getRow().getRow(row)[0].getImage(), x, height/2 - 87 + 45 * row, null);
+        g.drawImage(Game.players.get(0).getRow().getRow(row)[0].getImage(), x, height/2 - 87 + 45 * row, null);
     }
     public void drawTurn(Graphics g, int width, int height, Player player, boolean pickedF){
         game.transferDiscard();
