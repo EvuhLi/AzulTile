@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.concurrent.locks.ReadWriteLock;
 
 public class Board{
     Tile[][] b = new Tile[5][5];
@@ -64,23 +65,33 @@ public class Board{
 
     public void countScore (int r, int c){
         score++;
+        System.out.println(score + " 1");
         boolean rowPts = false;
         for ( int i = 1; r-i>-1 && b[r-i][c]!= null; i++){
             score++;
             rowPts = true;
         }
+        System.out.println(score + " 2");
+        System.out.println(rowPts);
         for ( int i = 1; r+i<5 && b[r+i][c]!= null; i++){
             score++;
             rowPts = true;
         }
+        System.out.println(score + " 3");
+        System.out.println(rowPts);
         for ( int i = 1; c-i>-1 && b[r][c-i]!= null; i++){
             score++;
             if(rowPts){score++; rowPts = false;}
         }
+        System.out.println(score + " 4");
+        System.out.println(rowPts);
         for ( int i = 1; c+i<5 && b[r][c+i]!= null; i++){
             score++;
             if(rowPts){score++; rowPts = false;}
         }
+        System.out.println(score + " 5");
+        System.out.println(rowPts);
+        
     }
 
     public int countEndScore(){
