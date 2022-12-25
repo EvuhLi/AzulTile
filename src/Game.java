@@ -57,7 +57,6 @@ public class Game {
     }
     public void nextPlayer(){
         players.add(players.remove(0));
-        // playerEnd();
     }
     
     public void resetBag(){

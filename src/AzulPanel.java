@@ -113,7 +113,7 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 						row++;
 					}
 				}
-			}, 1000,  10);
+			}, 1000,  1000);
 					
 			// if(game.round == 4){// scorephase = 1; 
 			// 	System.out.println("hello");
@@ -158,14 +158,14 @@ public class AzulPanel extends JPanel implements MouseListener, MouseMotionListe
 			row = 0;
 			pickphase = -2;
 		}
-		if(!start && scorephase == 0 && pickphase != 3 && fillRows){ 
-			System.out.println("empty");
-			fillRows = false;
-			game.fillRows();
-			scorephase = 1;
-			row = 0;
-			pickphase = -2;
-		}
+		// if(!start && scorephase == 0 && pickphase != 3 && fillRows){ 
+		// 	System.out.println("empty");
+		// 	fillRows = false;
+		// 	game.fillRows();
+		// 	scorephase = 1;
+		// 	row = 0;
+		// 	pickphase = -2;
+		// }
 		
 		if(!start && !game.facsEmpty() && pickphase < 2){
 			//pickedF = true;

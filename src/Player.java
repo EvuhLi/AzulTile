@@ -74,7 +74,8 @@ public class Player {
         if (row.rowIsFull(r)){
             
             b.addTile(r, row.getRow(r)[0]);
-            score = b.score;
+            score += b.score;
+            b.score = 0;
             //board.row.getRow(c)[0].onBoard = true;
             for (int i = row.getRow(r).length - 1; i >= 1; i--){
                 Game.discard.add(row.getRow(r)[i]);

@@ -7,5 +7,9 @@
     "githubPullRequests.ignoredPullRequestBranches": [
         "master"
     ],
+<<<<<<< HEAD
     "liveServer.settings.port": 5502
+=======
+    "editor.fontFamily": "Consolas, 'Times New Roman', monospace"
+>>>>>>> ab889850eab5e279af32183b681f4a0d0bf46e08
 }
